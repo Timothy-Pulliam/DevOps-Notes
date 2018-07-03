@@ -1,0 +1,118 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-07-02T17:05:00-04:00
+
+====== Identity Access Management (IAM) ======
+Created Monday 02 July 2018
+
+Users and access control.
+
+* Identity Federation (Connect to Active Directory, Facebook, [[LinkedIn]])
+* Granular Permissions
+* Multifactor Authentication
+* Temporary access to users and devices
+* Centralized control to your AWS account
+* password policy
+* PCI DSS Compliance
+
+==== Terminology ====
+* User - Person
+* Group - Collection of Users
+* Roles - Assigned to AWS resources (groups of EC2 instances, databases, etc.)
+* Policies - JSON Document that defines a set of permissions assigned to Users, Groups or Roles.
+
+==== IAM Is Not Region Specific ====
+If you click on the region drop down, you will not be able to select a specifig region while using IAM. This is because any changes made to IAM are propogated to all regions (all over the world). IAM only applies to the Global Region.
+
+{{./pasted_image.png}}
+
+==== Account Overview ====
+Your account ID can be found on the splash screen of IAM in the upper left corner. If you look for I**AM users sign-in link**. This will give you an alternative URL with which you can log into you AWS account with.
+
+{{./pasted_image001.png}}
+
+You can create a more user friendly alias for this URL by clicking the **customize** button to the right of this link.
+
+{{./pasted_image002.png}}r
+
+==== Managing Security Status ====
+1) Activate MFA using Google Authenticator
+
+2) Create IAM [[SystemAdministrator]] users and group
+When you create users, you can grant them either Programmatic access (access via API, CLI, SDK), or access via the Web Console.
+{{./pasted_image003.png?width=1600}}
+
+On the next screen, you will be given the option to add these users to a group or copy permssions from an existing user. I have created a new SystemAdministors group and given them the **AdministratorAccess** policy. This is essentially Root access to our AWS account. Normally we wouldn't grant full access, however this is just an example.
+{{./pasted_image005.png}}
+
+
+If you click on the arrow next to eh policy name, you can even view the JSON file that defines the policy. In the case of the **AdministratorAccess** Policy, we see a very simply JSON document which grants a user access to everything.
+
+'''
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "*",
+            "Resource": "*"
+        }
+    ]
+}
+'''
+
+Once you have successfully created the users, you will see the following screen
+
+{{./pasted_image006.png}}
+
+Access Key ID and Secret Access Key are used together to programmatically interact with AWS (CLI, API, etc.). Username and Password are used to log into the AWS Web UI console. **It is important to note** that unless you save these credentials, you will be unable to see them again. You will only be able to regenerate credentials for users. So make sure to either email these users their login credentials, or download the CSV file containing the credentials.
+
+{{./pasted_image007.png}}
+
+==== Policies Applied to Users and Groups ====
+Suppose we create a group called HR with the following policies (AmazonS3ReadOnlyAccess)
+
+{{./pasted_image009.png}}
+
+
+ and we add nicole to that group. We have the following users and groups, where nicole is only a member of the HR group, and tim is a member of the [[SystemAdministrators]] Group we made earlier.
+
+{{./pasted_image008.png}}
+
+We can see what policies apply to a particular user by clicking on that user's name and we see the following screen. We see one policy is attached directly to the user "nicole" and allows her to change her password. The other policy, she inherits via the HR group, and grants her read only access to S3 data.
+
+{{./pasted_image010.png}}
+
+
+==== Users Security Settings ====
+"Users > $user > Security Credentials" takes you to that users security settings. Here, you can revoke their programmatic access keys (if they are fired or the keys are compromised), generate new access keys (if they forget them), or generate new Web UI console passwords. You can also assign MFA authentication devices for added security. You can also add SSH public keys.
+
+{{./pasted_image011.png}}
+
+==== Password Policy ====
+Password policy is set under "Account Settings", it applies to all users and if very straight forward.
+
+{{./pasted_image012.png}}
+
+==== Roles - Granting EC2 Instances Access to S3 With Roles ====
+The most common use case for Roles is to grant "Application code running on an EC2 instance that needs to perform actions on AWS resources" or to allow "An AWS service that needs to act on resources in your account to provide its features". In other words, we use roles to allow AWS resources (usually EC2 instances) to access other AWS resources (in this case S3 storage).
+
+Click on "Roles > Create Role" and you should see the following.
+
+{{./pasted_image013.png}}
+
+**DO NOT** under any circumstances give your EC2 instances the [[AdministratorAccess]] policy. This will allow them to do anything with any AWS resource. They could spin up entire CloudFormations, Destroy entire databases. **Don't do it!**
+
+{{./pasted_image014.png}}  Don't Do this!
+
+
+Instead, give your EC2 instances, full S3 access.
+{{./pasted_image015.png}}
+
+Next name your role something descriptive, like **S3-Admin-Access**
+{{./pasted_image016.png}}
+
+==== Dashboard ====
+Lastly, if you check the dashboard, you can see everything we have changed. All the to do checkboxes are now green.
+
+{{./pasted_image017.png}}

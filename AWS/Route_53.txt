@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-07-02T14:20:46-04:00
+
+====== Route 53 ======
+Created Monday 02 July 2018
+
+DNS

@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-07-02T16:41:58-04:00
+
+====== S3 ======
+Created Monday 02 July 2018
+https://aws.amazon.com/s3/
+
+https://en.wikipedia.org/wiki/Unstructured_data
+https://www.youtube.com/watch?v=WV-TeM78mno
+Object Storage. Object storage is useful for storing unstructured information, which is the majority of information stored. 
+
+https://en.wikipedia.org/wiki/Object_storage
+Object storage (also known as object-based storage) is a computer data storage architecture that manages data as objects, as opposed to other storage architectures like file systems which manage data as a file hierarchy, and block storage which manages data as blocks within sectors and tracks. Each object typically includes the data itself, a variable amount of metadata, and a globally unique identifier.
+
+Object-storage systems allow retention of massive amounts of unstructured data. Object storage is used for purposes such as storing photos on Facebook, songs on Spotify, or files in online collaboration services, such as Dropbox.

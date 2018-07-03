@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-07-02T17:01:51-04:00
+
+====== Redshift ======
+Created Monday 02 July 2018
+
+https://aws.amazon.com/redshift/
+Data Warehouse. RDMS data (SQL) must go somewhere to be stored. Data is stored long term in a Data Warehouse for further processing.

@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-07-02T16:51:00-04:00
+
+====== Glacier ======
+Created Monday 02 July 2018
+https://aws.amazon.com/glacier/
+
+Data Archiving. Secure and Durable.
+
+Used for storing data long term, that doesn't need to be accessed frequently.
+
+
+Features
+* Amazon Glacier provides three retrieval options to fit your use case. Expedited retrievals typically return data in 1-5 minutes, and are great for Active Archive use cases. Standard retrievals typically complete between 3-5 hours work, and work well for less time-sensitive needs like backup data, media editing, or long-term analytics. Bulk retrievals are the lowest-cost retrieval option, returning large amounts of data within 5-12 hours.
+
+* Amazon Glacier also supports security standards and compliance certifications including SEC Rule 17a-4, PCI-DSS, HIPAA/HITECH, FedRAMP, EU GDPR, and FISMA

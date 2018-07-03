@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-07-02T14:22:47-04:00
+
+====== Elastic Map Reduce (EMR) ======
+Created Monday 02 July 2018
+
+https://aws.amazon.com/emr/
+EMR analyzes large data sets using Hadoop, or other distrubed data frameworks (apache spark, etc.)
+
+Amazon EMR provides a managed Hadoop framework that makes it easy, fast, and cost-effective to process vast amounts of data across dynamically scalable Amazon EC2 instances.
+
+Amazon EMR securely and reliably handles a broad set of big data use cases, including log analysis, web indexing, data transformations (ETL), machine learning, financial analysis, scientific simulation, and bioinformatics.
+

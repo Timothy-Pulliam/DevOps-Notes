@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-07-02T14:16:18-04:00
+
+====== Lambda ======
+Created Monday 02 July 2018
+
+==== Overview ====
+AWS Lambda lets you run code without provisioning or managing servers. You pay only for the compute time you consume - there is no charge when your code is not running.
+
+"Serverless Computing". You just write the code and upload it, and Lambda runs it based on a triggering event. You don't have to worry about setting up and administrating virtual machines or databases.

@@ -1,0 +1,33 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-07-03T13:07:37-04:00
+
+====== Billing Alarm with CloudWatch ======
+Created Tuesday 03 July 2018
+
+Create a billing alarm so that you can receive an email if your AWS resources start to cost more than a certain amount. This will help you avoid going beyond your expected monthly bill. Billing data is sent to Cloud Watch and an alarm is triggered when spending reaches a custom set threshold. You can then see which AWS resources are costing the most and scale them down accordingly.
+
+Click on your name in the top right corner, and select "My Billing Dashboard"
+
+{{./pasted_image.png}}
+
+Enable billing alerts. You must be signed in using AWS account root user credentials; IAM users cannot enable billing alerts for your AWS account.
+
+{{./pasted_image001.png}}
+
+
+Note: Once you enable billing alerts, you cannot turn them off.
+{{./pasted_image003.png}}
+
+After we enable billing alerts and save our preferences, click on "Manage Billing Alerts". This will take us to CloudWatch, the monitoring microservice. Click on "Alarms > Billing" and we can set up our billing alarms.
+
+{{./pasted_image004.png}}
+
+
+Click on "Create Alarm". Below, I set an alarm to send me an email when my monthly AWS charges exceed $10/month. You will then be prompted to verify the email is legit.
+
+{{./pasted_image005.png}}
+
+It takes a couple minutes for [[CloudWatch]] to start gathering billing data. Until then, you will see "Insufficient Data". After that you should see the following 
+
+{{./pasted_image007.png}}

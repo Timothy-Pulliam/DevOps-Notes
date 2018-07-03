@@ -1,0 +1,33 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-07-02T13:49:14-04:00
+
+====== AWS ======
+Created Monday 02 July 2018
+
+==== Terminology ====
+
+== Region and Availability Zones ==
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html
+Region is a Geographical area (us-east-1, us-west-2, eu-west-3, etc.). Each region is broken further into **availability zones**, which are essentially isolated datacenters. Each region has at least 2 availability zones for redundancy and isolated in case of failure.  __Resources aren't replicated across regions unless you do so specifically.__ 
+
+The region you are currently using is present in the URI of your AWS dashboard, for example
+
+''https://console.aws.amazon.com/billing/home?''__region=us-west-2__''#''
+
+You can change your region in the upper right corner of the screen.
+
+{{./pasted_image.png}}
+{{./pasted_image002.png?width=900}}
+
+
+Each region is completely independent. Each Availability Zone is isolated, but the Availability Zones in a region are connected through low-latency links. The following diagram illustrates the relationship between regions and Availability Zones.
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/images/aws_regions.png
+{{./pasted_image001.png}}
+
+Regions
+* Each Amazon EC2 region is designed to be completely isolated from the other Amazon EC2 regions. This achieves the greatest possible fault tolerance and stability.
+* When you view your resources, you'll only see the resources tied to the region you've specified. This is because regions are isolated from each other, and we don't replicate resources across regions automatically.
+
+Availability Zones
+* Enable failover by failing to another availability zone
