@@ -1,0 +1,38 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-07-04T12:58:21-04:00
+
+====== First Bucket ======
+Created Wednesday 04 July 2018
+
+==== Hello Bucket! ====
+Buckets are managed globally. Buckets must have a unique name, as they are managed in a global AWS DNS directory.
+
+We can tag buckets and we can tag objects in the buckets. **Objects do NOT inherit bucket tags**.
+
+Minimum Object size = 0 Bytes
+
+Click "Create Bucket". Provide a unique name that can be used for a DNS compliant name for your S3 bucket. Note that buckets are region specific.
+
+{{.\pasted_image004.png}}
+
+== Bucket Tagging ==
+https://docs.aws.amazon.com/AmazonS3/latest/dev/object-tagging.html
+Tagging can be useful for organizing buckets into categories. For example, you may have test, dev, QA, Staging and Prod buckets. You may have buckets containing sensitive information, or that need to be HIPPA compliant that you want to label as such. You could label your buckets like the following example.
+
+{{.\pasted_image002.png}}
+
+==== Bucket Properties / Permissions ====
+By default, buckets are not viewable by anyone except the owner. The owner is able to modify (read, write, delete) objects in this bucket (1) as well as the permissions for those objects (2)
+
+{{.\pasted_image003.png}}
+
+==== Uploading Files to the bucket ====
+You should now see the S3 bucket in the dashboard. Click on the bucket name and then click "Upload". You will be given an option of Storage Tier (Standard, Standard-IA, One Zone-IA, etc.) As well as encryption. You can also tag the object, or give the object custom metadata. In the example below, I have uploaded some text documents and source code. I tagged the objects with "source=True"
+
+{{.\pasted_image006.png}}
+
+ Even if you upload more than one file (object) at a time, you will get the following message informing you of a single success. Multiple files uploaded count as a single transaction.
+
+{{.\pasted_image007.png}} 
+

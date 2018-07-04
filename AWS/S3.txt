@@ -6,6 +6,7 @@ Creation-Date: 2018-07-02T16:41:58-04:00
 Created Monday 02 July 2018
 https://aws.amazon.com/s3/
 
+==== Overview ====
 https://en.wikipedia.org/wiki/Unstructured_data
 https://www.youtube.com/watch?v=WV-TeM78mno
 Object Storage. Object storage is useful for storing unstructured information, which is the majority of information stored. 
@@ -14,3 +15,150 @@ https://en.wikipedia.org/wiki/Object_storage
 Object storage (also known as object-based storage) is a computer data storage architecture that manages data as objects, as opposed to other storage architectures like file systems which manage data as a file hierarchy, and block storage which manages data as blocks within sectors and tracks. Each object typically includes the data itself, a variable amount of metadata, and a globally unique identifier.
 
 Object-storage systems allow retention of massive amounts of unstructured data. Object storage is used for purposes such as storing photos on Facebook, songs on Spotify, or files in online collaboration services, such as Dropbox.
+
+S3 is **Object Storage** (think dropbox, google drive, etc.). It is used to store files, videos, images, etc. **It is not block storage**. You cannot install an operating system, or a database on it.
+
+* Files can be 0-5TB
+* There is unlimited Storage
+* You pay by the GB
+* Files are stored in "**Buckets**"
+* Buckets = Universly Unique URI (https://s3-eu-west-1.amazonaws.com/bucketname)
+
+**S3 has 11 9s of durability (99.999999999% durability)**
+
+==== Data Consistency Model ====
+
+== Read after write consistency for PUTS of new OBJECTS ==
+We are able to read files immediately after uploading (PUTS) of new files (OBJECTS)
+
+== Enventual Consistency for overwrite PUTS and Deletes (can take some time to propogate) ==
+Changes to files (objects) can sometimes take time to propogate across multiple availability zones. As a result, if you update (PUT) a file (or delete a file) , you may still see the old version of the file. This is because of eventual consistency for overwrite PUTS and DELETES. Eventually your changes will propogate to all availability zones.
+
+
+==== Objects ====
+* Primary Key
+* Information (images, text, video)
+* Metadata
+* Version ID
+	* Subresources
+	* ACLs
+	* Torrents (for torrenting)
+
+==== Features ====
+* 99.9% Availability (uptime) Guarenteed (built for 99.99%)
+* 11 9s (99.999999999%) Durability Guarenteed (File Integrity / File loss)
+* Tiered Storage Available
+* Lifecycle Management (if file is over Xdays old, archive to Glacier)
+* Versioning of files
+* Encryption
+* Secure data with ACLs and Bucket Policies
+
+
+==== Storage Tiers ====
+
+== S3 - Standard ==
+* 99.99% Available
+* 11 9s Durable
+* Stored redundantly across multiple facilities (AZs) and can sustain the loss of 2 facilities concurently
+* Pricing
+	https://aws.amazon.com/s3/pricing/
+	* per GB
+	* per request
+	* Transfer Acceleration
+	* Cross Region Replication
+	* Storage Management Pricing
+
+== S3 - IA (Infrequently Accessed) ==
+* Data that is accessed less frequently
+* Quick, rapid access (low latency once accessed)
+* Lower fee than standard, but charged a retrieval fee
+* Pricing
+	* Data Retrievals	$0.01 per GB
+	* Data Returned by S3 Select	$0.01 per GB
+	* Data Scanned by S3 Select	$0.002 per GB
+	* PUT, COPY, or POST Requests	$0.01 per 1,000 requests
+	* GET, SELECT and all other Requests	$0.001 per 1,000 requests
+
+== S3 - One Zone - IA ==
+* Lower cost option for infrequently accessed data
+* No resilience across multiple AZs 
+* Pricing
+	* Data Retrievals	$0.01 per GB
+	* Data Returned by S3 Select	$0.01 per GB
+	* Data Scanned by S3 Select	$0.002 per GB
+	* PUT, COPY or POST Requests	$0.01 per 1,000 requests
+	* GET, SELECT and all other Requests	$0.001 per 1,000 requests
+
+
+== Glacier ==
+* Very cheap
+* Archival only (data stored for long periods of time)
+https://docs.aws.amazon.com/amazonglacier/latest/dev/downloading-an-archive-two-steps.html#api-downloading-an-archive-two-steps-retrieval-options
+* Pricing
+	* Lifecycle Transition Requests into Glacier (placing data from S3 into Glacier)	$0.05 per 1,000 requests
+	* Archive Retrieval Options: Expedited (1-5 Minutes, **$$$**), Standard (3-5 Hours, **$$**), Bulk (5-12 Hours, **$**)
+
+
+{{.\pasted_image.png}}
+
+==== S3 Standard Charges ====
+https://aws.amazon.com/s3/pricing/
+* Storage (per GB)
+* Requests
+* Storage Management Pricing
+* Data Transfers from one region to another (Cross Region Replication)
+* Transfer Acceleration (Fast, easy, secure transfers between end users and an S3 bucket via [[CloudFront]] CDN). Data is routed through an optimized network path.
+
+Below is an image displaying how Transfer Acceleration works.
+
+* The end user (1) uploads files (objects) to a CDN edge location (2). The edge location then uploads to the S3 Bucket (3) via Amazons backbone network. This reduces the latency perceived by the end user. It also reduces the stress on the AWS S3 network backbone.
+
+{{.\pasted_image002.png}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
