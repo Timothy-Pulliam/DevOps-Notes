@@ -18,9 +18,12 @@ Click "Create Bucket". Provide a unique name that can be used for a DNS complian
 
 == Bucket Tagging ==
 https://docs.aws.amazon.com/AmazonS3/latest/dev/object-tagging.html
-Tagging can be useful for organizing buckets into categories. For example, you may have test, dev, QA, Staging and Prod buckets. You may have buckets containing sensitive information, or that need to be HIPPA compliant that you want to label as such. You could label your buckets like the following example.
+Tagging can be useful for organizing buckets into categories. For example, you may have test, dev, QA, Staging and Prod buckets. You may have buckets containing sensitive information, or that need to be HIPPA compliant that you want to label as such. You could label your buckets like the following example. **Note** that objects stored in buckets do not inherit the buckets tags.
 
 {{.\pasted_image002.png}}
+
+== Bucket Tags vs. Metadata ==
+https://stackoverflow.com/questions/42126348/difference-between-object-tags-and-object-metadata
 
 ==== Bucket Properties / Permissions ====
 By default, buckets are not viewable by anyone except the owner. The owner is able to modify (read, write, delete) objects in this bucket (1) as well as the permissions for those objects (2)
@@ -36,3 +39,9 @@ You should now see the S3 bucket in the dashboard. Click on the bucket name and 
 
 {{.\pasted_image007.png}} 
 
+==== Object Permissions ====
+
+If you click on the URL for the object and you get the following page, you do not have permissions to read the object.
+
+
+{{.\pasted_image008.png}}

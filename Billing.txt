@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-07-06T09:27:06-04:00
+
+====== Billing ======
+Created Friday 06 July 2018
+
+1) We see the monthly cost projection for AWS services. The blue shows costs so far. The green shows estimated costs for the end of the billing period.
+2) We see what AWS services cost the most
+
+{{.\pasted_image.png}}
+
+
+The bills tab allows us to drill down further and see **why** we are being charged. AWS always charges the minimum amount ($0.01) for services being used. You can also filter by region.
+
+{{.\pasted_image001.png}}

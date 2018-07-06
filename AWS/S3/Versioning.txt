@@ -1,0 +1,46 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-07-06T13:36:58-04:00
+
+====== Versioning ======
+Created Friday 06 July 2018
+
+==== Overview ====
+https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html
+Versioning enables you to keep multiple versions of an object in one bucket.  __This will cause you to use more storage on S3, as you will have multiple copies of a file in your buckets.__ This is fine for many small files but not for very large files as you will very quickly eat away at your disk quota.
+
+==== Enable Versioning ====
+https://docs.aws.amazon.com/AmazonS3/latest/user-guide/enable-versioning.html
+Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket.
+
+Versioning only operates at the bucket level. You cannot enable versioning for particular files or objects (all or nothing).
+
+Click on the buck you wish to enable versioning for
+
+{{.\pasted_image.png}}
+
+
+Then click "Properties" tab. Then click on the "Versioning" Subtab.
+
+{{.\pasted_image001.png}}
+
+
+Here I have created a simple 10 Byte text document ("Hello AWS!")
+
+{{.\pasted_image002.png}}
+
+
+If I add some more text and re upload the document (with the same name), click on "test.txt" we now see that there are multiple versions of the file to choose from. Selecting the original version allows us to download, view, or restore the original version.
+
+{{.\pasted_image003.png}}
+
+
+Alternatively, you can view all versions of an object by clicking on "Show Versions"
+
+{{.\pasted_image004.png}}
+
+==== Undo Delete of Object Version ====
+If you delete a version of an object, the object is not truly delete. A "Delete Marker" is simply placed over the object, hiding it from view. You can view this 
+
+==== MFA Delete ====
+MFA Delete is a feature where you must provide Multifactor Credentials before you can delete an object version. This can make deleting objects by accident less likely.
