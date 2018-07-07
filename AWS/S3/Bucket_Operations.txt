@@ -2,10 +2,10 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.4
 Creation-Date: 2018-07-04T12:58:21-04:00
 
-====== First Bucket ======
+====== Bucket Operations ======
 Created Wednesday 04 July 2018
 
-==== Hello Bucket! ====
+==== Create Buckets ====
 Buckets are managed globally. Buckets must have a unique name, as they are managed in a global AWS DNS directory.
 
 We can tag buckets and we can tag objects in the buckets. **Objects do NOT inherit bucket tags**.
@@ -45,3 +45,13 @@ If you click on the URL for the object and you get the following page, you do no
 
 
 {{.\pasted_image008.png}}
+
+==== Delete Buckets ====
+
+Click on the bucket you wish to delete, then click "Delete bucket". However, keep in mind the following.
+
+* Bucket names are unique. If you delete this bucket, another AWS user can use the name.
+* This bucket is not empty. If you delete it, all the objects in the bucket will also be deleted.
+* Based on the number of objects in your bucket, this may take some time. Please do not close your browser window before the process is completed.
+
+{{.\pasted_image009.png}}

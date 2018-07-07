@@ -5,3 +5,63 @@ Creation-Date: 2018-07-06T15:42:29-04:00
 ====== Cross Region Replication ======
 Created Friday 06 July 2018
 
+==== Overview ====
+https://aws.amazon.com/answers/infrastructure-management/crr-monitor/
+
+(Source Bucket) === replication  ===> (Destination Bucket)
+
+You cannot "chain" buckets for CRR. For example __you cannot replicate like the following__
+
+(bucket A) ===== replication ====> (bucket B) ===== replication====> (bucket C)
+
+Automatic, asynchronous copying of objects across buckets in different AWS Regions. 
+
+Note
+* Versioning must be enabled for CRR to be enabled
+* Buckets must be from different regions (duh.)
+* Only new or modified objects will be copied to another region (not existing ones)
+* You don't have to replicate the entire bucket, you can replicate parts of a bucket (by specifing a bucket **prefix**)
+
+
+==== Setup ====
+
+Suppose we have 2 buckets, both configured with verisioning
+
+{{.\pasted_image.png}}
+
+You can also optionally change the storage class for the destination buck. This can be desirable if the destination bucket will be used for backup only. You can then change the storage class to S3 Infrequently Accessed (IA) in order to only be charged when you need to restore from backup.
+
+{{.\pasted_image001.png}}
+
+
+You will then be prompted to select an IAM role for the CRR. If you don't select an existing role, S3 will create a default one for you in order to perform the replication
+
+
+{{.\pasted_image002.png}}
+
+
+== Viewing Replication Information ==
+You can view the replication information for a bucket by Clicing on the bucket name
+
+ {{.\pasted_image003.png}}
+
+Click "Management > Replication"
+
+{{.\pasted_image004.png}}
+
+
+We can see that the new IAM role that was created is **s3crr_role_for_linuxandchill_to_linuxandchill-canada**.
+
+== What will (and won't) Replicate ==
+Once CRR is configured
+
+* New files will replicate
+* New versions of files will replicate
+* __Deletion of files will replicate (IF: it causes a deletion marker to be created)__
+* __Deletion of versions of files will not be replicated however (a corelary of this is that deleting a deletion marker does not replicate)__
+* CRR is directional. In the example above, files will only be replicated from linuxandchill to linuxandchill-canada, NOT THE OTHER WAY AROUND.
+
+
+
+
+

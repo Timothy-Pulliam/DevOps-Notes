@@ -39,8 +39,16 @@ Alternatively, you can view all versions of an object by clicking on "Show Versi
 
 {{.\pasted_image004.png}}
 
-==== Undo Delete of Object Version ====
-If you delete a version of an object, the object is not truly delete. A "Delete Marker" is simply placed over the object, hiding it from view. You can view this 
+==== Undo Delete of Object Version (Delete Markers) ====
+If you delete a version of an object, the object is not truly delete. A "Delete Marker" is simply placed over the object, hiding it from view. You can see hidden "deleted" versions by showing versions. This will show you objects that have been deleted. If you delete the delete marker, you will have essentially "undeleted" your files.
+
+{{.\pasted_image005.png}}
+
+However, when we show versioned files, we can see the files are still there. They are simply hidden by the delete marker.
+
+{{.\pasted_image006.png}}
+
+Deleting the delete marker restores the files. Deleting the files themselves truly delets the files forever.
 
 ==== MFA Delete ====
 MFA Delete is a feature where you must provide Multifactor Credentials before you can delete an object version. This can make deleting objects by accident less likely.

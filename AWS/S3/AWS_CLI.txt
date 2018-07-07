@@ -1,0 +1,34 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-07-07T09:33:38-04:00
+
+====== AWS CLI ======
+Created Saturday 07 July 2018
+
+==== Overview ====
+https://aws.amazon.com/cli/
+
+The AWS Command Line Interface (CLI) is a unified tool to manage your AWS services. With just one tool to download and configure, you can control multiple AWS services from the command line and automate them through scripts. In order to use awscli to access AWS resources programmatically, you must have a user with a valid **Access Key ID** and **Secret Access Key** (you get these when you create a new user).
+
+==== Installation ====
+The easiest way to install aws cli is through python pip. This method works on Windows, Mac and Linux as long as Python 2.6.5 or higher is installed.
+
+$ pip install -U pip
+$ pip install awscli
+
+Verify with
+
+$ pip help
+
+==== S3 File Commands ====
+Provide user credentials
+$ aws configure
+
+List out buckets
+$ aws s3 ls
+
+List out objects in the bucket "mybucket"
+$ aws s3 ls s3://mybucket
+
+copy objects from one bucket to another bucket
+$ aws s3 cp --recursive s3://sourcebucket s3://destinationbucket

@@ -54,12 +54,20 @@ Changes to files (objects) can sometimes take time to propogate across multiple 
 * Secure data with ACLs and Bucket Policies
 
 
-==== Storage Tiers ====
+===== Storage Classes =====
+https://aws.amazon.com/s3/storage-classes/
 
 == S3 - Standard ==
-* 99.99% Available
-* 11 9s Durable
-* Stored redundantly across multiple facilities (AZs) and can sustain the loss of 2 facilities concurently
+Amazon S3 Standard offers high durability, availability, and performance object storage for **frequently accessed data**. Because it delivers **low latency and high throughput**, S3 Standard is perfect for a wide variety of use cases including **cloud applications**, **dynamic websites**, **content distribution**, **mobile** and gaming applications, and Big Data analytics. S3 Lifecycle management offers configurable policies to automatically migrate objects to the most appropriate storage class.
+
+Key Features:
+* Low latency and high throughput performance
+* Designed for durability of 99.999999999% (11 9s) of objects across multiple Availability Zones
+* Data is resilient in the event of one entire Availability Zone destruction
+* Designed for 99.99% availability over a given year
+* Backed with the Amazon S3 Service Level Agreement for availability
+* Supports SSL for data in transit and encryption of data at rest
+* Lifecycle management for automatic migration of objects (objects can be archived to Glacier after set amount of time)
 * Pricing
 	https://aws.amazon.com/s3/pricing/
 	* per GB
@@ -69,6 +77,17 @@ Changes to files (objects) can sometimes take time to propogate across multiple 
 	* Storage Management Pricing
 
 == S3 - IA (Infrequently Accessed) ==
+Amazon S3 Standard-Infrequent Access (S3 Standard-IA) is an Amazon S3 storage class for data that is **accessed less frequently**, but requires **rapid access when needed**. S3 Standard-IA offers the high durability, high throughput, and low latency of S3 Standard, with a **low per GB storage price and per GB retrieval fee**. This combination of low cost and high performance make S3 Standard-IA ideal for long-term storage, backups, and as a data store for disaster recovery. The S3 Standard-IA storage class is set at the object level and can exist in the same bucket as S3 Standard, allowing you to use S3 Lifecycle Policies to automatically transition objects between storage classes without any application changes.
+
+Key Features:
+* Same low latency and high throughput performance of S3 Standard
+* Designed for durability of 99.999999999% (11 9s) of objects across multiple Availability Zones
+* Data is resilient in the event of one entire Availability Zone destruction
+* Designed for 99.9% availability over a given year
+* Backed with the Amazon S3 Service Level Agreement for availability
+* Supports SSL for data in transit and encryption of data at rest
+* Lifecycle management for automatic migration of objects
+
 * Data that is accessed less frequently
 * Quick, rapid access (low latency once accessed)
 * Lower fee than standard, but charged a retrieval fee
@@ -91,6 +110,17 @@ Changes to files (objects) can sometimes take time to propogate across multiple 
 
 
 == Glacier ==
+Amazon Glacier is a **secure**, **durable**, **and extremely low-cost** storage service for data archiving. You can reliably store any amount of data at costs that are competitive with or cheaper than on-premises solutions. To keep costs low yet suitable for varying retrieval needs, Amazon Glacier provides three options for access to archives, from a few minutes to several hours. Amazon Glacier supports S3 Lifecycle Policies for automatic migration between S3 & Amazon Glacier storage classes. Please see the Amazon Glacier page for more details.
+
+Key Features:
+
+* Designed for durability of 99.999999999% of objects across multiple Availability Zones
+* Data is resilient in the event of one entire Availability Zone destruction
+* Supports SSL for data in transit and encryption of data at rest
+* Vault Lock feature enforces compliance via a lockable WORM policy
+* Extremely low cost design is ideal for long-term archive
+* Lifecycle management for automatic migration of objects
+
 * Very cheap
 * Archival only (data stored for long periods of time)
 https://docs.aws.amazon.com/amazonglacier/latest/dev/downloading-an-archive-two-steps.html#api-downloading-an-archive-two-steps-retrieval-options
@@ -99,7 +129,7 @@ https://docs.aws.amazon.com/amazonglacier/latest/dev/downloading-an-archive-two-
 	* Archive Retrieval Options: Expedited (1-5 Minutes, **$$$**), Standard (3-5 Hours, **$$**), Bulk (5-12 Hours, **$**)
 
 
-{{.\pasted_image.png}}
+{{.\pasted_image003.png}}
 
 ==== S3 Standard Charges ====
 https://aws.amazon.com/s3/pricing/
