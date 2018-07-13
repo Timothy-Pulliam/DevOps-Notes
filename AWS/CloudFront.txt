@@ -6,3 +6,25 @@ Creation-Date: 2018-07-02T14:38:04-04:00
 Created Monday 02 July 2018
 
 Content Distribution Service
+
+
+➤ curl -I https://d2vxly4ihmtmxy.cloudfront.net/bw-pier.jpg -k
+HTTP/1.1 200 OK
+Content-Type: image/jpeg
+Content-Length: 2305290
+Connection: keep-alive
+Date: Wed, 11 Jul 2018 13:35:08 GMT
+Last-Modified: Sun, 08 Jul 2018 23:43:22 GMT
+ETag: "942d1f549ce02353e067edbf2530f8b2"
+x-amz-version-id: IDgF9HNVhbJ707tuUs.G9juC9DUlG1gF
+Accept-Ranges: bytes
+Server: AmazonS3
+Age: 688
+X-Cache: Hit from cloudfront
+Via: 1.1 ceece0dd01f2d2809fc1d3d58292f444.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: _sjTzBt37Ngqf1iUQiLwunMV54LlaLRkbGkcLG6_BDYs__yZcjT0xQ==
+
+
+X-Cache: Hit from cloudfront
+X-Cache: Miss from cloudfront
+
