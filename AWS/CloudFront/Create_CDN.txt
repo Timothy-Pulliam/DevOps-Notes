@@ -5,7 +5,7 @@ Creation-Date: 2018-07-08T19:57:45-04:00
 ====== Create CDN ======
 Created Sunday 08 July 2018
 
-Create a bucket named linuxandchill-tokyo in the tokyo region. Place a jpeg image in the bucket. Accessing the bucket gives the following times.
+Create a bucket named linuxandchill-tokyo in the tokyo region. Place a jpeg image in the bucket. Accessing the bucket via the S3 URL gives the following times.
 
 {{./pasted_image010.png}}
 
@@ -33,6 +33,6 @@ We can see our distribution is in progress. It will take about 10-15 minutes for
 
 {{./pasted_image007.png}}
 
-Now we can see the time it takes to retrieve the resource as decreased significantly.
+Now we can see the time it takes to retrieve the resource as decreased significantly by accessing the bucket via the cloudfront URL.
 
 {{./pasted_image009.png}}
