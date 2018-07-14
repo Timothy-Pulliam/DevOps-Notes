@@ -1,0 +1,38 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-07-08T19:57:45-04:00
+
+====== Create CDN ======
+Created Sunday 08 July 2018
+
+Create a bucket named linuxandchill-tokyo in the tokyo region. Place a jpeg image in the bucket. Accessing the bucket gives the following times.
+
+{{./pasted_image010.png}}
+
+
+
+If this is your first CDN, you will see the following landing page. Click on "Create Distribution"
+
+{{./pasted_image001.png}}
+
+We are creating a web distribution. The **Origin Domain Name** in this case is the S3 Bucket.
+
+
+{{./pasted_image002.png}}
+
+You may want to optionally restrict viewer access by having users authenticate themselves.
+
+{{./pasted_image004.png}}
+
+Lastly, select your price class and enable the CDN.
+
+{{./pasted_image005.png}}
+
+We can see our distribution is in progress. It will take about 10-15 minutes for the distribution to be created.
+
+
+{{./pasted_image007.png}}
+
+Now we can see the time it takes to retrieve the resource as decreased significantly.
+
+{{./pasted_image009.png}}

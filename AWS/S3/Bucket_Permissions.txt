@@ -1,0 +1,26 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-07-09T14:08:28-04:00
+
+====== Bucket Permissions ======
+Created Monday 09 July 2018
+
+Buckets and the objects within them have permissions that can be managed. In this way, buckets are like directories in a linux file system, and objects are like the files within. Suppose we have a bucket "linuxandchill-tokyo". We can see the permissions for the bucket. The account "**e5779c974b91136a0eae8a4818bad5c0b6b7e59044a2d7e425b552dca486a63d**" is able to list objects, create new objects and view and change the bucket permissions. 
+
+{{./pasted_image001.png}}
+
+
+We can also see there is no public access granted for this bucket. If some random person were to try to list the bucket's contents by navigating to the bucket's URL, they would see an access denied error screen.
+
+{{./pasted_image002.png}}
+
+However, if we change the permissions of the bucket to allow public listing of the bucket's contents, anyone can now see the bucket's contents.
+
+{{./pasted_image003.png}}
+
+{{./pasted_image004.png}}
+
+However, just because the bucket allows public listing of its contents, does not mean we can view the obects themselves. When we try to access the test.txt object, we again get an access denied message. This is because this object is not public. Again, think linux permissions.
+
+{{./pasted_image005.png}}
+

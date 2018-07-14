@@ -5,4 +5,26 @@ Creation-Date: 2018-07-02T14:38:04-04:00
 ====== CloudFront ======
 Created Monday 02 July 2018
 
-Content Distribution Service
+https://aws.amazon.com/cloudfront/
+Content Delivery Network
+
+== Terminology ==
+
+* Edge Location - Location where content will be cached
+* Origin - Origin Server of all files that the CDN will distribute. This can be an S3 Bucket, EC2 Instance, Web Server, Apache HTTPD, Elastic Load Balancer or Route53. Basically it is our original resource that we want to share with the rest of the world through Cloud Front. The Origin server does not even need to be an  AWS resource.
+* Distribution - Name given to CDN which is a collection of Edge Locations. There are two main types of distributions
+	* Web Distribution - Used for websites
+	* RTMP - Used for Media Streaming
+
+==== Overview ====
+
+List of edge locations https://aws.amazon.com/cloudfront/details/
+
+* Objects are cached for the life of the TTL on an edge location. 
+* You can clear cached objects, but you will incur a charge. 
+* Edge locations are not necessary read only. Users can PUT objects to edge locations, and that object will be created on the origin server.
+
+==== What is a CDN? ====
+
+https://www.udemy.com/aws-certified-solutions-architect-associate/learn/v4/t/lecture/4325282?start=198
+

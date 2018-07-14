@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-07-09T15:47:56-04:00
+
+====== Snowball ======
+Created Monday 09 July 2018
+
+https://aws.amazon.com/snowball/
+https://docs.aws.amazon.com/snowball/latest/ug/whatissnowball.html
+https://www.udemy.com/aws-certified-solutions-architect-associate/learn/v4/t/lecture/6871848?start=0
+
+Snowball can inport/export data to S3. If you wish to export data from Glacier, you will need to first export the data from glacier to S3, then from S3 to Snowball.

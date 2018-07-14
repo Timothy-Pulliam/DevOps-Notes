@@ -26,9 +26,23 @@ Tagging can be useful for organizing buckets into categories. For example, you m
 https://stackoverflow.com/questions/42126348/difference-between-object-tags-and-object-metadata
 
 ==== Bucket Properties / Permissions ====
-By default, buckets are not viewable by anyone except the owner. The owner is able to modify (read, write, delete) objects in this bucket (1) as well as the permissions for those objects (2)
+By default, the contents of buckets are not viewable by anyone except the owner. The owner is able to modify (read, write, delete) objects in this bucket (1) as well as the permissions for those objects (2)
 
 {{.\pasted_image003.png}}
+
+If you make a bucket public (grant public read permissions) anyone can navigate to the bucket's URL in a web browser and view it's contents. For example, if we had a public bucket named "linuxandchill-tokyo" with a single object, we could see it like so.
+
+{{./pasted_image010.png}}
+
+It is important to note, that even though a bucket is public, this does not allow you to view the objects inside of the bucket. Public read access for buckets only allows you to view the contents of buckets (much like read access for linux directories). We can see this by trying to view the **bw-pier.jpg** object in the bucket. Even the bucket itself is public, the object is not public (not readable). Thus we get access denied.
+
+{{./pasted_image011.png}}
+
+
+Making the bucket private again denies any person in the world from listing out the contents of the bucket. Instead, they get am access denied code.
+
+{{./pasted_image012.png}}
+
 
 ==== Uploading Files to the bucket ====
 You should now see the S3 bucket in the dashboard. Click on the bucket name and then click "Upload". You will be given an option of Storage Tier (Standard, Standard-IA, One Zone-IA, etc.) As well as encryption. You can also tag the object, or give the object custom metadata. In the example below, I have uploaded some text documents and source code. I tagged the objects with "source=True"

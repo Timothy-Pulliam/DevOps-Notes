@@ -1,0 +1,53 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-07-08T13:55:30-04:00
+
+====== Lifecycle Management ======
+Created Sunday 08 July 2018
+
+==== Overview ====
+https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html
+Lifecycle management is used when you want to take objects out of one storage class and place them into another after so many days. For example, after 90 days, you may move your logs to Glacier archive, or delete them entirely. You would use Lifecycle management to accomplish that. This can save money because if objects are not access very often after so many days (log files) but still need to be retained to for policy reasons, they can be transitioned to an Infrequently Accessed storage class, which will be a cheaper option.
+
+
+==== Example ====
+
+First, create a bucket that will use lifecycle management. You can enable versioning. If you enable versioning, you have the option of transitioning the latest version of an object or previous versions of an object after so many days.
+
+{{./pasted_image.png}}
+
+Next, click on the bucket name, and go to "Management > Lifecycle".
+
+{{./pasted_image001.png}}
+
+Click "Add Lifecycle Rule"
+
+You have the option to only apply the rule to objects with certain tags (HIPPA logs, syslogs, project A, etc.)
+
+{{./pasted_image002.png}}
+
+
+Next you will need to create transition rules. For versioning, you have the option to transition the latest version of an object, or previous versions as well.
+
+
+{{./pasted_image003.png}}
+
+
+Note, that if you plan on transitioning to S3 Infrequently Accessed, the object must be at least 30 days old and 128kB before it can be transitioned to another storage class.
+
+{{./pasted_image004.png}}
+
+
+
+The following Lifecycle Management rule set will transition the latest version of an obect to S3-IA after it is 30 days old, and to Glacier Archive after it is 60 old. It will do the same thing for previous versions of objects if versioning is enabled (objects are transitioned 30/60 days after becomining a previous version).
+
+{{./pasted_image005.png}}
+
+
+__(I would like a little more information on this section)__
+We can also delete objects all together after so many days. The following rule deletes the latest version and the previous version of objects after they are year old. Note previous versions are deleted 365 days after becoming a previous version.
+
+{{./pasted_image006.png}}
+
+
+

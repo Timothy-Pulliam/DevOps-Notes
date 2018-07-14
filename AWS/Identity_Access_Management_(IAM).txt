@@ -19,7 +19,8 @@ Users and access control.
 * User - Person
 * Group - Collection of Users
 * Roles - Assigned to AWS resources (groups of EC2 instances, databases, etc.)
-* Policies - JSON Document that defines a set of permissions assigned to Users, Groups or Roles.
+* Policies - JSON Document that defines a set of
+* permissions assigned to Users, Groups or Roles.
 
 ==== IAM Is Not Region Specific ====
 If you click on the region drop down, you will not be able to select a specifig region while using IAM. This is because any changes made to IAM are propogated to all regions (all over the world). IAM only applies to the Global Region.
@@ -116,3 +117,5 @@ Next name your role something descriptive, like **S3-Admin-Access**
 Lastly, if you check the dashboard, you can see everything we have changed. All the to do checkboxes are now green.
 
 {{./pasted_image017.png}}
+
+

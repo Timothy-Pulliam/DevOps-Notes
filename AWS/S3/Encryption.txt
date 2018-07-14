@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-07-09T14:03:41-04:00
+
+====== Encryption ======
+Created Monday 09 July 2018
+https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html
+
+In Transit
+SSL/TLS
+
+At Rest
+server side encryption
+https://docs.aws.amazon.com/AmazonS3/latest/dev/serv-side-encryption.html
+
+Client Side Encryption
+https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingClientSideEncryption.html
