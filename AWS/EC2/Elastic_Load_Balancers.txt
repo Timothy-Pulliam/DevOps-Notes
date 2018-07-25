@@ -1,0 +1,26 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-07-25T12:29:00-04:00
+
+====== Elastic Load Balancers ======
+Created Wednesday 25 July 2018
+
+https://aws.amazon.com/elasticloadbalancing/faqs/
+
+Types of Load Balancers
+* Application Load Balancers (HTTP, HTTPS, layer 7 traffic, used for intelligent balancing)
+* Network Load Balancers (TCP traffic, layer 4 traffic, used for extreme performance)
+* Classic Load Balancers (General Load balancers, can do layer 4/7 balancing, soon to be deprecated in favor of the previous two load balancers) 
+
+== 504 HTTP Error ==
+This means the Load Balancer Gateway has timed out when trying to contact the web application. There is an error on the web server, troubleshoot the web server.
+
+==== X-Forwarded-For Header ====
+A classic load balancer works like the following
+
+end user public IP                  Elastic Load Balancer            EC2 Instance
+12.124.14.12 --------->   10.0.0.23 ------------->        10.0.1.24
+
+Because of this, the EC2 instance will not see the public IP address accessing the EC2 instance, it will only see the load balancer's IP. The EC2 instance can see the user's public IP address from the HTTP **X-Forwarder-For** Header.
+
+$ curl -I $load_balancer
