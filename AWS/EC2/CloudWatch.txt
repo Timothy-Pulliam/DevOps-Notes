@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-07-27T11:31:09-04:00
+
+====== CloudWatch ======
+Created Friday 27 July 2018
+
+[[CloudWatch]] monitors the CPU, RAM, Network, Disk I/O etc, of your EC2 instances. You can create custom dashboards which display custom graph and reporting widgets. Dashboards configs use markdown syntax.
+
+Standard Monitoring - Interval is every 5 minutes
+Detailed Monitoring - Interval is every 1 minute
+
+== System vs Instance Checks ==
+System check is a check on the hypervisor running the EC2 instance. If the System check fails, there is really nothing you can do. Maybe try spinning up a new VM in another Availability Zone. If the Instance check fails, you can try just rebooting the Instance, or spinning up a new Instance.
+
+== Cloud Trail vs Cloud Watch ==
