@@ -1,0 +1,112 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-07-25T12:29:00-04:00
+
+====== Elastic Load Balancers ======
+Created Wednesday 25 July 2018
+
+https://aws.amazon.com/elasticloadbalancing/faqs/
+
+Types of Load Balancers
+* Application Load Balancers (HTTP, HTTPS, layer 7 traffic, used for intelligent balancing)
+* Network Load Balancers (TCP traffic, layer 4 traffic, used for extreme performance)
+* Classic Load Balancers (General Load balancers, can do layer 4/7 balancing, soon to be deprecated in favor of the previous two load balancers) 
+
+== 504 HTTP Error ==
+This means the Load Balancer Gateway has timed out when trying to contact the web application. There is an error on the web server, troubleshoot the web server.
+
+==== X-Forwarded-For Header ====
+https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/x-forwarded-headers.html
+A classic load balancer works like the following
+
+end user public IP                  Elastic Load Balancer            EC2 Instance
+12.124.14.12 --------->   10.0.0.23 ------------->        10.0.1.24
+
+Because of this, the EC2 instance will not see the public IP address accessing the EC2 instance, it will only see the load balancer's IP. The EC2 instance can see the user's public IP address from the HTTP **X-Forwarder-For** Header.
+
+$ curl -I $load_balancer
+
+==== Classic Load Balancer ====
+Considuer the following configuration. Two httpd servers, each in a different availabilty zone. 
+
+{{.\pasted_image.png}}
+
+{{.\pasted_image013.png}}
+
+These systems are reachable via http and ssh. They are serving the following HTML pages
+
+'''
+[root@ip-172-31-24-88 ~]# cd /var/www/html
+[root@ip-172-31-24-88 html]# ll
+total 8
+-rw-r--r-- 1 root root  9 Jul 27 12:01 healthcheck.html
+-rw-r--r-- 1 root root 10 Jul 27 12:01 index.html
+'''
+
+
+Now we create the load balancer
+
+{{.\pasted_image002.png}}
+
+Click on "Create Load Balancer"
+
+{{.\pasted_image003.png}}
+
+We will be using the Classic Load Balancer to forward HTTP (port 80) traffic from the load balancer to the 2 web servers in the different Availability Zones.
+
+{{.\pasted_image004.png}}
+
+The Load Balancer must be able to receive HTTP traffic. Ideally, it will be in a more restrictive Security group than the web server it fronts for, however in this example we use the same security group as the web servers.
+
+We configure the load balancer to check if the [[/var/www/html/healthcheck.html]] file exists on each web server. If it does then the health check passes. If a web server fails a healthcheck, the load balancer considers it down and will not forward any traffic to it until the health check passes again (healthy treshold is reached).
+
+{{.\pasted_image006.png}}
+
+
+Next we add the EC2 instances the load balancer should serve traffic to. Notice that we have instances in different availability zones. Notice that we check **Cross-Zone** **Load Balancing** which spreads the load across all hosts throughout the different AZs.
+https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html#cross-zone-load-balancing
+
+== With Cross Zone Load Balancing ==
+{{.\pasted_image008.png}}
+
+
+== Without Cross Zone Load Balancing ==
+{{.\pasted_image009.png}}
+
+
+{{.\pasted_image007.png}}
+
+You can now view the class load balancer in the Load Balancer Dashboard
+{{.\pasted_image010.png}}
+
+{{.\pasted_image011.png}}
+
+The Hostname of the load balancer can be entered into the web browser to be directed to the web server's index.html page
+
+{{.\pasted_image012.png}}
+
+If you tail [[/var/log/httpd/access_log,]] you can see the load balancer making health checks on the web servers, as well as the user's HTTP requests coming through the load balancer. 
+
+* Health check (successfull)  made from the load balancer
+'''
+172.31.21.222 - - [27/Jul/2018:13:34:31 +0000] "GET /healthcheck.html HTTP/1.1" 200 9 "-" "ELB-HealthChecker/1.0"
+'''
+
+* HTTP request through load balancer
+'''
+172.31.69.75 - - [27/Jul/2018:13:34:42 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36"
+'''
+
+* HTTP request made to web server directly (notice the end user's public IP is visible in this case)
+'''
+204.235.114.162 - - [27/Jul/2018:13:36:15 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36"
+'''
+
+
+Note that you will not see the end user's IP address when making HTTP requests through the load balancer. If you wish to see the end user's public IP, you must follow the instructions in the following link.
+https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/x-forwarded-headers.html
+
+
+== Load Balancers Use Round Robin Routing ==
+Round Robin basically means requests get routed in a way that each request alternates between the different web servers. If there are 2 web servers, the first request to hit the load balancer will go to web server 1, the second request will go to web server 2 and the third request will go back to web server 3, and so on and so on. You can confirm this by tailing the [[/var/log/httpd/access_logs]] of both web servers while making requests through the load balancer.
+

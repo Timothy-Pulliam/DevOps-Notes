@@ -1,0 +1,100 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-07-25T07:07:44-04:00
+
+====== Creating Snapshots and AMIs ======
+Created Wednesday 25 July 2018
+
+==== Snapshot Overview\ ====
+If you wish to encrypt the root volume, you must first take a snapshot, and then copy the snapshot. You will be give the option to copy the snapshot to another region.
+
+
+
+==== Creating Snapshots ====
+It is best practice to stop an instance when performing a snapshot, although it is not strictly necessary. 
+{{.\pasted_image.png}}
+
+1) Create a new Snapshot
+
+{{.\pasted_image001.png}}
+
+2) Name the snapshot something memorable and add tags if necessary. Notice that we can't encrypt a snapshot yet.
+
+{{.\pasted_image003.png}}
+
+We can now see the snapshot under the snapshot section
+{{.\pasted_image006.png}}
+
+{{.\pasted_image007.png}}
+
+Now the snapshot will also show up under the volumes section
+
+{{.\pasted_image004.png}}
+
+
+{{.\pasted_image008.png}}
+
+
+
+==== Creating AMIs ====
+Custom AMIs can be useful. They are akin to snapshots in Virtual Box, or VMWare. We can set up the virtual machine just how we like it. Install packages, configure network settings, security, users etc. Then we can take a snapshot and create an AMI to be used as a template for other instances to be used in the future.
+
+{{.\pasted_image009.png}}
+
+{{.\pasted_image010.png}}
+
+Notice we use Hardware-assisted Virtualization (HVM). Also notice that using this method, the root EBS volume cannot be encrypted. In order to encrypt the root EBS volume, you must first copy a snapshot (see below).
+
+{{.\pasted_image011.png}}
+
+
+We can now view our custom AMI.
+
+{{.\pasted_image012.png}}
+
+
+{{.\pasted_image013.png}}
+
+This AMI can now be used to launch other EC2 instances.
+
+{{.\pasted_image014.png}}
+
+
+==== Deleting Custom AMIs ====
+To delete a custom AMI, you must deregister it under the AMIs section in EC2.
+
+{{.\pasted_image020.png}}
+
+{{.\pasted_image021.png}}
+
+You can now delete the snapshot the AMI was created from. 
+
+If you ever get the following error message when deleting a snapshot,  you must first deregister the AMI using the snapshot before you can delete the snapshot.
+
+{{.\pasted_image022.png}}
+
+
+==== Encrypting the root volume (Copying Snapshots) ====
+In order to encrypt the root volume, you must first create a snapshot of an instance (see Creating Snapshots). Then you must copy that snapshot.
+
+{{.\pasted_image015.png}}
+
+{{.\pasted_image016.png}}
+
+
+Below, we are given the option to copy the snapshot to another region. We also have the option to encrypt the snapshot. 
+
+It should be noted that you cannot share encrypted EBS volumes because it is not possible to share the encryption key.
+
+Also note the KMS key ID as well as the KMS Key ARN (Amazon Resource Name).  For more information about Amazon Resource Names, visit https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
+
+{{.\pasted_image017.png}}
+
+We can now view the encrypted snapshot under the snapshot section. 
+{{.\pasted_image018.png}}
+
+From this point, we could create an AMI using an encrypted root volume
+{{.\pasted_image019.png}}
+
+
+

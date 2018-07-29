@@ -1,0 +1,55 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-07-25T11:09:20-04:00
+
+====== EBS vs. Instance Store ======
+Created Wednesday 25 July 2018
+
+==== Overview ====
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html
+Instance Stores are essentially obselete (except in very rare circumstances). Instance store volumes are stored in S3 as a template. Instance store volumes cannot be
+
+Disadvantages of Instance Storage
+* Slower to provision than EBS
+* Data is less persistant than EBS
+
+EBS is the preffered volume type for root volumes. Instance Stores (or Ephemeral volumes) will delete all data on them if the instance which they are attached is
+
+* stopped
+* terminated
+* the disk crashes (Instance Stores are not redundant across Availabilty Zones)
+
+However, if the system is rebooted, you will not lose data. Because of this, the only reason you may want to use an Instance Store for EC2 volumes is to erase sensitive data. However in most cases you should just use EBS based volumes as this is the norm. 
+
+{{.\pasted_image.png}}
+
+
+==== AMIs With Instance Stores ====
+You can find Instance Store backed AMIs in the Community AMIs section when selecting an AMI.
+
+{{.\pasted_image001.png}}
+
+
+Notice that Instance Stores have very few storage options.
+
+{{.\pasted_image002.png}}
+
+==== Ephemeral Storage ====
+Ephemeral Storage (Instance Storage) can be viewed below
+
+[ec2-user@ip-172-31-77-14 ~]$ lsblk
+NAME  MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
+xvda1 202:1    0   8G  0 disk /
+xvdb  202:16   0   4G  0 disk /media/ephemeral0
+
+Data placed in ephemeral Storage is lost if the instance is rebooted, terminated or the disk the instance store resides on fails.
+
+==== Instance Store Volumes ====
+
+The option to stop an instance store backed instance is not even available in the web console.
+
+{{.\pasted_image003.png}}
+
+You cannot take snapshops of instance store volumes.
+
+

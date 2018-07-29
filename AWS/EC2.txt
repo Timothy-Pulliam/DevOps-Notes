@@ -1,5 +1,6 @@
 Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.4
+<<<<<<< HEAD
 Creation-Date: 2018-07-14T17:24:57-04:00
 
 ====== EC2 ======
@@ -34,4 +35,10 @@ There are several different EC2 instance types. Each instance type is specialize
 You can remember the EC2 instance types (for now) using the mnemonic "Fight Dr McPx"
 
 {{./pasted_image.png}}
+=======
+Creation-Date: 2018-07-25T07:00:39-04:00
+
+====== EC2 ======
+Created Wednesday 25 July 2018
+>>>>>>> 31421113aac398dcfae314fe987433700242bf83
 
