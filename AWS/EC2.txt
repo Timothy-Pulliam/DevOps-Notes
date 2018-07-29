@@ -1,0 +1,37 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-07-14T17:24:57-04:00
+
+====== EC2 ======
+Created Saturday 14 July 2018
+
+===== Elastic Compute Cloud =====
+Provisions and scales up and down virtual machines in the cloud on demand (within minutes). You no longer need to plan ahead for how much compute capacity you need. EC2 allows you to pay for the compute capacity you use by the hour.
+
+EC2 uses EBS (Elastic Block Storage) to store the root filesystem of the OS on.
+
+==== EC2 Options ====
+* On-Demand
+	* Scales Up and Down automatically
+	* For applications that are unpredictable with their resource consumption
+* Reserved Instance
+	* Up to 75% price reduction for hourly rate. You enter a contract (1 to 3 years) and pay money up front. The more you pay up front, and the longer the contract, the more the discount.
+	* Used for applications with predictable steady state usage
+	* Up to 75% off of on demand costs
+	* Applications that require reserved capacity
+	* You can use "Scheduled Reserved Instances" to schedule resources ahead of time, if you know you will need resources on a set schedule (sale at the end of every month)
+* Spot Instance
+	* You bid for instances at a reduced cost
+* Dedicated Host
+	* Dedicated Physical Hardware in Amazon's data centers that allow you to use licensed software
+	* Used for regulatory requirements that do not permit multi tenancy of instances (multi tenancy = different people's instances on same physical host)
+
+
+==== Instance Types ====
+https://aws.amazon.com/ec2/instance-types/
+There are several different EC2 instance types. Each instance type is specialized for a particular use case. The T2 instance type is the general purpose instance type, but there are several others used for GPU compute, memory optimized, disk throughput, etc.
+
+You can remember the EC2 instance types (for now) using the mnemonic "Fight Dr McPx"
+
+{{./pasted_image.png}}
+

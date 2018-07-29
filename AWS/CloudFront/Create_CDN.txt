@@ -20,7 +20,7 @@ We are creating a web distribution. The **Origin Domain Name** in this case is t
 
 {{./pasted_image002.png}}
 
-You may want to optionally restrict viewer access by having users authenticate themselves.
+You may want to optionally restrict viewer access by having users authenticate themselves. Note, TTL is in seconds and the default TTL is one day (24 hours)
 
 {{./pasted_image004.png}}
 
@@ -36,3 +36,25 @@ We can see our distribution is in progress. It will take about 10-15 minutes for
 Now we can see the time it takes to retrieve the resource as decreased significantly by accessing the bucket via the cloudfront URL.
 
 {{./pasted_image009.png}}
+We can also verify we are using cloudfront by issuing a CURL command.
+
+➤ curl -I https://d2vxly4ihmtmxy.cloudfront.net/bw-pier.jpg -k
+HTTP/1.1 200 OK
+Content-Type: image/jpeg
+Content-Length: 2305290
+Connection: keep-alive
+Date: Wed, 11 Jul 2018 13:35:08 GMT
+Last-Modified: Sun, 08 Jul 2018 23:43:22 GMT
+ETag: "942d1f549ce02353e067edbf2530f8b2"
+x-amz-version-id: IDgF9HNVhbJ707tuUs.G9juC9DUlG1gF
+Accept-Ranges: bytes
+Server: AmazonS3
+Age: 688
+X-Cache: Hit from cloudfront
+Via: 1.1 ceece0dd01f2d2809fc1d3d58292f444.cloudfront.net (CloudFront)
+X-Amz-Cf-Id: _sjTzBt37Ngqf1iUQiLwunMV54LlaLRkbGkcLG6_BDYs__yZcjT0xQ==
+
+
+X-Cache: Hit from cloudfront
+X-Cache: Miss from cloudfront
+>>>>>>> 6d703d78bd3224a251279e83d22921b6fd9e1762

@@ -1,0 +1,68 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-07-15T10:36:10-04:00
+
+====== Provisioning EC2 Instance ======
+Created Sunday 15 July 2018
+
+Log into EC2 and select the region you wish to provision an instance in
+
+{{./pasted_image.png}}
+
+==== Selecting an AMI (Amazon Machine Image) ====
+
+
+
+==== Instance Details ====
+
+When configuring the network for the instance, remember that each subnet corresponds to one Availability Zone (you cannot have a subnet span more than one AZ).
+
+{{./pasted_image001.png}}
+
+Enable termination protection if you want to make sure EC2 instances aren't accidently terminated.
+
+{{./pasted_image002.png}}
+
+
+==== Configuring Storage ====
+
+Notice that for the root volume (which is bootable) we are only able to choose from 1 of 3 storage volume types. Also note, if you terminate the EC2 instance, the EBS volume will be deleted. Notice that you will not be able to encrypt the root volume for any of the default amazon provided AMIs. If you wish to encrypt the root volume, you must create your own AMI. This will allow you to copy the root volume of another AMI and encrypt it. Additional volumes, however, can be encrypted.
+
+{{./pasted_image003.png}}
+
+
+==== Tagging to See What is Costing You Money ====
+Tagging your EC2 instance allows you to keep them organized and group them by tags to see which groups are costing the most money at the end of the billing period. Proper tagging is important to keeping things organized, and keeping costs down.
+
+
+{{./pasted_image004.png}}
+
+
+==== Security Groups / Firewall ====
+A security group is a set of firewall rules that control the traffic for your instance. 
+
+
+Remember to only allow SSH access from your computer. Also **Make sure to name your security groups something memorable!**
+
+{{./pasted_image010.png}}
+
+When you go to launch the instance, if this is your first time, you will be prompted to generate a public/private key pair to secure SSH access to your EC2 instances. You should name your key pair something memorable, download it, and keep it someplace safe and accessible. This will download a PEM file, containing your private key used to SSH into the server. Never show it to anyone.
+
+{{./pasted_image007.png}}
+
+==== SSH to new instance ====
+
+The new EC2 instance will start in the running state
+
+{{./pasted_image008.png}}
+
+
+You can SSH to the instance by using the keys generated in the last step. You will need to ssh as the the **ec2-user**, as well as make sure you change the permissions of the PEM file you downloaded to make it more secure.
+
+'''
+tpulliam@zephyr ~/Downloads $ chmod 600 test_ec2_key_pair.pem 
+tpulliam@zephyr ~/Downloads $ ssh ec2-user@34.238.247.16 -i test_ec2_key_pair.pem
+'''
+ 
+
+

@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-07-15T09:02:09-04:00
+
+====== Pricing ======
+Created Sunday 15 July 2018
+
+Pricing varies by region.
+https://aws.amazon.com/s3/pricing/
+
+To do, maybe graph out the costs per region.

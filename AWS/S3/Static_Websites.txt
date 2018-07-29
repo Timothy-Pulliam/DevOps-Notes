@@ -1,0 +1,42 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-07-14T16:36:33-04:00
+
+====== Static Websites ======
+Created Saturday 14 July 2018
+
+Domain name (in route53) and bucket name must be the same for DNS to resolve.
+
+Create a bucket, with default settings. Then go into properties and select "Static Website Hosting"
+
+{{./pasted_image001.png}}
+
+
+Create an index.html and error.html file, and upload them to the S3 bucket. You must then grant public read only access.
+
+{{./pasted_image002.png}}
+
+
+Now when you view the website in a browser at http://linuxandchill.s3-website-us-east-1.amazonaws.com/
+
+{{./pasted_image003.png}}
+
+
+Trying to access a webpage that does not exist triggers the error.html.
+
+{{./pasted_image004.png}}
+
+
+==== Creating a Static Website with Pelican ====
+You should be able to simply upload the contents of your pelican output directory to your S3 bucket. Make sure the bucket is configured to serve static content at that the files are publically viewable. Also make sure that you have an index.html file.
+
+{{./pasted_image005.png}}
+
+
+{{./pasted_image006.png}}
+
+
+== Configuring your domain name with Route 53 ==
+https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/getting-started.html
+Chances are, you don't want that ugly default domain name that AWS gives you when you create a static website. If you already have a domain name registered with DNS provider (like name cheap) you can tell Route 53 to route HTTP traffic to your domain name instead of using the default AWS domain name.
+

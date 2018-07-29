@@ -14,3 +14,12 @@ Created Friday 06 July 2018
 The bills tab allows us to drill down further and see **why** we are being charged. AWS always charges the minimum amount ($0.01) for services being used. You can also filter by region.
 
 {{.\pasted_image001.png}}
+
+
+==== Billing Calculator ====
+You can estimate how much AWS will cost by using the Billing Calculator
+https://calculator.s3.amazonaws.com/index.html
+
+You can even use the price calculator to calculate common scenarios and their pricing
+
+{{./pasted_image002.png}}

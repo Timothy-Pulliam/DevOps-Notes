@@ -1,0 +1,20 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-07-14T16:28:26-04:00
+
+====== Transfer Acceleration ======
+Created Saturday 14 July 2018
+
+
+https://stackoverflow.com/questions/36882595/are-there-any-difference-between-amazon-cloudfront-and-amazon-s3-transfer-accele
+Instead of uploading to your S3 bucket, you can upload to an edge location. This decreases the amount of time it takes to upload data to S3. This is basically a [[CloudFront]] CDN.
+
+Transfer Acceleration is simply enabled as a property of your S3 bucket.
+
+{{./pasted_image.png}}
+
+
+If you click on "Want to compare your data transfer speed by region?" link, you can see if enabling Transfer Acceleration will make upload speeds faster or slower in a particular region.
+
+{{./pasted_image001.png}}
+

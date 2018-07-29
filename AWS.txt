@@ -31,3 +31,9 @@ Regions
 
 Availability Zones
 * Enable failover by failing to another availability zone
+
+==== Status of AWS Services ====
+https://status.aws.amazon.com/
+This link provides up the minute status of AWS Services. You can see if there are any outages, latencies, etc.
+
+{{./pasted_image003.png}}

@@ -1,0 +1,31 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-07-16T14:30:59-04:00
+
+====== Security Groups ======
+Created Monday 16 July 2018
+
+All Traffic is blocked, by default. You then allow traffic with subsequent rules. You can view which Security Groups an instance is in by viewing the instance and clicking "view inbound rules"
+
+Security group changes take effect immediately. Traffic is blocked by default, you only allow trafic.
+
+{{./pasted_image.png}}
+
+Stateful - By adding an inbound rule, an outbound rule is automattically created.
+
+Multiple security groups can be applied to a single EC2 instance (web server, NIST compliance, DMZ, etc.)
+
+You cannot block a specific IP address using security groups, you must a Network Access Control List.
+
+
+==== Security Groups Are Stateful ====
+https://www.cybrary.it/0p3n/stateful-vs-stateless-firewalls/
+Security groups are **stateful.** This means, even if you don't allow any outbound traffic, any allowed inbound traffic will be allowed out from the server, because an implicit outbound rule will be created for any allowed inbound packets allowed in.
+
+
+
+
+
+==== Changing Security Groups ====
+
+{{./pasted_image001.png}}

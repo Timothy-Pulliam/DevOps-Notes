@@ -1,0 +1,36 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-07-15T10:19:18-04:00
+
+====== EBS ======
+Created Sunday 15 July 2018
+
+==== EBS Volume Types ====
+General Purpose (SSD) volumes can burst to 3000 IOPS, and deliver a consistent baseline of 3 IOPS/GiB. Provisioned IOPs (SSD) volumes can deliver up to 32,000 IOPS, and are best for EBS-optimized instances. Magnetic volumes, previously called standard volumes, deliver 100 IOPS on average, and can burst to hundreds of IOPS.
+
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html
+https://storageswiss.com/2015/02/23/what-are-iops-and-should-you-care/
+* General Purpose SSD (GP2)
+	* balances price and performance
+	* 3 IOPS per GB with up to 10,000 IOPS and the ability to burst up to 3000IOPS for extended periods of time for volumes at 3334GiB and above
+* Provisioned IOPS SSD (IO1)
+	* I/O instensive applications such as large relational or [[NoSL]] databases
+	* used if you need more than 10,000 IOPS
+	* can provision up to 20,000 IPOS per volume
+* Throughput Optimized HDD (ST1)
+	* Big Data
+	* Data Warehouse
+	* Log Processing
+	* Cannot be a boot volumen
+* Cold HDD (SC1)
+	* Lowest cost storage for infrequently accessed data
+	* cannot be a boot volume
+	* file server
+* Magnetic (standard)
+	* Lowest cost per GB of all EBS volume types that is bootable.
+	* Ideal for workloads that are accessed infrequently
+	* cheap
+
+{{./pasted_image.png}}
+
+

@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-07-15T16:38:02-04:00
+
+====== Misc ======
+Created Sunday 15 July 2018
+
+==== Change in Resource ID length ====
+Resource IDs are going from an 8 character length to a 17 character length
+
+{{./pasted_image.png}}

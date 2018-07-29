@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-07-15T09:34:06-04:00
+
+====== pricing ======
+Created Sunday 15 July 2018
+
+https://aws.amazon.com/ec2/pricing/
+https://aws.amazon.com/ec2/faqs/#Billing
+On demand - Fixed price rate by the hour (windows) or by the second (Linux)
+Reserved - 
