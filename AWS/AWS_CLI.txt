@@ -1,0 +1,58 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-07-07T09:33:38-04:00
+
+====== AWS CLI ======
+Created Saturday 07 July 2018
+
+==== Overview ====
+https://aws.amazon.com/cli/
+
+The AWS Command Line Interface (CLI) is a unified tool to manage your AWS services. With just one tool to download and configure, you can control multiple AWS services from the command line and automate them through scripts. In order to use awscli to access AWS resources programmatically, you must have a user with a valid **Access Key ID** and **Secret Access Key** (you get these when you create a new user).
+
+AWS CLI is installed by default on the AWS AMI.
+
+==== Installation ====
+The easiest way to install aws cli is through python pip. This method works on Windows, Mac and Linux as long as Python 2.6.5 or higher is installed.
+
+$ pip install -U pip
+$ pip install awscli
+
+Verify with
+$ pip help
+
+==== Secure Your ~/.aws/credentials (Don't store in source code, or on EC2 instance) ====
+The credentials used for authenticating for the AWS CLI are stored locally in the [[~/aws/credentials]] file. No one other than the user should have access to this file! It is a huge security risk if someone were to gain access to these credentials, they could spin up EC2 instances or delete files or whatever they want if they get these creds. Do not keep your Access Key ID or Secret Access Key in source code nor should you keep it on a EC2 instance becuase someone could steal them. 
+
+Instead of using these Access Keys, it is recommended to use Roles (see IAM Roles with EC2) as they are more secure and easier to administer.
+
+'''
+[ec2-user@ip-172-31-34-120 ~]$ ll ~/.aws/
+total 8
+-rw------- 1 ec2-user ec2-user  29 Jul 30 16:30 config
+-rw------- 1 ec2-user ec2-user 116 Jul 30 16:30 credentials
+[ec2-user@ip-172-31-34-120 ~]$ cat ~/.aws/credentials 
+[default]
+aws_access_key_id = AKIAJFDFY2WCXXX7PGBQ
+aws_secret_access_key = 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
+'''
+
+
+
+==== S3 File Commands ====
+Provide user credentials
+$ aws configure
+
+Get help for a command
+$ aws help
+$ aws <command> help
+$ aws s3 help
+
+List out buckets
+$ aws s3 ls
+
+List out objects in the bucket "mybucket"
+$ aws s3 ls s3://mybucket
+
+copy objects from one bucket to another bucket
+$ aws s3 cp --recursive s3://sourcebucket s3://destinationbucket

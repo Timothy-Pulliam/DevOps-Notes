@@ -1,0 +1,24 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-07-31T11:34:12-04:00
+
+====== Placement Groups ======
+Created Tuesday 31 July 2018
+
+The same image should be used for all instances in a placement group.
+
+==== Types of Placement Groups ====
+* Clustered (more common)
+* Spread
+
+== Clustered Placement Groups ==
+A grouping of instances **within a single Availability Zone** (subnet). Placement Groups are recommended for applications that need low network latency, high network throughput, or both (big data clusters). Only certain instances can be launched into a clustered placement group.
+
+* Instances can't span multiple AZs
+
+==== Spread Placement Groups ====
+A grouping of instances that are each placed on distinct underlying hardware. This provides extra redundancy for applications in case one instance goes down. Recommeneded for applications that have a small number of critical instances that should be kept physical separate (redundant) from one another.
+
+Instances within Spread Placement Groups will be in multiple AZs, on different hardware. Thus they are the opposite of Clustered Placement Groups.
+
+* Instances can span multiple AZs (usually do)

@@ -1,0 +1,104 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-07-29T19:34:09-04:00
+
+====== Committing, Pushing and Pulling ======
+Created Sunday 29 July 2018
+
+==== Commiting Files ====
+
+Suppose we have a brand new git repository that we have configured just like in the Git Configuration section
+
+Let's add a file
+
+'''
+tpulliam@zephyr ~/code/example $ touch file1
+tpulliam@zephyr ~/code/example $ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	file1
+
+nothing added to commit but untracked files present (use "git add" to track)
+'''
+
+
+
+Git is telling us that it has found a new file in the repo, however for now it is going to ignore it. If we know we are going to commit these files in the future, we can stage them now and continue working on them.
+
+'''
+tpulliam@zephyr ~/code/example $ git add .
+tpulliam@zephyr ~/code/example $ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+	new file:   file1
+
+'''
+
+Now suppose we continue to work on this file https://stackoverflow.com/questions/10676173/git-lists-same-file-modified-and-not-staged-for-commit
+
+'''
+tpulliam@zephyr ~/code/example $ echo "some code" > file1 
+tpulliam@zephyr ~/code/example $ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+	new file:   file1
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+'''
+
+
+
+Git is trying to tell us "Hey, the files you want to commit have changed since the last time you staged them. You should stage these changes again if you want the changes to make the commit." Otherwise if we commit now, these changes would be lost.
+
+Sure enough, if we commit and checkout (or push to a remote repo) the changes from the new file will be lost.
+
+'''
+tpulliam@zephyr ~/code/example $ git commit -m "Add File"
+[master (root-commit) 0215114] Add File
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 file1
+tpulliam@zephyr ~/code/example $ cat file1 
+some code
+tpulliam@zephyr ~/code/example $ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   file1
+
+no changes added to commit (use "git add" and/or "git commit -a")
+tpulliam@zephyr ~/code/example $ git checkout -- file1 
+tpulliam@zephyr ~/code/example $ cat file1 
+tpulliam@zephyr ~/code/example $
+'''
+ 
+'''
+tpulliam@zephyr ~/code/example $ git log
+commit 021511487c8e2510118f9f673045c3ea6f3e4829 (HEAD -> master)
+Author: Timothy Pulliam <timothy.dpulliam@gmail.com>
+Date:   Sun Jul 29 19:53:12 2018 -0400
+
+    Add File
+'''
+
+
+
+The new file made the commit, however, the changes to the file were lost.

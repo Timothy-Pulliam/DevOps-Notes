@@ -1,0 +1,80 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-07-29T17:38:27-04:00
+
+====== Git ======
+Created Sunday 29 July 2018
+
+==== Installation and Configuration ====
+$ yum install git vim-enhanced
+tpulliam@zephyr ~/code $ git init example
+Initialized empty Git repository in /home/tpulliam/code/example/.git/
+
+
+== Configuring Your Git Repo ==
+Git reads from the following configuration file locations in the following order
+https://git-scm.com/docs/git-config#FILES
+
+1) .git/config: repository specific configuration, edited when --local parameter is used
+2) ~/.gitconfig: user specific configuration, edited when --global parameter is used
+3) /etc/gitconfig: system wide, edited when --system parameter is used
+
+$ man git-config
+
+	   When reading, the values are read from the system, global and repository local configuration
+	   files by default, and options --system, --global, --local and --file <filename> can be used to
+	   tell the command to read from only that location (see the section called “FILES”).
+
+	   When writing, the new value is written to the repository local configuration file by default,
+	   and options --system, --global, --file <filename> can be used to tell the command to write to
+	   that location (you can say --local but that is the default).
+
+We can display the local repository configuration using the below command (note --local is the default)
+'''
+tpulliam@zephyr ~/code $ cd example/
+tpulliam@zephyr ~/code/example $ git config -l
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+'''
+
+
+Let's set some common config variables. Even though the --local flag is optional, we include it any way for display purposes
+'''
+core.editor=vim
+diff.tool=vimdiff
+merge.tool=vimdiff
+user.email="timothy.dpulliam@gmail.com"
+user.name="Timothy Pulliam"
+'''
+
+
+'''
+tpulliam@zephyr ~/code/example $ git config --local core.editor vim
+tpulliam@zephyr ~/code/example $ git config --local diff.tool vimdiff
+tpulliam@zephyr ~/code/example $ git config --local merge.tool vimdiff
+tpulliam@zephyr ~/code/example $ git config user.email "timothy.dpulliam@gmail.com"
+tpulliam@zephyr ~/code/example $ git config user.name "Timothy Pulliam"
+'''
+
+
+Now we can inspect the local repo config file and see the changes (we could also use **git config -l**)
+
+'''
+tpulliam@zephyr ~/code/example $ cat .git/config 
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	editor = vim
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff
+[user]
+	email = timothy.dpulliam@gmail.com
+	name = Timothy Pulliam
+'''
+

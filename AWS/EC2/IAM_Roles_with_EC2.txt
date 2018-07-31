@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-07-30T12:53:44-04:00
+
+====== IAM Roles with EC2 ======
+Created Monday 30 July 2018
+
+https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-service.html?icmpid=docs_iam_console
+Roles are the preffered way to grant user's permissions to access AWS resources. They are easier to provision, administer and revoke than Access Key IDs and Secret Access Keys.

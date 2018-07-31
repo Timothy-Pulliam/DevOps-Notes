@@ -14,3 +14,16 @@ Detailed Monitoring - Interval is every 1 minute
 System check is a check on the hypervisor running the EC2 instance. If the System check fails, there is really nothing you can do. Maybe try spinning up a new VM in another Availability Zone. If the Instance check fails, you can try just rebooting the Instance, or spinning up a new Instance.
 
 == Cloud Trail vs Cloud Watch ==
+Cloud Trail
+* Logs API calls across your AWS Infrastructure
+* Keeps visibility of User activity by monitoring API calls
+* Allows you to troubleshoot security issues
+
+Cloud Watch
+* Resource Monitoring (cpu, memory, disk i/o, etc.)
+
+==== Creating Dashboards ====
+
+{{./pasted_image.png}}
+
+{{./pasted_image001.png}}
