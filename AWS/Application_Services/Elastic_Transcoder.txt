@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-08-01T11:08:33-04:00
+
+====== Elastic Transcoder ======
+Created Wednesday 01 August 2018
+
+* Media Transcoder in the code
+* convert media files from one format to another
+* pay by minutes taken to transcode, and by resolution
+* Useful for providing encodings for many different devices (smart phones, tablets, PCs, etc.)
+
+=== Sample Workflow ===
+1) S3 Bucket contains a video file
+2) Lambda function passes video file to elastic transcoder
+3) elastic Transcoder creates copies of the file in popular video formats
+4) The outputted videos are stored into an S3 bucket

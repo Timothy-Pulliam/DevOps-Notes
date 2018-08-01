@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-08-01T09:27:25-04:00
+
+====== SNS (Simple Notification System) ======
+Created Wednesday 01 August 2018
+
+A Web Service that allows you to send  notifications (push notifications) from the cloud. 
+
+* Highly scalable
+* flexible
+* Cost-Effective
+* Instataneaous push based 
+
+Push messages to email, text messages (SMS), billing alarms, lambda functions etc. Messages are sent to subscribers of a topic.

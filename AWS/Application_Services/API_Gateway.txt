@@ -1,0 +1,32 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-08-01T11:17:09-04:00
+
+====== API Gateway ======
+Created Wednesday 01 August 2018
+
+* publish, maintain, monitor, secure APIs at any scale
+* Using a GUI in AWS, you can create an API to act as a "frontdoor" for applications to access data, business logic, or functionality for back-end services (EC2 instances, Databases, etc.)
+* Low cost and Efficient
+* Scales Effortlessly
+* Can throttle requests to prevent attacks (Denial of Service)
+* Connect to Cloud Watch to log all requests
+
+
+==== API Caching ====
+Caches API common requests for the Time To Live (TTL). If the same user makes the same API request within the TTL, the cached response is sent to the user, speeding up the request.
+
+==== Same Origin Policy (security) ====
+In web application security, the same origin policy states a web browser permits a script contained in a first web page to access data in a second web page ONLY IF both web pages have the same origin (domain name).
+
+If you need to download content from another origin/domain (say, font or images from a CDN), you must enable Cross-Origin Resource Sharing
+
+== Cross-Origin Resource Sharing (CORS) ==
+CORS is one way a web server (origin) can relax the same-origin policy.
+
+CORS is a mechanism that allows restricted resources (eg, fonts) on a web page to be requested from another domain outside the domain from which the first resource was served.
+
+If you get the error below, you must enable CORS:
+
+''Error - "Origin policy cannot be read at the remote resource."''
+

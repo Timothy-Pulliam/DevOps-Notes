@@ -1,0 +1,52 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-08-01T07:47:45-04:00
+
+====== SQS (Simple Queue Service) ======
+Created Wednesday 01 August 2018
+
+One componant of a web application (ec2 instance, s3 bucket, etc.) generates messages that are stored in a message queue. The messages in the queue are then processed by another component from the web application (ec2 instance, etc.)
+
+* **SQS is always a pull based system**. The messages just sit in the queue until they are pulled by some aws resource (ec2 instance, etc.)
+* Any component of a distributed application can store messages in the queue, and any component can retrieve the messages using the AWS SQS API.
+* Messages can contain up to 256KB of text in any format (JSON, XML, etc.)
+* The queue acts as a buffer between the component producing the data and the component receiving the data. This means the queue resolves issues that arise if the producer is producing work faster than the consumer can process it, or if the producer or consumer are only intermittently connected to the network (elasticity to applications)
+
+
+[message producer] ===push==> [message queue] ==== pull===> [message consumer]
+
+==== Types of Queues ====
+* Standard Queues (default)
+* FIFO (First In First Out)
+
+In general, standard queues are faster than FIFO queues. However the trade off is that SQs sometimes duplicate messages or send messages out of order.
+
+== Standard Queues ==
+* Allows a nearly unlimited number of transactions per second.
+* Quarentees that a message is delivered at least once. However, due to the highly distributed-nature architecture that allows high throughput, more than one copy of a message may be delivered, and messages can be delivered out of order.
+* Provide best effort ordering, and messages are generally (but not always) delivered in the same order they were sent.
+
+==== FIFO Queues ====
+* No duplicate messages
+* Messages received in order they were sent (always)
+* Limited to 300 Transactions per second
+
+Useful for applications that need strict order checking (banking, etc.)
+
+==== Visibility Timeout ====
+https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html
+After a message consumer picks up a message, that message becomes invisible to other consumers for the duration of the **Visibility Timeout**. This prevents messages from being processed twice.
+
+* Default Visibility Timeout is 30 seconds
+* Increase if your task takes > 30 seconds
+* Max is 12 hours
+
+==== Long Polling ====
+https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-long-polling.html
+Long polling helps reduce the cost of using Amazon SQS by eliminating the number of empty responses (when there are no messages available for a ReceiveMessage request) and false empty responses (when messages are available but aren't included in a response).
+
+Long polling offers the following benefits:
+
+* Eliminate empty responses by allowing Amazon SQS to wait until a message is available in a queue before sending a response. Unless the connection times out, the response to the ReceiveMessage request contains at least one of the available messages, up to the maximum number of messages specified in the ReceiveMessage action.
+* Eliminate false empty responses by querying all—rather than a subset of—Amazon SQS servers.
+* Return messages as soon as they become available.
