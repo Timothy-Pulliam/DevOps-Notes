@@ -1,0 +1,32 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-08-02T12:18:28-04:00
+
+====== SRE ======
+Created Thursday 02 August 2018
+
+The main tenants of SRE are summarized below
+
+==== Monitoring ====
+Monitoring should be automated as much as possible. Humans should not be forced to read email alerts and interpret if action should be taken. Human intervention should only be needed in the following instances
+
+* Alerts - Human action is necessary immediately for something that is either happening, or about to happen
+* Tickets - Humans need to take action, but not immediately
+* Logging - kept for auditing or diagnostics. No one should need to read them unless explicitly prompted to do so.
+
+==== Focus on Automation ====
+
+==== Maximum Change Velocity (CI/CD) without going past agreed upon service availability (SLO) ====
+https://en.wikipedia.org/wiki/Service_level_objective
+A service level objective (SLO) is a key element of a service level agreement (SLA) between a service provider and a customer. SLOs are agreed upon as a means of measuring the performance of the Service Provider and are outlined as a way of avoiding disputes between the two parties based on misunderstanding.
+
+==== Emergency Response ====
+* Playbooks for emergency situations
+* Reduce Mean Time To Repair (MTTR), not necessarily total number of failures. Remember, availibilty is what we want, not necessarily reducing the total number of failures. Some failures cannot be prevented, however they can be recovered from quickly.
+
+==== Change Management ====
+When making changes to live systems, use automation to
+* Implement progressive rollouts. Start with a few servers, increase gradually.
+* quickly and accurately detect problems
+* Roll back changes when problems occur
+

@@ -11,13 +11,15 @@ Instance Stores are essentially obselete (except in very rare circumstances). In
 
 Disadvantages of Instance Storage
 * Slower to provision than EBS
-* Data is less persistant than EBS
+* Data is not persistent (ephemeral). Data only exists for the life of the EC2 instance
+* You can't detach from EC2 instance and reattach to another EC2 instance (because ephemeral)
 
 EBS is the preffered volume type for root volumes. Instance Stores (or Ephemeral volumes) will delete all data on them if the instance which they are attached is
 
 * stopped
 * terminated
 * the disk crashes (Instance Stores are not redundant across Availabilty Zones)
+* They are detached from the EC2 instance
 
 However, if the system is rebooted, you will not lose data. Because of this, the only reason you may want to use an Instance Store for EC2 volumes is to erase sensitive data. However in most cases you should just use EBS based volumes as this is the norm. 
 

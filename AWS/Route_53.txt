@@ -6,3 +6,32 @@ Creation-Date: 2018-07-02T14:20:46-04:00
 Created Monday 02 July 2018
 
 DNS
+
+Terminology
+https://blog.cloudflare.com/zone-apex-naked-domain-root-domain-cname-supp/
+naked domain name (zone apex) - the domain name. basically the FQDN of a host without the first hostname part, google.com, amazon.com, microsoft.com (NOT aws.amazon.com if talking about amazon.com)
+
+
+==== Simple Routing Policy ====
+Traditional DNS. A records resolve to IPs
+
+==== Weighted Routing Policy ====
+A records are resolved to IPs using percentages. In its most simplified form
+
+										 ___---- 20% of the time ------- 192.168.1.12
+host.example.com---<___
+											 ---- 80% of the time -------- 192.168.1.28
+
+
+Weights are assigned a value from 0-255. A record's weight is divided by the sum of all the record's weights. For this reason, it is useful to pick values which add up to 100 (100%). Weighted routing can be useful for slowly rolling out a new website. For example, 10% of the time, Route53 may point users to the new website to do beta testing, and the other 90% of the time they will get the standard site.
+
+==== Latency Routing Policy ====
+Route traffic to the end user based on the smallest latency (fastest network traffic) to the user requested resource.
+
+Create a latency resource record set for an EC2 or ELB resource in each region that hosts your website. When a query is made to the site, Route53 selects the latency record that will give the user the lowest latency and provides it to the user.
+
+==== Failover Routing Policy ====
+
+
+==== Geolocation Routing Policy ====
+Route traffic based on the geographic location of your users (where your DNS queries originate from). For example, say your users are in Europe and they visit your website. In that case you may want to redirect them to a version of your website (EC2 fleet) that displays currency in Euros (not US Dollars)

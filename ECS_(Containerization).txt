@@ -1,0 +1,19 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-08-03T07:32:45-04:00
+
+====== ECS (Elastic Container Service) ======
+Created Friday 03 August 2018
+
+Elastic Container Service
+
+ECS allows you to manage Docker Containers using API calls and a web interface.
+
+* ECS instances are Regional
+* Images are stored in Amazon ECR (Similar to Docker Hub).
+* IAM Roles and security groups work on the instance/host level (not at the container or task level)
+* IAM with ECS to restrict access
+* ECS clusters are groups of of container instances that you can place tasks on. Their are hard and soft limits to how many instances in a cluster.
+* Clusters cannot be cross region (although they can be cross AZ)
+* Container instances can only be part of one cluster at a time
+* ECS agent allows you to connect to an instance in a cluster

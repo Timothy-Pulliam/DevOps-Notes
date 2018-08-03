@@ -1,7 +1,5 @@
 Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.4
-<<<<<<< HEAD
-Creation-Date: 2018-07-14T17:24:57-04:00
 
 ====== EC2 ======
 Created Saturday 14 July 2018
@@ -35,10 +33,10 @@ There are several different EC2 instance types. Each instance type is specialize
 You can remember the EC2 instance types (for now) using the mnemonic "Fight Dr McPx"
 
 {{./pasted_image.png}}
-=======
-Creation-Date: 2018-07-25T07:00:39-04:00
 
-====== EC2 ======
-Created Wednesday 25 July 2018
->>>>>>> 31421113aac398dcfae314fe987433700242bf83
 
+==== Meta Data ====
+You can get instance meta data for by running the following command. You must use this ip address.
+
+$ curl http://169.254.169.254/latest/meta-data
+$ wget http://169.254.169.254/latest/meta-data

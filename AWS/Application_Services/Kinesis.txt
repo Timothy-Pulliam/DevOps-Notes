@@ -5,6 +5,9 @@ Creation-Date: 2018-08-01T12:28:15-04:00
 ====== Kinesis ======
 Created Wednesday 01 August 2018
 
+==== Overview ====
+Kinesis can be used to take in streaming data and analyze the data to find patterns. For example, you can analyze twitter (social media) feeds (streaming source) from thousands of people to predict if people find a particular product favorable or not. 
+
 Kinesis is used to handle streaming data. It allows you load and analyze streaming data.
 
 Streaming data is data that is generated continuously by thousands of data sources, which typically send in the data records simultaneously and in small sizes (KBs).
