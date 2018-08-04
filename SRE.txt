@@ -7,6 +7,36 @@ Created Thursday 02 August 2018
 
 The main tenants of SRE are summarized below
 
+==== Pillars of DevOps ====
+* No More Silos. They prevent communication between devs and ops.
+* Accidents are normal, don't punish accident makers (this prevents issues from surfacing). Instead plan for accidents and decrease recovery time.
+* Culture and tooling are the same. Choose your tools wisely, your culture depends upon it.
+* Change should be small, but frequent. This is the premise of CI/CD and makes changes easier to test, as well as mistakes easier to recover from. Changes should be automated as much as possible, unless they are risky and require human intervention.
+https://martinfowler.com/articles/continuousIntegration.html
+https://puppet.com/blog/continuous-delivery-vs-continuous-deployment-what-s-diff
+* Measure everything
+* Infrastucture as code
+
+== Continuous Delivery vs. Continuous Deployment ==
+https://puppet.com/blog/continuous-delivery-vs-continuous-deployment-what-s-diff
+Puppet Labs summarizes this best.
+
+{{.\pasted_image.png}}
+
+
+Continuous Delivery is the process of automating testing and pushing to a staging environment. At that point code can be deployed to production with the push of a button (manual process). This has nothing to do with a business' technical capabilities, but rather their concies decision to release a product manually.
+
+Continuous Deployment takes CDelivery a step further, and automates the deployment to production step. You may or may not want to do this. Again it is simply a matter of taste.
+
+==== Pillars of SRE ====
+{{.\pasted_image001.png?width=331}}
+
+
+* Operations is a software problem. This includes infra as code, processes, etc. Any ops problem can be solved with software engineering.
+* Manage by Service Level Objectives (SLO). Nothing is 100% available. Instead agree what a reasonable amount of availability is (based on your customer's needs, your employees needs, risk you can take etc.) and budget around that. 99% availability allows your developers to make more changes to a product which will inevitably reduce availability of the environment (accidents are normal). As long as they don't go over their 1% budget it is okay as this is adding value to the product.
+* Reduce Toil. Toil means manual work. Any time spent on toil is time not spent automating or project work. Fight less fires, reduce manual work by automating more. Do more value add projects.
+
+
 ==== Monitoring ====
 Monitoring should be automated as much as possible. Humans should not be forced to read email alerts and interpret if action should be taken. Human intervention should only be needed in the following instances
 
