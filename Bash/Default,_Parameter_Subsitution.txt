@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-08-16T14:23:23-04:00
+
+====== Default, Parameter Subsitution ======
+Created Thursday 16 August 2018
+
+https://www.tldp.org/LDP/abs/html/parameter-substitution.html

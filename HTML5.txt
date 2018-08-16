@@ -1,0 +1,71 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-08-15T11:04:48-04:00
+
+====== HTML5 ======
+Created Wednesday 15 August 2018
+
+== References ==
+Mozilla is highly regarded when it comes to learning basic web development. They make sure to adhear to W3 best practices.
+https://developer.mozilla.org/en-US/docs/Learn
+
+==== IDEs ====
+The Atom IDE is the preferred IDE for writing HTML
+
+jsfiddle.com is another great source for testing.
+
+==== Test on multiple Browsers ====
+https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/Installing_basic_software
+Make sure when you write HTML/CSS/JS to test with multiple browsers. You will want to at least test on Chrome, Firefox, Safari, Opera.
+
+==== Basic Webpage With Indentation ====
+https://www.granneman.com/webdev/coding/formatting-and-indenting-your-html
+Below is the basic structure of an HTML webpage, properly indented. Note that spaces should be used instead of tabs, although your text editor should take care of this.
+
+https://jsfiddle.net/_kernel_panic_/qmrpvLc7/1/
+
+'''
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+    <h1>This is a Heading</h1>
+    <p>
+        This is a paragraph.
+    </p>
+</body>
+</html>
+'''
+
+
+==== HTML Tags vs Elements vs Attributes ====
+https://www.456bereastreet.com/archive/200508/html_tags_vs_elements_vs_attributes/
+HTML Element = tags + content
+'''
+<p>
+    This is the content of the paragraph element.
+</p>
+'''
+
+
+HTML Tag
+opening tag
+<p>
+
+closing tag
+</p>
+
+empty tag (consist of only a single tag)
+<br>
+
+Attributes
+A paragraph with a class attribute
+'''
+<p class="info">
+    Ipsum Dolar
+</p>
+'''
+
+

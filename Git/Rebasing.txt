@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-08-15T09:18:52-04:00
+
+====== Rebasing ======
+Created Wednesday 15 August 2018
+
+https://dev.to/maxwell_dev/the-git-rebase-introduction-i-wish-id-had

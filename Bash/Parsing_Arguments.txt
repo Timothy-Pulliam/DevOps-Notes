@@ -1,0 +1,97 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-08-16T11:12:41-04:00
+
+====== Parsing Arguments ======
+Created Thursday 16 August 2018
+
+https://linuxconfig.org/how-to-use-getopts-to-parse-a-script-options
+
+'''
+#!/usr/bin/bash
+
+set -e
+set -u
+set -o pipefail
+
+get_percent(){
+    # get_percent takes an optional mount_point as an argument. Otherwise it displays all mount points.
+    # Default expansion is used to give a default value to the $1 variable.
+    # Otherwise our script would fail since "set -u" would catch the undefined variable $1.
+    if [ -n ${1-""} ] 
+    then
+        df -h $1 | tail -n +2 | awk '{ print $1,"\t",$5 }'
+    else
+        df -h | tail -n +2 | awk '{ print $1,"\t",$5 }'
+    fi
+}
+
+usage(){
+    echo "script usage: $(basename $0) [-h] [-p] [-m mount_point]" >&2
+}
+
+# If the user doesn't supply any arguments, we run the script as normal
+if [ $# -eq 0 ];
+then
+    get_percent
+    exit 0
+fi
+# Main loop for getopts to parse arguments
+while getopts 'hm:p' OPTION; do
+    case "$OPTION" in
+      h)
+        usage
+        exit 0
+        ;;
+      m)
+        # Only display percentages for the supplied mount point (eg /)
+        echo "$OPTARG"
+        mountpoint="$OPTARG"
+        get_percent $mountpoint
+        ;;
+      p)
+        # Get percent of disk partitions in use
+        get_percent
+        exit 0
+        ;;
+      ?)
+        usage
+        exit 0
+        ;;
+    esac
+done
+shift "$(($OPTIND -1))"
+
+
+'''
+
+
+==== Calling the above script ====
+$ bash thing.sh -h
+script usage: thing.sh [-h] [-p]
+$ bash thing.sh -p
+Filesystem       Use%
+C:/Users/tpulliam/AppData/Local/Programs/Git     27%
+Z:       11%
+$ bash thing.sh
+Filesystem       Use%
+C:/Users/tpulliam/AppData/Local/Programs/Git     27%
+Z:       11%
+
+==== Set Variables ====
+http://redsymbol.net/articles/unofficial-bash-strict-mode/
+* set -e
+Script will exit with error if any commands give any non zero exit status (error)
+* set -u
+script will exit with error if any unassigned variables are encountered
+* set -o pipefail
+The exit status of a piped command will be the exit status of the right most command. Corrallary is the piped command will be 0 IF AND ONLY IF all commands in the piped command are zero. See **short circuit operation**.
+https://en.wikipedia.org/wiki/Short-circuit_evaluation
+
+== OPTIND Variable ==
+https://unix.stackexchange.com/questions/214141/explain-the-shell-command-shift-optind-1/214151
+https://linuxconfig.org/how-to-use-getopts-to-parse-a-script-options
+
+==== Advanced Arument Parsing ====
+https://stackoverflow.com/questions/4554718/how-to-use-patterns-in-the-case-statement-in-bash-scripting
+
