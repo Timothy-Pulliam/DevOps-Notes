@@ -19,6 +19,7 @@ https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/Inst
 Make sure when you write HTML/CSS/JS to test with multiple browsers. You will want to at least test on Chrome, Firefox, Safari, Opera.
 
 ==== Basic Webpage With Indentation ====
+https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics
 https://www.granneman.com/webdev/coding/formatting-and-indenting-your-html
 Below is the basic structure of an HTML webpage, properly indented. Note that spaces should be used instead of tabs, although your text editor should take care of this.
 

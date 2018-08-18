@@ -1,0 +1,24 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-08-18T08:31:06-04:00
+
+====== Best Practices ======
+Created Saturday 18 August 2018
+
+==== File Naming ====
+https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/Dealing_with_files#An_aside_on_casing_and_spacing
+
+Do:
+* lower case
+* comma separated
+* my-file.html
+* test-site/myimage.jpg
+
+Don't:
+* test-site/MyImage.jpg
+* my_file.html
+
+
+==== Project Directory Structure ====
+https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/Dealing_with_files#What_structure_should_your_website_have
+mywebapp
