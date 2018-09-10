@@ -4,6 +4,21 @@ Creation-Date: 2018-08-18T10:11:02-04:00
 
 ====== HTML BoilerPlate ======
 Created Saturday 18 August 2018
+
+Use this boiler plate it is awesome. It uses an MIT license, so you are free to use it wherever.
+https://html5boilerplate.com/
+https://github.com/h5bp/html5-boilerplate
+
+mkdir website
+cd website
+git clone https://github.com/h5bp/html5-boilerplate.git
+
+You can get a preview of the website on your local system
+
+cd src
+python -m http.server
+
+==== Explanation ====
 https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics#Anatomy_of_an_HTML_document
 
 '''

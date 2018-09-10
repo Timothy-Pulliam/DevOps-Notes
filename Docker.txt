@@ -1,0 +1,28 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-08-19T19:12:36-04:00
+
+====== Docker ======
+Created Sunday 19 August 2018
+
+== References ==
+https://docs.docker.com/config/daemon/#docker-daemon-directory
+
+
+==== Debugging Docker ====
+Start the docker daemon manually to see error logs in your terminal
+
+'''
+root@lappy:~# dockerd
+INFO[2018-08-19T19:39:00.127110480-04:00] libcontainerd: started new docker-containerd process  pid=32217
+INFO[2018-08-19T19:39:00.127193800-04:00] parsed scheme: "unix"                         module=grpc
+INFO[2018-08-19T19:39:00.127206394-04:00] scheme "unix" not registered, fallback to default scheme  module=grpc
+INFO[2018-08-19T19:39:00.127241365-04:00] ccResolverWrapper: sending new addresses to cc: [{unix:///var/run/docker/containerd/docker-containerd.sock 0  <nil>}]  module=grpc
+INFO[2018-08-19T19:39:00.127256900-04:00] ClientConn switching balancer to "pick_first"  module=grpc
+INFO[2018-08-19T19:39:00.127295928-04:00] pickfirstBalancer: HandleSubConnStateChange: 0xc42001a560, CONNECTING  module=grpc
+INFO[0000] starting containerd                           revision=d64c661f1d51c48782c9cec8fda7604785f93587 version=v1.1.1
+INFO[0000] loading plugin "io.containerd.content.v1.content"...  type=io.containerd.content.v1
+INFO[0000] loading plugin "io.containerd.snapshotter.v1.btrfs"...  type=io.containerd.snapshotter.v1
+WARN[0000] failed to load plugin io.containerd.snapshotter.v1.btrfs  error="path /var/lib/docker/containerd/daemon/io.containerd.snapshotter.v1.btrfs must be a btrfs filesystem to be used with the btrfs snapshotter"
+'''
+

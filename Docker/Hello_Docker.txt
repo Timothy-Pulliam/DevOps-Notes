@@ -1,0 +1,113 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2018-08-19T20:18:29-04:00
+
+====== Hello Docker ======
+Created Sunday 19 August 2018
+
+==== Terminology ====
+https://docker-curriculum.com/
+
+Images - The blueprints of our application which form the basis of containers. In the demo above, we used the docker pull command to download the busybox image.
+Containers - Created from Docker images and run the actual application. We create a container using docker run which we did using the busybox image that we downloaded. A list of running containers can be seen using the docker ps command.
+Docker Daemon - The background service running on the host that manages building, running and distributing Docker containers. The daemon is the process that runs in the operating system to which clients talk to.
+Docker Client - The command line tool that allows the user to interact with the daemon. More generally, there can be other forms of clients too - such as Kitematic which provide a GUI to the users.
+Docker Hub - A registry of Docker images. You can think of the registry as a directory of all available Docker images. If required, one can host their own Docker registries and can use them for pulling images.
+
+==== First Docker Containers ====
+'''
+$ sudo docker run hello-world
+sudo docker run hello-world
+[sudo] password for tpulliam: 
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+9db2ca6ccae0: Pull complete 
+Digest: sha256:4b8ff392a12ed9ea17784bd3c9a8b1fa3299cac44aca35a85c90c5e3c7afacdc
+Status: Downloaded newer image for hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/engine/userguide/
+'''
+
+
+'''
+$ sudo docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+hello-world         latest              2cb0d9787c4d        5 weeks ago         1.85kB
+$ sudo docker pull busybox
+Using default tag: latest
+latest: Pulling from library/busybox
+8c5a7da1afbc: Pull complete 
+Digest: sha256:cb63aa0641a885f54de20f61d152187419e8f6b159ed11a251a09d115fdff9bd
+Status: Downloaded newer image for busybox:latest
+$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+busybox             latest              e1ddd7948a1c        2 weeks ago         1.16MB
+hello-world         latest              2cb0d9787c4d        5 weeks ago         1.85kB
+'''
+
+
+==== Deleting Docker Containers ====
+When you run a docker image, you will have lots of docker containers left over. They will eat up disk space. You can view them with the docker image command. You will want to remove them when you are done with them.
+
+'''
+tpulliam@lappy:~$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                    PORTS               NAMES
+b17e57237297        busybox             "cat /etc/lsb-releas…"   25 hours ago        Exited (1) 25 hours ago                       quizzical_noether
+4d2c2f975924        busybox             "env"                    25 hours ago        Exited (0) 25 hours ago                       quizzical_saha
+de8712dca89e        busybox             "sh"                     25 hours ago        Exited (0) 25 hours ago                       dazzling_heisenberg
+1d9feb988957        hello-world         "/hello"                 25 hours ago        Exited (0) 25 hours ago                       cranky_dijkstra
+tpulliam@lappy:~$ docker rm b17e57237297 4d2c2f975924 de8712dca89e
+b17e57237297
+4d2c2f975924
+de8712dca89e
+tpulliam@lappy:~$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                    PORTS               NAMES
+1d9feb988957        hello-world         "/hello"            25 hours ago        Exited (0) 25 hours ago                       cranky_dijkstra
+'''
+
+
+Rather than pasting docker IDs in one by one, simply run the following command
+''$ docker rm $(docker ps -a -q -f status=exited)''
+
+You can achieve the same results with docker prune command.
+'''
+tpulliam@lappy:~$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS                          PORTS               NAMES
+166f6001e5de        busybox             "echo 'hello from do…"   About a minute ago   Exited (0) About a minute ago                       pedantic_villani
+0774aed8ad13        busybox             "ls"                     About a minute ago   Exited (0) About a minute ago                       friendly_goldberg
+34c274ca6165        hello-world         "/hello"                 About a minute ago   Exited (0) About a minute ago                       brave_mayer
+tpulliam@lappy:~$ docker container prune
+WARNING! This will remove all stopped containers.
+Are you sure you want to continue? [y/N] y
+Deleted Containers:
+166f6001e5de2f79c491add3efd57d3ad5f5faa6ffd5e0968f5ad499bb9f3fcf
+0774aed8ad13115352c81f951e8b634692f2087e98004acf61b37e274cc3ff49
+34c274ca6165d2e4adc5e2185676c26029d49ebc7a07e2c2a26918b2f909d230
+
+Total reclaimed space: 0B
+tpulliam@lappy:~$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+'''
+
+
+You can also use **docker run --rm** to automatically delete a docker container when finished with it.
+
