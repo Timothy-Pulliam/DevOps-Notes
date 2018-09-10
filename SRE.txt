@@ -18,6 +18,7 @@ https://puppet.com/blog/continuous-delivery-vs-continuous-deployment-what-s-diff
 * Infrastucture as code
 
 == Continuous Delivery vs. Continuous Deployment ==
+https://thenewstack.io/understanding-the-difference-between-ci-and-cd/
 https://puppet.com/blog/continuous-delivery-vs-continuous-deployment-what-s-diff
 Puppet Labs summarizes this best.
 
