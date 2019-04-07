@@ -19,7 +19,14 @@ $ pip install -U pip
 $ pip install awscli
 
 Verify with
-$ pip help
+$ aws help
+$ aws --version
+
+==== Configuring AWS CLI ====
+$ aws configure help
+$ aws configure
+
+You will be prompted for configuration info
 
 ==== Secure Your ~/.aws/credentials (Don't store in source code, or on EC2 instance) ====
 The credentials used for authenticating for the AWS CLI are stored locally in the [[~/aws/credentials]] file. No one other than the user should have access to this file! It is a huge security risk if someone were to gain access to these credentials, they could spin up EC2 instances or delete files or whatever they want if they get these creds. Do not keep your Access Key ID or Secret Access Key in source code nor should you keep it on a EC2 instance becuase someone could steal them. 

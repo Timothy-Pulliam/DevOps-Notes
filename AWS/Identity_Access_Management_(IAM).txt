@@ -5,9 +5,10 @@ Creation-Date: 2018-07-02T17:05:00-04:00
 ====== Identity Access Management (IAM) ======
 Created Monday 02 July 2018
 
+===== Overview =====
 Users and access control.
 
-* Identity Federation (Connect to Active Directory, Facebook, [[LinkedIn]])
+* Identity Federation (Connect to Active Directory, Facebook, [[AWS:LinkedIn]])
 * Granular Permissions
 * Multifactor Authentication
 * Temporary access to users and devices
@@ -19,8 +20,7 @@ Users and access control.
 * User - Person
 * Group - Collection of Users
 * Roles - Assigned to AWS resources (groups of EC2 instances, databases, etc.)
-* Policies - JSON Document that defines a set of
-* permissions assigned to Users, Groups or Roles.
+* Policies - JSON Document that defines a set of permissions assigned to Users, Groups or Roles.
 
 ==== IAM Is Not Region Specific ====
 If you click on the region drop down, you will not be able to select a specifig region while using IAM. This is because any changes made to IAM are propogated to all regions (all over the world). IAM only applies to the Global Region.
@@ -39,7 +39,7 @@ You can create a more user friendly alias for this URL by clicking the **customi
 ==== Managing Security Status ====
 1) Activate MFA using Google Authenticator
 
-2) Create IAM [[SystemAdministrator]] users and group
+2) Create IAM [[AWS:SystemAdministrator]] users and group
 When you create users, you can grant them either Programmatic access (access via API, CLI, SDK), or access via the Web Console.
 {{./pasted_image003.png?width=1600}}
 
@@ -76,7 +76,7 @@ Suppose we create a group called HR with the following policies (AmazonS3ReadOnl
 {{./pasted_image009.png}}
 
 
- and we add nicole to that group. We have the following users and groups, where nicole is only a member of the HR group, and tim is a member of the [[SystemAdministrators]] Group we made earlier.
+ and we add nicole to that group. We have the following users and groups, where nicole is only a member of the HR group, and tim is a member of the [[AWS:SystemAdministrators]] Group we made earlier.
 
 {{./pasted_image008.png}}
 
@@ -102,7 +102,7 @@ Click on "Roles > Create Role" and you should see the following.
 
 {{./pasted_image013.png}}
 
-**DO NOT** under any circumstances give your EC2 instances the [[AdministratorAccess]] policy. This will allow them to do anything with any AWS resource. They could spin up entire CloudFormations, Destroy entire databases. **Don't do it!**
+**DO NOT** under any circumstances give your EC2 instances the [[AWS:AdministratorAccess]] policy. This will allow them to do anything with any AWS resource. They could spin up entire CloudFormations, Destroy entire databases. **Don't do it!**
 
 {{./pasted_image014.png}}  Don't Do this!
 

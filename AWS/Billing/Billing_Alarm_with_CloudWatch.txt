@@ -9,7 +9,7 @@ Create a billing alarm so that you can receive an email if your AWS resources st
 
 Click on your name in the top right corner, and select "My Billing Dashboard"
 
-{{./pasted_image.png}}
+{{.\pasted_image.png}}
 
 Enable billing alerts. You must be signed in using AWS account root user credentials; IAM users cannot enable billing alerts for your AWS account.
 

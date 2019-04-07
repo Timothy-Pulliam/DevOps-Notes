@@ -10,6 +10,8 @@ Created Monday 02 July 2018
 == Region and Availability Zones ==
 https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html
 https://docs.aws.amazon.com/general/latest/gr/rande.html
+Region is a Geographical area (us-east-1, us-west-2, eu-west-3, etc.). Each region is broken further into **availability zones**, which are essentially isolated datacenters. Each region has at least 2 availability zones for redundancy and isolated in case of failure.  __Resources aren't replicated across regions unless you do so specifically.__ 
+
 Regions have the format:
 * us-east-2
 * us-east-1
@@ -20,8 +22,6 @@ Regions are further broken up into Availability Zones and have the following for
 * us-east-1b
 * us-east-1a
 
-
-Region is a Geographical area (us-east-1, us-west-2, eu-west-3, etc.). Each region is broken further into **availability zones**, which are essentially isolated datacenters. Each region has at least 2 availability zones for redundancy and isolated in case of failure.  __Resources aren't replicated across regions unless you do so specifically.__ 
 
 The region you are currently using is present in the URI of your AWS dashboard, for example
 
@@ -49,3 +49,6 @@ https://status.aws.amazon.com/
 This link provides up the minute status of AWS Services. You can see if there are any outages, latencies, etc.
 
 {{./pasted_image003.png}}
+
+You can also get the health of an AZ using the api
+https://docs.aws.amazon.com/health/latest/ug/getting-started-api.html

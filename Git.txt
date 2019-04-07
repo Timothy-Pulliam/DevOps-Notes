@@ -62,7 +62,8 @@ tpulliam@zephyr ~/code/example $ git config user.name "Timothy Pulliam"
 Now we can inspect the local repo config file and see the changes (we could also use **git config -l**)
 
 '''
-tpulliam@zephyr ~/code/example $ cat .git/config 
+tpulliam@zephyr ~/code/example $ cat .git/config
+$ git config -l 
 [core]
 	repositoryformatversion = 0
 	filemode = true

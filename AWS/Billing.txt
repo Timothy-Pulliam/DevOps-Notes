@@ -5,6 +5,12 @@ Creation-Date: 2018-07-06T09:27:06-04:00
 ====== Billing ======
 Created Friday 06 July 2018
 
+==== The Billing Dashboard ====
+To get to the billing dashboard
+https://console.aws.amazon.com/billing/home
+
+{{.\pasted_image003.png}}
+
 1) We see the monthly cost projection for AWS services. The blue shows costs so far. The green shows estimated costs for the end of the billing period.
 2) We see what AWS services cost the most
 

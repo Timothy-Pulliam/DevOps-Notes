@@ -1,0 +1,62 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-04-07T15:48:56-04:00
+
+====== Tagging Strategies ======
+Created Sunday 07 April 2019
+
+https://aws.amazon.com/answers/account-management/aws-tagging-strategies/
+
+== How should I tag my AWS resources? ==
+Amazon Web Services (AWS) allows customers to assign metadata to their AWS resources in the form of tags. Each tag is a simple label consisting of a customer-defined key and an optional value that can make it easier to manage, search for, and filter resources. Although there are no inherent types of tags, they enable customers to categorize resources by 
+* purpose
+* owner
+* environment
+
+or other criteria. This webpage describes commonly used tagging categories and strategies to help AWS customers implement a consistent and effective tagging strategy. The following sections assume basic knowledge of AWS resources, tagging, detailed billing, and AWS Identity and Access Management (IAM).
+
+
+== General Best Practices ==
+When creating a tagging strategy for AWS resources, make sure that it accurately represents organizationally relevant dimensions and adheres to the following tagging best practices:
+
+* Always use a standardized, case-sensitive format for tags, and implement it consistently across all resource types.
+* Consider tag dimensions that support the ability to manage resource access control, cost tracking, automation, and organization.
+* Implement automated tools to help manage resource tags. The Resource Groups Tagging API enables programmatic control of tags, making it easier to automatically manage, search, and filter tags and resources. It also simplifies backups of tag data across all supported services with a single API call per AWS Region.
+* Err on the side of using too many tags rather than too few tags.
+* Remember that it is easy to modify tags to accommodate changing business requirements, however consider the ramifications of future changes, especially in relation to tag-based access control, automation, or upstream billing reports.
+
+==== Tagging Categories ====
+
+== Technical Tags ==
+**Name** – Used to identify individual resources
+
+**Application ID** – Used to identify disparate resources that are related to a specific application
+
+**Application Role** – Used to describe the function of a particular resource (e.g. web server, message broker, database)
+
+**Cluster** – Used to identify resource farms that share a common configuration and perform a specific function for an application
+
+**Environment** – Used to distinguish between development, test, and production infrastructure
+
+**Version** – Used to help distinguish between different versions of resources or applications
+
+== Tags for Automation ==
+**Date/Time** – Used to identify the date or time a resource should be started, stopped, deleted, or rotated
+
+**Opt in/Opt out** – Used to indicate whether a resource should be automatically included in an automated activity such as starting, stopping, or resizing instances
+
+**Security** – Used to determine requirements such as encryption or enabling of VPC Flow Logs, and also to identify route tables or security groups that deserve extra scrutiny
+
+== Business Tags ==
+**Owner** – Used to identify who is responsible for the resource
+
+**Cost Center/Business Unit** – Used to identify the cost center or business unit associated with a resource; typically for cost allocation and tracking
+
+**Customer** – Used to identify a specific client that a particular group of resources serves
+
+**Project** – Used to identify the project(s) the resource supports
+
+== Security Tags ==
+**Confidentiality** – An identifier for the specific data-confidentiality level a resource supports
+
+**Compliance** – An identifier for workloads designed to adhere to specific compliance requirements

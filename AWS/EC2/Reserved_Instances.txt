@@ -5,3 +5,4 @@ Creation-Date: 2018-07-15T16:58:38-04:00
 ====== Reserved Instances ======
 Created Sunday 15 July 2018
 
+https://aws.amazon.com/ec2/purchasing-options/reserved-instances/marketplace/

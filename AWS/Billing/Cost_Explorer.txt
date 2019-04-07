@@ -1,0 +1,39 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-04-07T10:07:52-04:00
+
+====== Cost Explorer ======
+Created Sunday 07 April 2019
+
+==== Overview ====
+The cost explorer are your financial logs for AWS. Itnot only allow you to view past spending habits, it also forcasts future spending as well.
+
+Detailed Breakdown of AWS Costs can be performed by the Cost Explorer. Reports can be saved and deleted.
+
+To get to cost explorer
+https://console.aws.amazon.com/cost-reports/home#/dashboard
+
+1) Billing Dash Board
+2) Cost Explorer
+3) Select one of the preconfigured views, or select a blank view. You can filter on many things.
+
+
+{{.\pasted_image.png}}
+
+
+==== Forcasting Costs ====
+{{.\pasted_image003.png}}
+
+Forcasting does not allow for individual groups to be selected.
+
+{{.\pasted_image004.png}}
+
+==== Enable Cost Explorer for a user ====
+You can't enable Cost Explorer using the API.
+
+
+==== Delete Saved Cost Report ====
+{{.\pasted_image001.png}}
+
+
+{{.\pasted_image002.png}}

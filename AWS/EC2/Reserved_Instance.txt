@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-04-07T13:25:07-04:00
+
+====== Reserved Instance ======
+Created Sunday 07 April 2019
+
+https://aws.amazon.com/ec2/pricing/reserved-instances/
