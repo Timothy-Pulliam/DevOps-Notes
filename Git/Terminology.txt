@@ -8,7 +8,7 @@ Created Monday 08 April 2019
 https://git-scm.com/docs/gitglossary
 
 **HEAD**
-The current branch. In more detail: Your working tree is normally derived from the state of the tree referred to by HEAD. HEAD is a reference to one of the heads in your repository, except when using a detached HEAD, in which case it directly references an arbitrary commit.
+HEAD is the commit at the tip of the current branch. In more detail: Your working tree is normally derived from the state of the tree referred to by HEAD. HEAD is a reference to one of the heads in your repository, except when using a detached HEAD, in which case it directly references an arbitrary commit.
 
 Below is an image of a detached head when commit-2 was checked out.
 
@@ -25,7 +25,7 @@ The tree of actual checked out files. The working tree normally contains the con
 {{.\pasted_image002.png}}
 
 **dirty**
-A working tree is said to be "dirty" if it contains modifications which have not been committed to the current branch.
+A working tree is said to be "dirty" if it contains modifications which have not been committed to the current branch. (Working trees are usually dirty if you are writing code)
 
 **stash entry**
 An object used to temporarily store the contents of a dirty working directory and the index for future reuse.
