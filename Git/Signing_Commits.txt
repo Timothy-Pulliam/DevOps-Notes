@@ -5,3 +5,96 @@ Creation-Date: 2018-07-29T19:25:04-04:00
 ====== Signing Commits ======
 Created Sunday 29 July 2018
 
+https://git-scm.com/book/en/v2/Git-Tools-Signing-Your-Work
+
+== Everyone Must Sign ==
+Signing tags and commits is great, but if you decide to use this in your normal workflow, you’ll have to make sure that everyone on your team understands how to do so. If you don’t, you’ll end up spending a lot of time helping people figure out how to rewrite their commits with signed versions. Make sure you understand GPG and the benefits of signing things before adopting this as part of your standard workflow.
+
+== Creating a GPG Key ==
+First of all, if you want to sign anything you need to get GPG configured and your personal key installed.
+
+'''
+$ gpg --list-keys
+/Users/schacon/.gnupg/pubring.gpg
+---------------------------------
+pub   2048R/0A46826A 2014-06-04
+uid                  Scott Chacon (Git signing key) <schacon@gmail.com>
+sub   2048R/874529A9 2014-06-04
+'''
+
+If you don’t have a key installed, you can generate one with gpg --gen-key.
+
+''$ gpg --gen-key''
+
+Once you have a private key to sign with, you can configure Git to use it for signing things by setting the user.signingkey config setting.
+
+''$ git config --global user.signingkey 0A46826A''
+
+Now Git will use your key by default to sign tags and commits if you want.
+
+== Signing Commits ==
+all you need to do is add a -S to your git commit command.
+
+'''
+$ git commit -a -S -m 'signed commit'
+
+You need a passphrase to unlock the secret key for
+user: "Scott Chacon (Git signing key) <schacon@gmail.com>"
+2048-bit RSA key, ID 0A46826A, created 2014-06-04
+
+[master 5c3386c] signed commit
+ 4 files changed, 4 insertions(+), 24 deletions(-)
+ rewrite Rakefile (100%)
+ create mode 100644 lib/git.rb
+'''
+
+Additionally, you can configure git log to check any signatures it finds and list them in its output with the %G? format.
+
+'''
+$ git log --pretty="format:%h %G? %aN  %s"
+
+5c3386c G Scott Chacon  signed commit
+ca82a6d N Scott Chacon  changed the version number
+085bb3b N Scott Chacon  removed unnecessary test code
+a11bef0 N Scott Chacon  first commit
+'''
+
+Here we can see that only the latest commit is signed and valid (G) and the previous commits are not (N).
+
+== Signing Merges ==
+
+In Git 1.8.3 and later, git merge and git pull can be told to inspect and reject when merging a commit that does not carry a trusted GPG signature with the --verify-signatures command.
+
+If you use this option when merging a branch and it contains commits that are not signed and valid, the merge will not work.
+
+'''
+$ git merge --verify-signatures non-verify
+fatal: Commit ab06180 does not have a GPG signature.
+'''
+
+If the merge contains only valid signed commits, the merge command will show you all the signatures it has checked and then move forward with the merge.
+
+'''
+$ git merge --verify-signatures signed-branch
+Commit 13ad65e has a good GPG signature by Scott Chacon (Git signing key) <schacon@gmail.com>
+Updating 5c3386c..13ad65e
+Fast-forward
+ README | 2 ++
+ 1 file changed, 2 insertions(+)
+'''
+
+You can also use the -S option with the git merge command to sign the resulting merge commit itself. The following example both verifies that every commit in the branch to be merged is signed and furthermore signs the resulting merge commit.
+
+'''
+$ git merge --verify-signatures -S  signed-branch
+Commit 13ad65e has a good GPG signature by Scott Chacon (Git signing key) <schacon@gmail.com>
+
+You need a passphrase to unlock the secret key for
+user: "Scott Chacon (Git signing key) <schacon@gmail.com>"
+2048-bit RSA key, ID 0A46826A, created 2014-06-04
+
+Merge made by the 'recursive' strategy.
+ README | 2 ++
+ 1 file changed, 2 insertions(+)
+'''
+

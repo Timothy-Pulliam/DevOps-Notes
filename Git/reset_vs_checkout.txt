@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-04-08T10:34:30-04:00
+
+====== reset vs checkout ======
+Created Monday 08 April 2019
+
+https://stackoverflow.com/questions/3639342/whats-the-difference-between-git-reset-and-git-checkout
+
+For instance, if we have two branches, 'master' and 'develop' pointing at different commits, and we're currently on 'develop' (so HEAD points to it) and we run git reset master, 'develop' itself will now point to the same commit that 'master' does.
+
+On the other hand, if we instead run git checkout master, 'develop' will not move, HEAD itself will. HEAD will now point to 'master'.
+
+So, in both cases we're moving HEAD to point to commit A, but how we do so is very different. reset will move the branch HEAD points to, checkout moves HEAD itself to point to another branch.
+
+{{.\pasted_image.png}}
