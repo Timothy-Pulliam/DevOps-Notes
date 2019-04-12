@@ -1,0 +1,34 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-04-10T13:44:19-04:00
+
+====== Idioms ======
+Created Wednesday 10 April 2019
+
+== Getting facts about a system ==
+$ ansible <hostname> -m setup
+
+This will return a large amount of variable data, which may look like this on Ansible 2.7:
+
+'''
+{
+    "ansible_all_ipv4_addresses": [
+        "REDACTED IP ADDRESS"
+    ],
+    "ansible_all_ipv6_addresses": [
+        "REDACTED IPV6 ADDRESS"
+    ],
+    "ansible_apparmor": {
+        "status": "disabled"
+    },
+    "ansible_architecture": "x86_64",
+    "ansible_bios_date": "11/28/2013",
+    "ansible_bios_version": "4.1.5",
+    "ansible_cmdline": {
+        "BOOT_IMAGE": "/boot/vmlinuz-3.10.0-862.14.4.el7.x86_64",
+'''
+
+
+You can achieve the same effect by placing the following code anywhere in the playbook
+
+''- debug: var=ansible_facts''

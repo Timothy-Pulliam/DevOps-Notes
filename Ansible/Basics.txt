@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-04-10T16:00:09-04:00
+
+====== Basics ======
+Created Wednesday 10 April 2019
+
+== Ansible Linter ==
+pip install ansible-lint
+ansible-lint help
+
+== Running ==
+Run playbook on localhost
+''# ansible-playbook -i localhost, refresh_facts.yml --connection=local''

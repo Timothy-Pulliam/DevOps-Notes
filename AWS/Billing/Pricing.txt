@@ -24,14 +24,14 @@ For compute resources, you pay hourly from the time you launch a resource until 
 **Data Storage/Transfer**
 you typically pay per GB. 
 
-**No Taxes (Except Japan)**
+**Taxes**
 https://aws.amazon.com/c-tax-faqs/
-Except as otherwise noted, our prices are exclusive of applicable taxes and duties, including VAT and
-sales tax.
+https://aws.amazon.com/tax-help/
+Prices shown do not include tax.
 
 ==== Cost Optimization Strategies ====
 
-== Right Sizing ==
+== Right Sizing (The Obvious Solution) ==
 https://aws.amazon.com/pricing/cost-optimization/#right-size
 With AWS you can right size your services to meet exactly the capacity requirements you need without having to overprovision or compromise capacity.
 With AWS, you can adapt your services to address actual business needs at any time, with **no penalties or incidental fees**.
@@ -43,17 +43,16 @@ Use the right
 
 to avoid over-paying
 
-== Reserved Instances (RIs) ==
-For certain services like Amazon EC2 and Amazon RDS, you can invest in reserved capacity. 
-With Reserved Instances, you can save up to 75% over equivalent on-demand capacity. Reserved Instances are available in 3 options – 
-* All up-front (AURI)
-* Partial up-front (PURI) 
-* No upfront payments (NURI).
+== Use The Right Pricing Model ==
+AWS offers several pricing models depending on product. These include:
 
-When you buy Reserved Instances, the larger the upfront payment, the greater the discount. To maximize your savings, you can pay all up-front and receive the  largest discount. Partial up-front RI's offer lower discounts but give you the option to spend less up front. Lastly, you can choose to spend nothing up front and receive a smaller discount, but allowing you to free up capital to spend in other projects.
-
-By using reserved capacity, your organization can minimize risks, more predictably manage budgets, and comply with policies that require longer-term commitments.
-
-After you are done with your RI, you can sell it on the RI market place.
-https://aws.amazon.com/ec2/purchasing-options/reserved-instances/marketplace/
+* On Demand means you pay for compute or database capacity with no long-term commitments
+or upfront payments.
+* Dedicated Instances (available with Amazon Elastic Compute Cloud (Amazon EC2)) run in a
+virtual private cloud (VPC) on hardware that’s dedicated to a single customer.
+* Spot Instances are an Amazon EC2 pricing mechanism that lets you purchase spare computing
+capacity with no upfront commitment at discounted hourly rates.
+* Reservations provide you with the ability to receive a greater discount, up to 75 percent, by
+paying for capacity ahead of time. More detail is provided in the section, “Optimizing costs with
+reservations.” Reservation options include:
 
