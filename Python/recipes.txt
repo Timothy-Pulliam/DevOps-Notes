@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-04-14T16:00:15-04:00
+
+====== recipes ======
+Created Sunday 14 April 2019
+
+== Find Files ==
+You're going to need to provide a fully qualified path, because file holds only the tail, not the entire path.
+
+'''
+for root, dirs, files in os.walk(rootdir):
+    for file in files:
+        path = os.path.join(root, file)
+        im = Image.open(path)
+        im.save(path)
+'''

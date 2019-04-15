@@ -5,8 +5,10 @@ Creation-Date: 2018-08-19T19:37:03-04:00
 ====== Installation ======
 Created Sunday 19 August 2018
 
-==== Installation ====
+==== Installation (Ubuntu) ====
 https://docs.docker.com/install/linux/docker-ce/ubuntu/#set-up-the-repository
+If you are installing on Debian, simply replace all instances of "ubuntu" with "debian"
+
 Uninstall old versions of docker
 $ sudo apt-get remove docker docker-engine docker.io
 
@@ -65,7 +67,7 @@ https://docs.docker.com/install/linux/linux-postinstall/
 
 == Run Docker Client as Non Root User ==
 https://docs.docker.com/install/linux/linux-postinstall/
-WARNING! This has security implications. Only allow users you trust to run the docker client without sudo, you are essentially giving them root access to the system, as well as possibly increasing the attack vector for docker.
+__WARNING!__ This has security implications. Only allow users you trust to run the docker client without sudo, you are essentially giving them root access to the system, as well as possibly increasing the attack vector for docker.
 https://docs.docker.com/engine/security/security/#docker-daemon-attack-surface
 
 $ sudo groupadd docker

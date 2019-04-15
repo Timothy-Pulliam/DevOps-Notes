@@ -1,0 +1,35 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-04-14T09:54:19-04:00
+
+====== Branching ======
+Created Sunday 14 April 2019
+
+'''
+[root@ns1 ansible]# git branch dev
+[root@ns1 ansible]# git branch list
+[root@ns1 ansible]# git branch -l
+  dev
+  list
+* master
+[root@ns1 ansible]# git branch -D list
+Deleted branch list (was 895111d).
+[root@ns1 ansible]# git branch -l
+  dev
+* master
+[root@ns1 ansible]# git checkout dev
+M       dns/vars/main.yml
+Switched to branch 'dev'
+'''
+
+Any changes from this point will deviate from our master branch. A good strategy is to write code to our dev branch, test it on a test branch before finally merging it with our master branch.
+
+'''
+[root@ns1 ansible]# git branch test
+[root@ns1 ansible]# git branch -l
+* dev
+  master
+  test
+'''
+
+

@@ -1,0 +1,65 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-04-14T11:15:13-04:00
+
+====== Vault ======
+Created Sunday 14 April 2019
+
+
+== Overview ==
+https://docs.ansible.com/ansible/latest/user_guide/vault.html
+
+Ansible Vault is a feature of ansible that allows you to keep sensitive data such as passwords or keys in encrypted files, rather than as plaintext in playbooks or roles. These vault files can then be distributed or placed in source control.
+
+To enable this feature, a command line tool - ansible-vault - is used to edit files, and a command line flag (--ask-vault-pass or --vault-password-file) is used. Alternately, you may specify the location of a password file or command Ansible to always prompt for the password in your ansible.cfg file. These options require no command line flag usage.
+
+A vault id is an identifier for one or more vault secrets. For example, a playbook can now include a vars file encrypted with a ‘dev’ vault id and a ‘prod’ vault id.
+
+== Examples ==
+
+* to create a new encrypted data file, run the following command:
+
+ansible-vault create foo.yml
+
+* To edit an encrypted file
+
+ansible-vault edit foo.yml
+
+* Should you wish to change your password on a vault-encrypted file or files, you can do so with the rekey command (you can rekey multiple files at once):
+
+ansible-vault rekey foo.yml bar.yml baz.yml
+
+* Encrypt Unencrypted files
+ansible-vault encrypt foo.yml bar.yml baz.yml
+
+* Decrypt Unecrypted files - If you have existing files that you no longer want to keep encrypted, you can permanently decrypt them
+ansible-vault decrypt foo.yml bar.yml baz.yml
+
+* View encrypted files without editing them
+ansible-vault view foo.yml bar.yml baz.yml
+
+* The ansible-vault encrypt_string command allows you to encrypt a single variable that lives in an otherwise ‘clear text’ YAML file:
+ansible-vault encrypt_string --vault-id a_password_file 'foobar' --name 'the_secret'
+
+Result:
+
+'''
+the_secret: !vault |
+      $ANSIBLE_VAULT;1.1;AES256
+      62313365396662343061393464336163383764373764613633653634306231386433626436623361
+      6134333665353966363534333632666535333761666131620a663537646436643839616531643561
+      63396265333966386166373632626539326166353965363262633030333630313338646335303630
+      3438626666666137650a353638643435666633633964366338633066623234616432373231333331
+      6564
+other_plain_text: othervalue
+'''
+
+
+== Using Vaults with playbooks ==
+https://docs.ansible.com/ansible/latest/user_guide/playbooks_vault.html
+ansible-playbook --vault-id /path/to/my/vault-password-file site.yml
+
+To prompt for a password
+
+ansible-playbook --vault-id @prompt site.yml
+

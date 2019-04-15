@@ -1,0 +1,65 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-04-15T14:34:42-04:00
+
+====== CI CD ======
+Created Monday 15 April 2019
+
+Terminology:
+
+Immutable Infrastructure: 
+It is expensive, time-consuming, and often boring to fix a server. So why fix a server when you can just throw it away and build a new one?
+
+
+Use Spot Instances for non critical tasks (compilation, testing) to save up to 90% over on demand instances.
+
+== Code Deploy / Code Pipeline ==
+
+
+The pipeline visualized
+{{.\pasted_image.png}}
+
+
+==== Deployment Types ====
+
+==== Single Target Deployment ====
+
+Basically, your QA system is your Prod system. Think writing code on your laptop and pushing to a single server. You really can only test on that one server, which limits you in terms the types of tests you can do, and downtime.
+
+{{.\pasted_image005.png}}
+
+==== All-at-Once Deployment ====
+
+Downside is if you break something, you break everything.
+
+{{.\pasted_image001.png?height=486}}
+
+
+
+
+{{.\pasted_image002.png}}
+
+
+==== Rolling Deployment ====
+Slow to deploy/rollback. However very reliable as health checks are made at each stage for each group of servers.
+
+{{.\pasted_image003.png}}
+
+
+
+==== "Blue Green" / A B Deployment ====
+Very quick to roll back. Just a DNS change is needed.
+
+1) Our app exists in its own domain
+2) We clone the entire infrastructure using Cloud Formation
+3) Build/Deploy new application to cloned infrastructure
+4) If a health check passes on clone, we switch DNS to point to the new application.
+
+{{.\pasted_image004.png}}
+
+
+==== A B Testing ====
+
+A B Testing is implemented via Route 53
+
+{{.\pasted_image006.png}}
