@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-04-16T14:33:17-04:00
+
+====== VPC with Public and Private Subnets (NAT) ======
+Created Tuesday 16 April 2019
+
+https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Scenario2.html
+The configuration for this scenario includes a virtual private cloud (VPC) with a public subnet and a private subnet. We recommend this scenario if you want to run a public-facing web application, while maintaining back-end servers that aren't publicly accessible. A common example is a multi-tier website, with the web servers in a public subnet and the database servers in a private subnet. You can set up security and routing so that the web servers can communicate with the database servers.

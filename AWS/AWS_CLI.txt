@@ -63,3 +63,7 @@ $ aws s3 ls s3://mybucket
 
 copy objects from one bucket to another bucket
 $ aws s3 cp --recursive s3://sourcebucket s3://destinationbucket
+
+==== VPC ====
+attach internet gateway
+aws ec2 attach-internet-gateway --vpc-id "vpc-097a87ebab1cb2662" --internet-gateway-id "igw-0d3732a7fa8e34862" --region us-east-2

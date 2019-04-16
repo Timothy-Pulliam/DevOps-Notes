@@ -7,6 +7,7 @@ Created Monday 02 July 2018
 https://aws.amazon.com/cloudformation/?sc_channel=PS&sc_campaign=acquisition_US&sc_publisher=google&sc_medium=ACQ-P%7CPS-GO%7CBrand%7CSU%7CManagement%20Tools%7CCloudFormation%7CUS%7CEN%7CText&sc_content=cloudformation_e&sc_detail=aws%20cloud%20formation&sc_category=cloudformation&sc_segment=278498073067&sc_matchtype=e&sc_country=US&s_kwcid=AL!4422!3!278498073067!e!!g!!aws%20cloud%20formation&ef_id=WwGTFAAABBmyBScy:20180702183212:s
 
 ==== Infrastructure as code ====
-Infrastructure as JSON templates. Upload the template to Cloud Formation and it will use the template to provision out LAMP stacks, networks, servers, etc. Version control your JSON template files. Basically it is "DevOps in a nutshell".
+Infrastructure as JSON templates. Upload the template to Cloud Formation and it will use the template to provision out LAMP stacks, networks, servers, etc. Version control your JSON template files. It allows you provision out entire infrastructure environments using code.
 
 AWS CloudFormation provides a common language for you to describe and provision all the infrastructure resources in your cloud environment. CloudFormation allows you to use a simple text file to model and provision, in an automated and secure manner, all the resources needed for your applications across all regions and accounts. This file serves as the single source of truth for your cloud environment. 
+

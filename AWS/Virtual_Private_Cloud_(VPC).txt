@@ -5,3 +5,69 @@ Creation-Date: 2018-07-02T14:09:44-04:00
 ====== Virtual Private Cloud (VPC) ======
 Created Monday 02 July 2018
 
+== Overview ==
+https://aws.amazon.com/vpc/faqs/
+
+* **A Virtual Private Cloud**: A logically isolated virtual network in the AWS cloud. You define a VPC’s IP address space from ranges you select.
+* **Subnet**: A segment of a VPC’s IP address range where you can place groups of isolated resources.
+* **Internet Gateway**: The Amazon VPC side of a connection to the public Internet.
+* **NAT Gateway**: A highly available, managed Network Address Translation (NAT) service for your resources __in a private subnet__ to access the Internet.
+* **Virtual private gateway**: The Amazon VPC side of a VPN connection.
+* **Peering Connection**: A peering connection enables you to route traffic via private IP addresses between two peered VPCs.
+* **VPC Endpoints**: Enables private connectivity to services hosted in AWS, from within your VPC without using an Internet Gateway, VPN, Network Address Translation (NAT) devices, or firewall proxies.
+	* **Gateway type endpoints** are available only for AWS services including S3 and DynamoDB. These endpoints will add an entry to your route table you selected and route the traffic to the supported services through Amazon’s private network.
+	* **Interface type endpoints** provide private connectivity to services powered by PrivateLink, being AWS services, your own services or SaaS solutions, and supports connectivity over Direct Connect. More AWS and SaaS solutions will be supported by these endpoints in the future. Please refer to VPC Pricing for the price of interface type endpoints.
+* **Egress-only Internet Gateway**: A stateful gateway to provide egress only access for IPv6 traffic from the VPC to the Internet.
+
+== Default VPC ==
+
+You can create a default VPC in an Availability Zone via AWS API
+
+''$ aws ec2 create-default-subnet --availability-zone us-east-2a''
+
+When we create a default VPC, we do the following to set it up for you:
+
+* Create a VPC with a size /16 IPv4 CIDR block (172.31.0.0/16). This provides up to 65,536 private IPv4 addresses.
+* Create a size /20 default subnet in each Availability Zone. This provides up to 4,096 addresses per subnet, a few of which are reserved for our use.
+* Create an **internet gateway** and connect it to your default VPC.
+* Create a default security group and associate it with your default VPC.
+* Create a default network access control list (ACL) and associate it with your default VPC.
+* Associate the default DHCP options set for your AWS account with your default VPC.
+
+{{.\pasted_image004.png}}
+
+== Subnet Calculator ==
+https://www.calculator.net/ip-subnet-calculator.html
+https://www.aelius.com/njh/subnet_sheet.html
+
+{{.\pasted_image.png}}
+
+==== Subnet Guidlines for VPCs ====
+https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Scenarios.html
+
+=== VPC with a Single Public Subnet ===
+The configuration for this scenario includes a virtual private cloud (VPC) with a single public subnet, and an Internet gateway to enable communication over the Internet. We recommend this configuration if you need to run a single-tier, public-facing web application, such as a blog or a simple website.
+
+{{.\pasted_image001.png}}
+
+* The configuration for this scenario includes the following:
+* A virtual private cloud (VPC) with a size /16 IPv4 CIDR block (example: 10.0.0.0/16). This provides 65,536 private IPv4 addresses.
+* A subnet with a size /24 IPv4 CIDR block (example: 10.0.0.0/24). This provides 256 private IPv4 addresses.
+* An Internet gateway. This connects the VPC to the Internet and to other AWS services.
+* An instance with a private IPv4 address in the subnet range (example: 10.0.0.6), which enables the instance to communicate with other instances in the VPC, and an Elastic IPv4 address (example: 198.51.100.2), which is a public IPv4 address that enables the instance to be reached from the Internet.
+* A custom route table associated with the subnet. The route table entries enable instances in the subnet to use IPv4 to communicate with other instances in the VPC, and to communicate directly over the Internet. A subnet that's associated with a route table that has a route to an Internet gateway is known as a public subnet.
+
+You can optionally enable IPv6 for this scenario. In addition to the components listed above, the configuration includes the following:
+
+* A size /56 IPv6 CIDR block associated with the VPC (example: 2001:db8:1234:1a00::/56). Amazon automatically assigns the CIDR; you cannot choose the range yourself.
+* A size /64 IPv6 CIDR block associated with the public subnet (example: 2001:db8:1234:1a00::/64). You can choose the range for your subnet from the range allocated to the VPC. You cannot choose the size of the subnet IPv6 CIDR block.
+* An IPv6 address assigned to the instance from the subnet range (example: 2001:db8:1234:1a00::123).
+* Route table entries in the custom route table that enable instances in the VPC to use IPv6 to communicate with each other, and directly over the Internet.
+
+{{.\pasted_image002.png}}
+
+Routing
+
+{{.\pasted_image003.png}}
+
+
