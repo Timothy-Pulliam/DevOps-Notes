@@ -1,7 +1,0 @@
-Content-Type: text/x-zim-wiki
-Wiki-Format: zim 0.4
-Creation-Date: 2019-04-16T16:15:13-04:00
-
-====== VPC with a Single Public Subnet ======
-Created Tuesday 16 April 2019
-

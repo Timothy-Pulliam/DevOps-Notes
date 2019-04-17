@@ -67,3 +67,7 @@ $ aws s3 cp --recursive s3://sourcebucket s3://destinationbucket
 ==== VPC ====
 attach internet gateway
 aws ec2 attach-internet-gateway --vpc-id "vpc-097a87ebab1cb2662" --internet-gateway-id "igw-0d3732a7fa8e34862" --region us-east-2
+
+==== Tagging ====
+https://docs.aws.amazon.com/cli/latest/reference/ec2/create-tags.html
+aws ec2 create-tags --resources ami-78a54011 --tags Key=Stack,Value=production
