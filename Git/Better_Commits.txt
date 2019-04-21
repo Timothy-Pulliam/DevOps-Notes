@@ -1,0 +1,30 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-04-21T11:51:03-04:00
+
+====== Better Commits ======
+Created Sunday 21 April 2019
+
+https://seesparkbox.com/foundry/semantic_commit_messages
+Commits must follow the below structure
+
+'''
+feat: add hat wobble
+^--^  ^------------^
+|     |
+|     +-> Summary in present tense.
+|
++-------> Type: chore, docs, feat, fix, refactor, style, or test.
+'''
+
+'''
+chore: add Oyster build script
+docs: explain hat wobble
+feat: add beta sequence
+fix: remove broken confirmation message
+refactor: share logic between 4d3d3d3 and flarhgunnstow
+style: convert tabs to spaces
+test: ensure Tayne retains clothing
+'''
+
+You'll never again be tempted to include a bug fix and a feature in the same commit. My git log is now an easy-to-skim changelog.
