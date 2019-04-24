@@ -17,6 +17,20 @@ Created Monday 02 July 2018
 	* **Interface type endpoints** provide private connectivity to services powered by PrivateLink, being AWS services, your own services or SaaS solutions, and supports connectivity over Direct Connect. More AWS and SaaS solutions will be supported by these endpoints in the future. Please refer to VPC Pricing for the price of interface type endpoints.
 * **Egress-only Internet Gateway**: A stateful gateway to provide egress only access for IPv6 traffic from the VPC to the Internet.
 
+==== Best Practices ====
+https://aws.amazon.com/answers/networking/aws-single-vpc-design/
+
+General Best Practices
+* Ensure that your VPC network range (CIDR block) does not overlap with your organization’s other private network ranges. (10.x.x.x/16)
+
+* Do not allocate all network addresses at once; instead ensure that you reserve some address space for future use.
+
+* Divide your VPC network range evenly across all available Availability Zones (AZs) in a region.
+
+* Create one subnet per available AZ for each group of hosts that have unique routing requirements (e.g., public vs. private subnets).
+
+* Size your VPC CIDR and subnets to support significant growth for the expected workload(s).
+
 
 ==== Basics ====
 https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#SubnetRouting
@@ -79,5 +93,10 @@ aws ec2 disassociate-address --association-id eipassoc-2bebb745
 aws ec2 release-address --public-ip 198.51.100.0
 aws ec2 release-address --allocation-id eipalloc-64d5890a
 
+
 Pricing
 https://aws.amazon.com/ec2/pricing/on-demand/#Elastic_IP_Addresses
+
+
+
+

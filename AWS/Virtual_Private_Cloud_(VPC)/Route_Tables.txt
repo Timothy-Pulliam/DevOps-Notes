@@ -1,0 +1,40 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-04-24T15:20:26-04:00
+
+====== Route Tables ======
+Created Wednesday 24 April 2019
+
+Each subnet in your VPC must be associated with a route table; the table controls the routing for the subnet. A subnet can only be associated with one route table at a time, but you can associate multiple subnets with the same route table.
+
+== Main (default) Route Tables ==
+When you create a VPC, it automatically has a main route table. The Main Route Table is the default Route Table. You can change the Main Route Table at any time.
+
+Your VPC has an implicit router.
+
+CIDR blocks for IPv4 and IPv6 are treated separately. For example, a route with a destination CIDR of 0.0.0.0/0 (all IPv4 addresses) does not automatically include all IPv6 addresses. You must create a route with a destination CIDR of ::/0 for all IPv6 addresses.
+
+Every route table contains a local route for communication within the VPC over IPv4. If your VPC has more than one IPv4 CIDR block, your route tables contain a local route for each IPv4 CIDR block. If you've associated an IPv6 CIDR block with your VPC, your route tables contain a local route for the IPv6 CIDR block. You cannot modify or delete these routes.
+
+== API ==
+https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html
+
+aws ec2 describe-route-tables
+
+aws ec2 create-route-table --vpc-id vpc-a01106c2
+
+aws ec2 create-route --route-table-id rtb-22574640 --destination-cidr-block 0.0.0.0/0 --gateway-id igw-c0a643a9
+aws ec2 create-route --route-table-id rtb-g8ff4ea2 --destination-cidr-block 10.0.0.0/16 --vpc-peering-connection-id pcx-1a2b3c4d
+aws ec2 create-route --route-table-id rtb-dce620b8 --destination-ipv6-cidr-block ::/0 --egress-only-internet-gateway-id eigw-01eadbd45ecd7943f
+
+aws ec2 associate-route-table --route-table-id rtb-22574640 --subnet-id subnet-9d4a7b6c
+
+aws ec2 delete-route --route-table-id rtb-22574640 --destination-cidr-block 0.0.0.0/0
+
+aws ec2 replace-route --route-table-id rtb-22574640 --destination-cidr-block 10.0.0.0/16 --gateway-id vgw-9a4cacf3
+
+aws ec2 disassociate-route-table --association-id rtbassoc-781d0d1a
+
+aws ec2 replace-route-table-association --association-id rtbassoc-781d0d1a --route-table-id rtb-22574640
+
+aws ec2 delete-route-table --route-table-id rtb-22574640

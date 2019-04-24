@@ -15,7 +15,12 @@ Internet gateways are free to use
 {{.\pasted_image001.png}}
 
 APIs
+aws ec2 create-internet-gateway
+aws ec2 describe-internet-gateways
 aws ec2 attach-internet-gateway --vpc-id "vpc-097a87ebab1cb2662" --internet-gateway-id "igw-0d3732a7fa8e34862" --region us-east-2
+aws ec2 detach-internet-gateway --internet-gateway-id igw-c0a643a9 --vpc-id vpc-a01106c2
+aws ec2 delete-internet-gateway --internet-gateway-id igw-c0a643a9
+
 
 == NAT Gateways ==
 https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html
