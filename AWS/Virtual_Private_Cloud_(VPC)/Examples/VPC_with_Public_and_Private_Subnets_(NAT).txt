@@ -28,3 +28,8 @@ You can optionally enable IPv6 for this scenario. In addition to the components 
 {{.\pasted_image001.png}}
 
 
+
+== Costs ==
+Nat Gateway
+EIPs
+EC2 Instances
