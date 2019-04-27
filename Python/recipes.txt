@@ -5,6 +5,10 @@ Creation-Date: 2019-04-14T16:00:15-04:00
 ====== recipes ======
 Created Sunday 14 April 2019
 
+== Get current working directory ==
+import os
+pwd = os.getcwd()
+
 == Find Files ==
 You're going to need to provide a fully qualified path, because file holds only the tail, not the entire path.
 

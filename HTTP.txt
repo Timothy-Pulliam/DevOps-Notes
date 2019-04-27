@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-04-27T13:11:50-04:00
+
+====== HTTP ======
+Created Saturday 27 April 2019
+
+https://www.ietf.org/rfc/rfc2068.txt

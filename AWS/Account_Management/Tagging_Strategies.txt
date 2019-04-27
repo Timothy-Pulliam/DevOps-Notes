@@ -27,6 +27,11 @@ When creating a tagging strategy for AWS resources, make sure that it accurately
 
 ==== Tagging Categories ====
 
+==== Users ====
+Email - contact info
+Department/Cost Center
+
+
 == Technical Tags ==
 **Name** – Used to identify individual resources
 

@@ -1,0 +1,49 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-04-26T20:22:37-04:00
+
+====== Flask ======
+Created Friday 26 April 2019
+
+==== URLs ====
+
+{{./pasted_image.png}}
+
+'''
+@app.route('/float/<float:decimal>')
+def show_float(decimal):
+    # show a decimal number
+    return 'Decimal %.5f' % decimal
+'''
+
+
+
+{{./pasted_image002.png}}
+
+{{./pasted_image001.png}}
+
+
+Use Case:
+
+You can use url_for() to automatically generate an about page for each user who creates an account, without having to hard code it.
+
+== HTTP Methods ==
+
+{{./pasted_image003.png}}
+
+== Static Files ==
+
+CSS or other static files can be loaded by included them in the desired template files. For example
+
+'''
+-rw-rw-r-- 1 tpulliam tpulliam 19 Apr 27 13:55 static/style.css
+
+$ cat templates/index.html 
+<html>
+<head><link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}"/> </head>
+'''
+
+
+==== Redirects and Errors ====
+
+

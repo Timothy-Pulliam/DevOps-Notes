@@ -1,0 +1,12 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-04-27T11:43:29-04:00
+
+====== misc ======
+Created Saturday 27 April 2019
+
+==== Models.py ====
+# Any time you add classes to this file you must run the following to update the database schema
+# $ python
+# >>> from myapp import db
+# >>> db.create_all()

@@ -1,0 +1,26 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-04-19T16:06:22-04:00
+
+====== misc ======
+Created Friday 19 April 2019
+
+<setuid0> How do I set up a role with multiple task files?
+<setuid0> for example, roles/{tasks1.yml, tasks2.yml}
+<agaffney> setuid0: create multiple files under tasks/ and then use import_tasks or include_tasks in tasks/main.yml to include the other tasks files
+<setuid0> agaffney: thanks
+<setuid0> include_tasks is static and import_tasks is dynamic right?
+* bigjazzsound has quit (Quit: WeeChat 1.9.1)
+* agolis has quit (Ping timeout: 268 seconds)
+<agaffney> the other way around
+<setuid0> oh. So you would use include_tasks if you were working with variables or templates that were generated during runtime?
+<agaffney> you can still do that with a static import. vars referenced in tasks are not evaluated until the task runs
+<setuid0> ok, thanks
+<agaffney> the differences between include_tasks and import_tasks are relatively minor, and don't matter in most cases
+<agaffney> the only time that you *must* use include_tasks is when the path of the file to include uses a variable
+<agaffney> and then it's only if it's a variable that's set at runtime
+* timotheus has quit (Remote host closed the connection)
+* DanyC (~DanyC@2001:420:c0c0:1003::7b) has joined
+<setuid0> It seems like import_tasks might be slightly faster since it is all done during preprocessing
+<setuid0> not sure though
+<agaffney> it probably is, but unless you're doing a lot of imports, the difference is probably negligible

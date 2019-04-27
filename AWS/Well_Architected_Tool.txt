@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-04-18T18:08:53-04:00
+
+====== Well Architected Tool ======
+Created Thursday 18 April 2019
+
+https://us-east-2.console.aws.amazon.com/wellarchitected/home?region=us-east-2#/welcome
+https://aws.amazon.com/well-architected-tool/faqs/
+
+The AWS Well-Architected Tool is available in US East (N. Virginia), US East (Ohio), US West (Oregon), and Europe (Ireland). 
+
+There is no additional charge for the AWS Well-Architected Tool. You pay only for your underlying AWS resources.
+

@@ -1,0 +1,20 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-04-26T20:25:02-04:00
+
+====== Reverting to Previous Commit ======
+Created Friday 26 April 2019
+
+git checkout <sha>
+
+You will be in a detached head state. If you want to truly delete all commits after this point, you can simply delete the branch you were just on. Warning, you really shouldn't do this.
+
+git branch -D master
+
+Now you can create a new branch from the detached head state
+
+git checkout -b new-master
+
+If you want to undo the changes to your remote as well, you can force a push using the command below. The "+" forces the push.
+
+git push origin +master

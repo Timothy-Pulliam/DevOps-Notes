@@ -1,0 +1,52 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-04-26T21:03:11-04:00
+
+====== sqlite ======
+Created Friday 26 April 2019
+
+== Install ==
+apt-get install sqlite3
+
+== Create database ==
+sqlite3 databases/database.db
+
+sqlite> .databases
+main: /home/tpulliam/code/flask_basic_organization/databases/database.db
+
+== Create Table ==
+'''
+sqlite> CREATE TABLE IF NOT EXISTS COMPANY(
+   ID INT PRIMARY KEY     NOT NULL,
+   NAME           TEXT    NOT NULL,
+   AGE            INT     NOT NULL,
+   ADDRESS        CHAR(50),
+   SALARY         REAL
+);
+'''
+
+'''
+sqlite> .tables
+Member
+'''
+
+
+'''
+sqlite> .schema Member
+CREATE TABLE Member(id int primary key not null, name text not null, email text not null, random text not null);
+'''
+
+
+== Insert Into Table ==
+'''
+INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY)
+VALUES (1, 'Paul', 32, 'California', 20000.00 );
+'''
+
+'''
+sqlite> insert into Member (id, name, email, random)
+   ...> values (1, 'tim', 'timothy.dpulliam@example.com', 'i like cheese');
+sqlite> select * from Member;
+1|tim|timothy.dpulliam@example.com|i like cheese
+'''
+
