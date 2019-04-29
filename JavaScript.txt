@@ -1,0 +1,11 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-04-29T10:09:49-04:00
+
+====== JavaScript ======
+Created Monday 29 April 2019
+
+Where to put javascript?
+
+== List of DOM Events ==
+https://developer.mozilla.org/en-US/docs/Web/Events

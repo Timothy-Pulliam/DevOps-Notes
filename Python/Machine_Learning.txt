@@ -1,0 +1,52 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-04-29T08:06:24-04:00
+
+====== Machine Learning ======
+Created Monday 29 April 2019
+
+https://books.google.com/books?id=GOVOCwAAQBAJ&printsec=frontcover&source=gbs_vpt_reviews#v=onepage&q&f=false
+
+== setup ==
+pip install [[NumPy]] [[SciPy]] scikit-learn matplotlib pandas
+
+== Terminology ==
+https://dataconomy.com/2015/01/whats-the-difference-between-supervised-and-unsupervised-learning/
+**Unsupervised Learning** - used to explore unstructured or unknown data to extract meaningful information about information without the meaning of a known outcome variable or reward function. Unlike supervised learning, we don't know the answer ahead of time.
+	**Clustering - **
+	**Dimensionality Reduction **- 
+**Supervised Learning** - is the machine learning task of learning a function that maps an input to an output based on example input-output pairs.
+	**Classification** - is a subcategory of supervised learning where the goal is the predict the correct classification of new data based on training data (spam email, hand writted characters, etc.). The labels are discrete and unordered.
+	**Regression** - a subcategory of supervised learning. Goal is to predict continuous outcomes using regression analysis.
+**Reinforcement Learning** - Reinforcement Learning(RL) is a type of machine learning technique that enables an agent to learn in an interactive environment by trial and error using feedback from its own actions, experiences, or environment.
+
+== Sample Data Sets ==
+https://gist.githubusercontent.com/curran/a08a1080b88344b0c8a7/raw/d546eaee765268bf2f487608c537c05e22e4b221/iris.csv
+
+{{.\pasted_image005.png}}
+
+{{.\pasted_image006.png}}
+
+== Classification ==
+
+{{.\pasted_image.png}}
+
+== Regression ==
+
+{{.\pasted_image001.png}}
+
+== Reinforcment Learning ==
+{{.\pasted_image002.png}}
+
+==== Unsupervised Learning ====
+
+== Clustering ==
+Clustering is an exploratory data analysis technique that allows us to organize unorganized data into meaningful subgroups.
+
+Clustering is useful to identify trends in marketing, how customers interact with a product, etc.
+
+{{.\pasted_image003.png}}
+
+== Dimensionality Reduction (and data compression) ==
+
+{{.\pasted_image004.png}}
