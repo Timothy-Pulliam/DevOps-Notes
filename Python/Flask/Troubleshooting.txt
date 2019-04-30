@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-04-28T17:36:01-04:00
+
+====== Troubleshooting ======
+Created Sunday 28 April 2019
+
+== Ungodly Slow Response Times on Local Flask Server ==
+https://stackoverflow.com/questions/11150343/slow-requests-on-local-flask-server
+https://werkzeug.palletsprojects.com/en/0.15.x/serving/
+
+On operating systems that support ipv6 and have it configured such as modern Linux systems, OS X 10.4 or higher as well as Windows Vista some browsers can be painfully slow if accessing your local server. The reason for this is that sometimes “localhost” is configured to be available on both ipv4 and ipv6 socktes and some browsers will try to access ipv6 first and then ivp4.
+
+Solution:
+So the fix is to disable ipv6 in /etc/hosts.

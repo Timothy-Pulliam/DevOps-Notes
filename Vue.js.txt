@@ -1,0 +1,19 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-04-28T09:02:12-04:00
+
+====== Vue.js ======
+Created Sunday 28 April 2019
+
+https://vuejs.org/v2/guide/
+
+== Installation ==
+
+'''
+<!-- development version, includes helpful console warnings -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+<!-- production version, optimized for size and speed -->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+'''

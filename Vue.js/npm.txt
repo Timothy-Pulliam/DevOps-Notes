@@ -1,0 +1,34 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-04-28T09:05:30-04:00
+
+====== npm ======
+Created Sunday 28 April 2019
+
+sudo apt-get install npm
+
+npm search <package>
+
+npm install <package>
+
+# update npm
+npm install npm -g
+
+# list installed packages
+npm ls
+
+
+Where does npm put stuff?
+	   See npm help 5 npm-folders
+
+	   tl;dr:
+
+	   - Non-global libraries are installed the node_modules sub folder in the folder you are currently in. Use the npm root command to see where modules go, and the npm bin command to see where executables go
+
+	   -   Global installs are different from local installs. If you install  something  with  the  -g
+		   flag, then its executables go in **npm bin -g** and its modules go in **npm root -g**.
+
+== npm virtualenv ==
+
+npm-bundle
+browserfy

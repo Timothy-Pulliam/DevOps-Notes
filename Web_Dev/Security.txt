@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-04-28T12:42:38-04:00
+
+====== Security ======
+Created Sunday 28 April 2019
+
+==== New Tab Vulnerability ====
+https://medium.com/@jitbit/target-blank-the-most-underestimated-vulnerability-ever-96e328301f4c
+
+'''
+var newWnd = window.open();
+newWnd.opener = null;
+'''
+
+
+you only need to use that script if you're opening links programmatically using javascript. If you're just setting links to target="_blank", adding rel="noopener noreferrer" does the same thing
