@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-05-01T09:02:45-04:00
+
+====== Statistics ======
+Created Wednesday 01 May 2019
+
+When calculating the formulas for mean absolute deviation (MAD), variance, and standard deviation, it is important to know if you are working with an entire population (where you have all of the possible data), or if you are working with only a sample (a part) of the data. In addition, if you are using a sample of the data, you need to know if you will be making generalizations about the entire population, based upon this sample.
+
+The only difference between the formulas in each section is division by n or n - 1.
+Read more about these formulas under Measures of Spread.
+
+{{.\pasted_image.png}}
+
+
+==== Measureing The Spread of Data ====
+https://mathbitsnotebook.com/Algebra1/StatisticsData/STSpread.html

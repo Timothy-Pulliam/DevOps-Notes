@@ -50,3 +50,8 @@ We can rewite as
 {{./pasted_image007.png}}
 
 ==== Adaptive Linear Neurons ====
+
+
+
+
+

@@ -1,0 +1,59 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-05-01T08:58:33-04:00
+
+====== Terminology ======
+Created Wednesday 01 May 2019
+
+https://mathbitsnotebook.com/Algebra1/StatisticsData/STPopSample.html
+**Population Data**
+A population data set contains all members of a specified group (the entire list of possible data values). [Utilizes the count n in formulas.]
+Example: The population may be "ALL people living in the US."
+Example: Any census
+
+**Sample Data**
+A sample data set contains a part, or a subset, of a population. The size of a sample is always less than the size of the population from which it is taken. [Utilizes the count n - 1 in formulas.]
+Example: The sample may be "SOME people living in the US."
+Example: A lightbulb company tests 50 bulbs to determine the lifespan of the average bulb
+
+
+**Descriptive statistics** uses the data collected from the population to provide descriptions of the same population, either through numerical calculations or graphs or tables. 
+
+**Inferential statistics** makes inferences and predictions about a population based on a random sample of data taken from the population in question. There is ALWAYS some uncertainty (error) in Inferential Statistics.
+(Marketing, etc.)
+
+**Parameters** are numbers that summarize data for an entire population. 
+	10% of US senators voted for a particular measure. There are only 100 US Senators, you can count what every single one of them voted.
+	40% of 1,211 students at a particular elementary school got below a 3 on a standardized test. You know this because you have each and every students’ test score.
+
+	* mean - 
+	* standard deviation - 
+	* variance - 
+
+**Statistics** are numbers that summarize data from a sample, i.e. some subset of the entire population.
+	60% of US residents agree with the latest health care proposal. It’s not possible to actually ask hundreds of millions of people whether they agree. Researchers have to just take samples and calculate the rest.
+
+	* mean - 
+	* standard deviation - 
+	* variance - 
+
+==== 4 levels of data classification ====
+
+== non-metric / qualitative data ==
+* Nominal - Numbers are used for classification only. Cannot be used for measurements
+	Which of the following employment classification describes you?
+	1) Educator
+	2) IT
+	3) Unemployed
+
+* Ordinal - Allows for ranking of results. However we cannot say anything about the intervals between choices. (4 is not twice as "good" as 2)
+	This computer tutorial was
+	1) Not Helpful
+	2) Somewhat Helpful
+	3) Moderately Helpful
+	4) Very Helpful
+	5) Extremely Helpful
+
+== metric / quantitative data ==
+* Interval
+* Ratio

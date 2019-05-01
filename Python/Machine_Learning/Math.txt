@@ -29,5 +29,25 @@ Total Distance = (x1 + x2) - (y1 + y2)
 {{./pasted_image.png?width=540}}
 Red: **Manhattan distance**. Green: diagonal, straight-line distance. Red, blue, yellow: equivalent Manhattan distances.
 
+== Example ==
+
+p can intuitively be thought of as the number of dimensions that can be traversed at any given moment in "time"
+{{.\pasted_image001.png}}
+
+The distances between the x,y vectors, using the Euclidean Distance is found below.
+
+'''
+from math import sqrt
+
+x = [1,1,1,1,0]
+y = [1,0,1,0,4]
+
+def euclideanDistance(x,y):
+    distance = sqrt( sum( [ abs( i-j ) for i,j in zip(x,y)]))
+    return distance
+
+euclideanDistance(x,y)
+'''
+
 
 ==== Regression Analysis ====

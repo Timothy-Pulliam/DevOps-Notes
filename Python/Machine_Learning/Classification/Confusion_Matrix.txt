@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-05-01T13:00:04-04:00
+
+====== Confusion Matrix ======
+Created Wednesday 01 May 2019
+
+https://en.wikipedia.org/wiki/Confusion_matrix
+https://www.dataschool.io/simple-guide-to-confusion-matrix-terminology/
