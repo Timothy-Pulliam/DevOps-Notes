@@ -17,3 +17,17 @@ https://vuejs.org/v2/guide/
 <!-- production version, optimized for size and speed -->
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 '''
+
+
+==== vue cli ====
+The recommended way to scaffold a Vue project
+Vue CLI is the Standard Tooling for Vue.js Development.
+
+npm install -g @vue/cli
+vue create my-project
+
+# Manage projects in gui
+vue ui
+
+
+https://cli.vuejs.org/guide/

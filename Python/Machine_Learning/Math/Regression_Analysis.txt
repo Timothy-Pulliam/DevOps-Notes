@@ -1,0 +1,27 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-04-30T21:29:44-04:00
+
+====== Regression Analysis ======
+Created Tuesday 30 April 2019
+
+== Linear Regression ==
+{{./pasted_image.png}}
+
+In linear regression, the observations (red) are assumed to be the result of random deviations (green) from an underlying relationship (blue) between a dependent variable (y) and an independent variable (x).
+
+{{./equation.png?type=equation}}
+
+Where {{./equation001.png?type=equation}} Denotes the transpose, so that {{./equation002.png?type=equation}} is the inner product between vectors {{./equation003.png?type=equation}} and  xi and β.
+
+Often these n equations are stacked together and written in matrix notation as
+
+{{./equation004.png?type=equation}}
+
+where
+
+{{./equation005.png?type=equation}}
+{{./equation006.png?type=equation}}
+{{./equation007.png?type=equation}}
+
+

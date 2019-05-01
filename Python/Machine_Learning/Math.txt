@@ -1,0 +1,33 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-04-30T19:35:41-04:00
+
+====== Math ======
+Created Tuesday 30 April 2019
+
+== Minkowski Metric ==
+Minkowski distance is typically used with p being 1 or 2, which correspond to the Manhattan distance and the Euclidean distance, respectively. In the limiting case of p reaching infinity, we obtain the Chebyshev distance:
+
+The Minkowski distance of order p between two points
+
+{{./equation.png?type=equation}}
+
+Is defined as
+
+{{./equation001.png?type=equation}}
+
+== Manhattan Distance ==
+When n = 2 (2-dimensions) and P = 1, this simplifies to the Manhattan Distance.
+
+https://en.wiktionary.org/wiki/Manhattan_distance
+
+
+points: (y1,y2), (x1,x2)
+Horizontal distance: x1-y1
+Vertical Distance: x2-y2
+Total Distance = (x1 + x2) - (y1 + y2)
+{{./pasted_image.png?width=540}}
+Red: **Manhattan distance**. Green: diagonal, straight-line distance. Red, blue, yellow: equivalent Manhattan distances.
+
+
+==== Regression Analysis ====

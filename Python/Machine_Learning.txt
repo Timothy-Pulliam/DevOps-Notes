@@ -27,6 +27,8 @@ https://gist.githubusercontent.com/curran/a08a1080b88344b0c8a7/raw/d546eaee76526
 
 {{.\pasted_image006.png}}
 
+A particular sample's feature can be selected as {{./equation.png?type=equation}}
+
 == Classification ==
 
 {{.\pasted_image.png}}
@@ -50,3 +52,20 @@ Clustering is useful to identify trends in marketing, how customers interact wit
 == Dimensionality Reduction (and data compression) ==
 
 {{.\pasted_image004.png}}
+
+
+==== Machine Learning Pipeline ====
+
+{{./pasted_image007.png}}
+
+Preprocessing - munging the data
+
+* normalize featrues to range [0,1] (feature scaling)
+https://en.wikipedia.org/wiki/Feature_scaling
+* standard normal distribution with zero mean and unit variance
+* Some features will be correlated. In this case, we can compress the data by reducing the dimensionality by getting rid of redundant data, allowing our algorithm to run much faster.
+https://en.wikipedia.org/wiki/Dimensionality_reduction
+* Randomly divide data into training and test set. After we have developed our model with the training set, we test with the test set to see if the model generalizes well.
+
+
+
