@@ -1,0 +1,73 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-05-06T11:28:19-04:00
+
+====== Markov Chains ======
+Created Monday 06 May 2019
+
+== Introduction ==
+https://towardsdatascience.com/introduction-to-markov-chains-50da3645a50d
+
+https://www.math.drexel.edu/~jwd25/LM_SPRING_07/lectures/Markov.html
+
+MARKOV PROCESSES
+
+ 
+
+Suppose a system has a finite number of states and that the sysytem undergoes changes from state to state with a probability for each distinct state transition that depends solely upon the current state. Then, the process of change is termed a Markov Chain or Markov Process.
+
+ 
+
+Definition: If a system featuring "n" distinct states undergoes state changes which are strictly Markov in nature, then the probability that its current state is " "
+
+given that its previous state was " " is the transition probability, "". The nxn matrix "" whose ijth element is  is termed the transition matrix of the Markov chain.
+
+Each column vector  of the transition matrix is thus associated with the preceding state. Since there are a total of "n" unique transitions from this state, the sum of the components of  must add to "1", because it is a certainty that the new state will be among the "n" distinct states.
+
+ 
+
+Definition: The state vector for an observation of a Markov chain featuring "n" distinct states is a column vector, , whose kth component, , is the probability that the system is in state " " at that time.
+
+Example # 1: Drexel finds that 70% of it alumni who contribute to the annual fund will also contribute the next year and 20% of its alumni who do not contribute one year, will contribute the next year. Determine the probability that a new graduated student will be a contributor to the annual fund 10 years after she graduates.
+
+ 
+{{.\pasted_image001.png}}
+Now that we have the transition matrix, we need a state vector. In fact, we need a particular state vector, namely the initial state vector. Our newly minted graduate became an alumnus immediately upon graduation. While she was a student, she was not an alumnus and thus did not contribute to the annual fund previously. Her last state vector reflects that.
+
+{{.\pasted_image002.png}}
+
+{{.\pasted_image003.png}}
+Therefore, 10 years after graduation, only 40% of those celebrating their 10th reunion are likely to be contributors.
+
+ 
+
+What happens after 20 years?
+
+{{.\pasted_image004.png}}
+We obtain the same result! In other words, the state vector converged to a steady-state vector. I this case that steady-state vector is{{.\pasted_image006.png}}
+
+
+Theorem: The steady-state vector of the transition matrix "P" is the unique probability vector that satisfies this equation: {{.\pasted_image007.png}}
+
+That is true because, irrespective of the starting state, eventually equilibrium must be achieved. The transient, or sorting-out phase takes a different number of iterations for different transition matrices, but eventually the state vector features components that are precisely what the transition matrix calls for. So, subsequent applications of "P" do not change the matured state vector.
+
+Theorem: State transition matrices all have {{.\pasted_image008.png}}  as an eigenvalue.
+
+We will just consider a 2x2 matrix here, but the result can be extended to an nxn.
+
+{{.\pasted_image009.png}}
+{{.\pasted_image010.png}}
+
+Therefore, 1 is an eigenvalue for P. Now, let's find the other eigenvalue.
+
+{{.\pasted_image011.png}}
+
+Since {{.\pasted_image012.png}} (because of probabilities of states),  Therefore, {{.\pasted_image013.png}} is the dominant eigenvalue. This fact will manifest itself when we demonstrate that the corresponding eigenvector is indeed the steady state vector, {{.\pasted_image014.png}} Let's find that corresponding eigenvector. 
+
+
+
+
+
+
+
+

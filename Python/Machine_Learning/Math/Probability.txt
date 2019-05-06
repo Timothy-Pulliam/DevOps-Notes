@@ -1,0 +1,138 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-05-06T08:52:13-04:00
+
+====== Probability ======
+Created Monday 06 May 2019
+
+Classical Method of Assigning Probabilities
+
+P(E) = n/N
+
+E = Event
+n = number of times event can occur
+N = total number of events
+
+0 <= P(E) <= 1
+
+Probability of Relative Frequency of Occurrence
+
+(Number of times Event has occurred) / (Number of Times Event could have occurred)
+
+
+Sample Space - Complete list of all elementary events for an experiment. For example, the sample space for rolling two dice is
+'''
+array([[[1, 1],
+        [1, 2],
+        [1, 3],
+        [1, 4],
+        [1, 5],
+        [1, 6]],
+
+       [[2, 1],
+        [2, 2],
+        [2, 3],
+        [2, 4],
+        [2, 5],
+        [2, 6]],
+
+       [[3, 1],
+        [3, 2],
+        [3, 3],
+        [3, 4],
+        [3, 5],
+        [3, 6]],
+
+       [[4, 1],
+        [4, 2],
+        [4, 3],
+        [4, 4],
+        [4, 5],
+        [4, 6]],
+
+       [[5, 1],
+        [5, 2],
+        [5, 3],
+        [5, 4],
+        [5, 5],
+        [5, 6]],
+
+       [[6, 1],
+        [6, 2],
+        [6, 3],
+        [6, 4],
+        [6, 5],
+        [6, 6]]])
+'''
+
+
+==== Intro to Set Theory - Unions and Intersections ====
+
+== Union ==
+
+{{.\pasted_image001.png}}
+
+{{.\pasted_image.png}}
+
+== Intersection ==
+
+{{.\pasted_image002.png}}
+
+{{.\pasted_image003.png}}
+
+
+
+Mutually Exclusive Events occur when the intersection of both events is zero. For example, when testing a lightbulb, it can either "PASS" or "FAIL", but not both (XOR).
+
+== Complement ==
+{{.\pasted_image004.png}}
+
+{{.\pasted_image005.png}}
+
+The probability of the complement
+	''P(X') = 1 - P(X)''
+
+
+== Independant Events ==
+If two events are independant of one another, we can say the following
+
+''P(X|Y) = P(X) 	and 	P(Y|X) = P(Y)''
+
+* P(X|Y) = the probability of X occurring, given that Y has already occurred.
+
+Knowing that Y has occurred does not impact the probability of X occurring if the two events are independant. For example. 
+
+* Y = The lakers are playing today
+* X = I will pet my cat
+
+These things are not related. Usually, when you sample from a population, you must replace the sample and "shuffle" the population to avoid effecting future events. 
+
+For example if you have a batch of screws that are 5% defective and you take one out at random, if you do not replace the screw back into the population and shuffle, the next screw you pick will have a chance slightly less than 5% of being defective. The events are no longer independant.
+
+== Combinatorics - Sampling without replacement ==
+https://www.statisticshowto.datasciencecentral.com/probability-and-statistics/probability-main-index/permutation-combination-formula/
+
+
+
+{{.\pasted_image006.png}}
+
+You always have fewer combinations than permutations, and here’s why:
+Take the numbers 1,2,3,4. If you want to know how many ways you can select 3 items where the order doesn’t matter (and the items aren’t allowed to repeat), you can pick:
+
+123
+234
+134
+124
+However, if you want permutations (where the order does matter, the same set has 24 different possibilities. Just take the first set of numbers listed above {1,2,3} and think of the ways you can order it.
+
+123
+132
+321
+312
+231
+213
+There are six ways to order the numbers, which means there are 4 x 6 ways to order the set of four numbers.
+
+== Probability Rules ==
+
+P(X U
