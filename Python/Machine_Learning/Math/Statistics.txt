@@ -5,6 +5,16 @@ Creation-Date: 2019-05-01T09:02:45-04:00
 ====== Statistics ======
 Created Wednesday 01 May 2019
 
+==== Frequency Distribution ====
+
+How to choose bin sizes
+https://www.statisticshowto.datasciencecentral.com/choose-bin-sizes-statistics/
+
+If the data are not normal, additional classes may be required; Doane (1976) proposed a modification to Sturges’ rule to allow for skewness.  It is known that Sturges’ rule and Doane’s rule lead to oversmoothed histograms, especially for large sample.
+https://robjhyndman.com/papers/sturges.pdf
+
+
+==== Basic Formulas ====
 When calculating the formulas for mean absolute deviation (MAD), variance, and standard deviation, it is important to know if you are working with an entire population (where you have all of the possible data), or if you are working with only a sample (a part) of the data. In addition, if you are using a sample of the data, you need to know if you will be making generalizations about the entire population, based upon this sample.
 
 The only difference between the formulas in each section is division by n or n - 1.
@@ -15,3 +25,14 @@ Read more about these formulas under Measures of Spread.
 
 ==== Measureing The Spread of Data ====
 https://mathbitsnotebook.com/Algebra1/StatisticsData/STSpread.html
+
+
+
+==== Skewedness ====
+ {{./pasted_image001.png}}
+
+== Kurtosis ==
+
+Describes the peakedness of a curve
+
+{{./pasted_image002.png}}

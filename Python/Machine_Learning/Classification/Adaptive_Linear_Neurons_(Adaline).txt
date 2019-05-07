@@ -1,0 +1,59 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-05-05T12:23:44-04:00
+
+====== Adaptive Linear Neurons (Adaline) ======
+Created Sunday 05 May 2019
+
+ADALINE (Adaptive Linear Neuron or later Adaptive Linear Element) is an early single-layer artificial neural network.
+
+The key difference between Adaline rule (also known as Widrow-Hoff rule) and the perceptron i that the weights are updated based on a linear activation function, rather than on a heavyside step function. This function is simply the identity function of the net input.
+
+{{./equation007.png?type=equation}}
+
+This allows us to obtain a continuous classification boundary, rather than the discontinuous one, found in the Perceptron one which results from using the Heavy Side Step Function to classify objects.
+
+== Definitions ==
+Adaline is a single layer neural network with multiple nodes where each node accepts multiple inputs and generates one output. Given the following variables as:
+
+* {{./equation.png?type=equation}} is the input vector
+* w is the weight vector
+* n is the number of inputs
+* θ some constant
+* y is the output of the model
+
+then we find that the output is {{./equation001.png?type=equation}} . If we further assume that
+
+   {{./equation002.png?type=equation}}
+   {{./equation003.png?type=equation}}
+
+then the output further reduces to:
+{{./equation004.png?type=equation}}
+
+== The Algorithms ==
+Let us assume:
+
+	* η (eta) is the learning rate (some positive constant)
+	* y is the output of the model
+	* o is the target (desired) output
+
+then the weights are updated as followed 
+{{./equation005.png?type=equation}} 
+
+The ADALINE converges to the least squares error which is {{./equation006.png?type=equation}}. This update rule is in fact the stochastic gradient descent update for linear regression.
+
+
+The quantizer is similar to the heavy side step function, and used to classify the objects.
+{{./pasted_image.png}}
+
+
+== Minimizing the Cost Function Using Gradient Descent ==
+{{./pasted_image001.png}}
+
+
+We want to minimize the **Sum of Squared Errors **function
+{{./pasted_image002.png}}
+
+
+{{./pasted_image003.png}}
+

@@ -1,0 +1,60 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-05-05T12:19:20-04:00
+
+====== Perceptron ======
+Created Sunday 05 May 2019
+
+====== Classification ======
+Created Tuesday 30 April 2019
+
+==== Perceptron Neurons ====
+Limitations
+* Only works for data sets which are linear separable.
+{{./pasted_image008.png}}
+
+* We don't necessarily know if a data set is linearly separable.
+* halting problem
+
+{{./pasted_image.png}}
+
+* Two Classes (-1,1) either neuron fired or it didn't.
+* Activation Function {{./equation002.png?type=equation}} takes a linear combination of sample vectors with corresponding weight functions
+{{./equation003.png?type=equation}}
+
+{{./equation004.png?type=equation}}
+{{./equation005.png?type=equation}}
+* {{./equation006.png?type=equation}} = Defined activation threshold
+
+This results in the following heavyside step function, the activation of of a linear combination of samples.
+
+{{./pasted_image001.png}}
+
+If we define 
+
+{{./equation007.png?type=equation}}
+
+We can rewite as
+{{./pasted_image003.png}}
+{{./pasted_image004.png}}
+
+{{./pasted_image005.png}}
+
+== The Algorithm ==
+{{./pasted_image009.png}}
+
+1) Initialize the weights ({{./equation009.png?type=equation}}) to 0, or small random numbers
+2) For each training sample ({{./equation010.png?type=equation}}) perform the following steps
+	1) Compute output value prediction {{./equation011.png?type=equation}} (-1, or 1)
+	2) update weights using the following method
+	
+{{./pasted_image006.png}}
+
+{{./pasted_image007.png}}
+
+==== Adaptive Linear Neurons ====
+
+
+
+
+

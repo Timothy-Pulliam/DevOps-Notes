@@ -7,6 +7,11 @@ Created Monday 29 April 2019
 
 https://books.google.com/books?id=GOVOCwAAQBAJ&printsec=frontcover&source=gbs_vpt_reviews#v=onepage&q&f=false
 
+Machine-learning practitioners use the data as a training set, to train an algorithm of one of the many types used by machine-learning practitioners, such as **Bayes nets**, **support-vector machines**, **decision trees**, **hidden**
+**Markov models**, and many others.
+
+The typical case where machine learning is a good approach is when we have little idea of what we are looking for in the data.
+
 == setup ==
 pip install [[NumPy]] [[SciPy]] scikit-learn matplotlib pandas
 
@@ -19,6 +24,10 @@ https://dataconomy.com/2015/01/whats-the-difference-between-supervised-and-unsup
 	**Classification** - is a subcategory of supervised learning where the goal is the predict the correct classification of new data based on training data (spam email, hand writted characters, etc.). The labels are discrete and unordered.
 	**Regression** - a subcategory of supervised learning. Goal is to predict continuous outcomes using regression analysis.
 **Reinforcement Learning** - Reinforcement Learning(RL) is a type of machine learning technique that enables an agent to learn in an interactive environment by trial and error using feedback from its own actions, experiences, or environment.
+
+**Hyper Parameters **- a hyperparameter is a parameter whose value is set before the learning process begins. By contrast, the values of other parameters are derived via training.
+
+
 
 == Sample Data Sets ==
 https://gist.githubusercontent.com/curran/a08a1080b88344b0c8a7/raw/d546eaee765268bf2f487608c537c05e22e4b221/iris.csv
