@@ -1,20 +1,26 @@
 Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.4
-<<<<<<< HEAD
 Creation-Date: 2019-05-05T14:28:06-04:00
 
 ====== Linear Algebra ======
 Created Sunday 05 May 2019
 
-{{./pasted_image.png}}
-=======
-Creation-Date: 2019-05-06T12:22:44-04:00
+== Matrix Multiplication ==
 
-====== Linear Algebra ======
-Created Monday 06 May 2019
+{{./pasted_image.png}}
+
+in numpy
+
+np.matmul(a,b)
+
+where a and b are both np.array objects.
 
 == Linear Transformations ==
 {{.\pasted_image006.png}}
+
+
+==== The Determinant ====
+
 
 
 == Eigen Vector ==
@@ -45,4 +51,28 @@ where each λi may be real but in general is a complex number. The numbers λ1, 
 
 == Eigenvalue ==
 
->>>>>>> 1c346091580c4dbe88ca4387875c6543ca4f8231
+
+== Linear Transormations Visualized ==
+https://www.math.hmc.edu/calculus/tutorials/lineartransformations/
+
+{{.\pasted_image007.png}}
+
+
+{{.\pasted_image008.png}}
+
+{{.\pasted_image009.png}}
+
+
+{{.\pasted_image010.png}}
+
+
+{{.\pasted_image011.png}}
+
+
+{{.\pasted_image012.png}}
+
+
+
+
+
+

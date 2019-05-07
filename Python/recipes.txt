@@ -19,3 +19,56 @@ for root, dirs, files in os.walk(rootdir):
         im = Image.open(path)
         im.save(path)
 '''
+
+
+== factorial ==
+'''
+def factorial(n):
+    if n <= 1:
+        return 1
+    else:
+        return n * factorial(n-1)
+'''
+
+'''
+def combinations(n, r):
+    return factorial(n) / (factorial(r) * factorial(n-r))
+
+def binomialCoefficient(n):
+    for i in range(n+1):
+        print(combinations(n, i))
+'''
+
+In [130]: binomialCoefficient(4)
+1.0
+4.0
+6.0
+4.0
+1.0
+
+
+== Cartesian Product ==
+
+# The following creates a generator, which saves memory
+''a = itertools.product(range(3), repeat=4)''
+
+We can convert the generator to a list to view it's contents
+'''
+b = list(a)
+b
+[(0, 0, 0, 0),
+ (0, 0, 0, 1),
+ (0, 0, 0, 2),
+ (0, 0, 1, 0),
+ (0, 0, 1, 1),
+ (0, 0, 1, 2),
+ (0, 0, 2, 0),
+ (0, 0, 2, 1),
+ (0, 0, 2, 2),
+ (0, 1, 0, 0),
+ (0, 1, 0, 1),
+ (0, 1, 0, 2),
+ (0, 1, 1, 0),
+ (0, 1, 1, 1),
+ (0, 1, 1, 2),
+'''

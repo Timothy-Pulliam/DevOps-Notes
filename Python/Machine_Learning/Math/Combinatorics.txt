@@ -1,0 +1,44 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-05-07T10:33:46-04:00
+
+====== Combinatorics ======
+Created Tuesday 07 May 2019
+
+http://web.eecs.utk.edu/~booth/311-04/notes/combinatorics.html
+http://people.math.gatech.edu/~trotter/book.pdf
+
+
+==== Binomial Coefficient ====
+https://en.wikipedia.org/wiki/Binomial_coefficient
+
+{{.\pasted_image006.png}}
+{{.\pasted_image007.png}}
+
+{{.\pasted_image003.png}}
+
+
+{{.\pasted_image004.png}}   
+
+==== Stars and Bars ====
+https://en.wikipedia.org/wiki/Stars_and_bars_(combinatorics)
+{{.\pasted_image008.png}}
+
+{{.\pasted_image009.png}}
+How many Positive Integer solutions are there for a, b, and c?
+a + b + c = 100
+
+Solution 1)
+
+n = 100
+k = 3
+
+(n-1)C(k-1) = 99C2 = 99! / 2! * (99 - 2)! =  4851
+
+Solution 2)
+
+Using Stars and Bars
+
+
+==== Enumeration ====
+
