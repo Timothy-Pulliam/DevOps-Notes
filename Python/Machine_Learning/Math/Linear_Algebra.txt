@@ -1,8 +1,48 @@
 Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.4
+<<<<<<< HEAD
 Creation-Date: 2019-05-05T14:28:06-04:00
 
 ====== Linear Algebra ======
 Created Sunday 05 May 2019
 
 {{./pasted_image.png}}
+=======
+Creation-Date: 2019-05-06T12:22:44-04:00
+
+====== Linear Algebra ======
+Created Monday 06 May 2019
+
+== Linear Transformations ==
+{{.\pasted_image006.png}}
+
+
+== Eigen Vector ==
+https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors
+In linear algebra, an eigenvector or characteristic vector of a linear transformation is a non-zero vector that changes by only a scalar factor when that linear transformation is applied to it. More formally, if T is a linear transformation from a vector space V over a field F into itself and v is a vector in V that is not the zero vector, then v is an eigenvector of T if T(v) is a scalar multiple of v. This condition can be written as the equation
+
+{\displaystyle T(\mathbf {v} )=\lambda \mathbf {v} ,} {\displaystyle T(\mathbf {v} )=\lambda \mathbf {v} ,}
+{{.\pasted_image001.png}}
+
+where λ is a scalar in the field F, known as the eigenvalue, characteristic value, or characteristic root associated with the eigenvector v.
+
+If the vector space V is finite-dimensional, then the linear transformation T can be represented as a square matrix A, and the vector v by a column vector, rendering the above mapping as a matrix multiplication on the left-hand side and a scaling of the column vector on the right-hand side in the equation
+{\displaystyle A\mathbf {v} =\lambda \mathbf {v} .}
+{{.\pasted_image002.png}}
+
+Equation (1) can be stated equivalently as
+
+{{.\pasted_image003.png}}
+This has a non-zero solution v if and only if the determinant of the matrix (A − λI) is zero. Therefore, the eigenvalues of A are values of λ that satisfy the equation
+
+{{.\pasted_image004.png}}
+The fundamental theorem of algebra implies that the characteristic polynomial of an n-by-n matrix A, being a polynomial of degree n, can be factored into the product of n linear terms,
+
+{{.\pasted_image005.png}}
+where each λi may be real but in general is a complex number. The numbers λ1, λ2, … λn, which may not all have distinct values, are roots of the polynomial and are the eigenvalues of A.
+
+
+
+== Eigenvalue ==
+
+>>>>>>> 1c346091580c4dbe88ca4387875c6543ca4f8231

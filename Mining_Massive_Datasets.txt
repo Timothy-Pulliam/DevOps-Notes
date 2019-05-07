@@ -1,0 +1,39 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-05-06T12:54:40-04:00
+
+====== Mining Massive Datasets ======
+Created Monday 06 May 2019
+
+“frequent itemsets” (hotdogs and ketchup)
+
+“collaborative filtering.” similar itemsets
+
+“Bonferroni’s Principle,” a warning against overzealous use
+of data mining. More information means less security.
+
+
+
+==== Term Frequency Times Inverse Document Frequence (TD.IDF) ====
+https://en.wikipedia.org/wiki/Tf%E2%80%93idf
+
+
+In several applications of data mining, we shall be faced with the problem of
+categorizing documents (sequences of words) by their topic.
+
+For instance, articles about baseball would tend to have many
+occurrences of words like “ball,” “bat,” “pitch,”, “run,” and so on.
+
+The most frequent words will
+most surely be the common words such as “the” or “and,” which help build
+ideas but do not carry any significance themselves. In fact, the several hundred
+most common words in English (called stop words) are often removed from
+documents before any attempt to classify them.
+
+
+{{.\pasted_image002.png}}
+
+{{.\pasted_image004.png}}
+
+
+https://en.wikipedia.org/wiki/Tf%E2%80%93idf
