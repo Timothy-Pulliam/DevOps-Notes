@@ -1,0 +1,43 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-05-08T13:57:17-04:00
+
+====== pandas ======
+Created Wednesday 08 May 2019
+
+== Expand pandas output ==
+If you get output like this
+
+								''0           1   ...               54               55''
+''airline                 Aer Lingus   Aeroflot*  ...  Virgin Atlantic  Xiamen Airlines''
+''avail_seat_km_per_week   320906734  1197672318  ...       1005248585        430462962''
+''incidents_85_99                  2          76  ...                1                9''
+''fatal_accidents_85_99            0          14  ...                0                1''
+
+Do this
+
+==== How are iloc and loc different? ====
+https://stackoverflow.com/questions/31593201/how-are-iloc-ix-and-loc-different
+
+.loc selects data only by labels
+
+df.loc['Penelope']
+df.loc[['Cornelia', 'Jane', 'Dean']]
+df.loc['Aaron':'Dean']
+
+.iloc selects data only by integer location
+
+df.iloc[4]
+
+df.iloc[[2, -2]]
+This returns a DataFrame of the third and second to last rows:
+
+df.iloc[:5:3]
+
+Simultaneous selection of rows and columns with .loc and .iloc
+
+One excellent ability of both .loc/.iloc is their ability to select both rows and columns simultaneously. In the examples above, all the columns were returned from each selection. We can choose columns with the same types of inputs as we do for rows. We simply need to separate the row and column selection with a comma.
+
+For example, we can select rows Jane, and Dean with just the columns height, score and state like this:
+
+df.loc[['Jane', 'Dean'], 'height':]

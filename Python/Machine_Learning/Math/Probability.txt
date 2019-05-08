@@ -66,6 +66,35 @@ array([[[1, 1],
 '''
 
 
+== General Rules ==
+intersect(A,B) = intersect(B,A)
+
+
+== Addition ==
+P(X U Y) = P(X) + P(Y) - intersection(X,Y)
+
+if X and Y are disjoint, intersection(X,Y) = 0
+P(X U Y) = P(X) + P(Y)
+
+== Multiplication ==
+intersection(X, Y) = P(X) * P(Y|X) = P(Y) * P(X|Y)
+
+If X and Y are independant events
+intersection(X, Y) = P(X) * P(Y) = P(Y) * P(X)
+
+== Law of Conditional Probability ==
+{{.\pasted_image008.png}}=  P(A) * P(B|A) / P(B)
+where {{.\pasted_image009.png}}  is the probability that both events A and B occur. This may be visualized as restricting the sample space to situations in which B occurs. The logic behind this equation is that if the possible outcomes for A and B are restricted to those in which B occurs, this set serves as the new sample space.
+
+{{.\pasted_image010.png}}
+If B1 occurs, A must occur.
+
+== Bayes' Theorem ==
+{{.\pasted_image011.png}}
+
+To calculate the probability of the intersection of more than two events, the conditional probabilities of all of the preceding events must be considered. In the case of three events, A, B, and C, the probability of the intersection P(A and B and C) = P(A)P(B|A)P(C|A and B).
+
+
 ==== Intro to Set Theory - Unions and Intersections ====
 
 == Union ==

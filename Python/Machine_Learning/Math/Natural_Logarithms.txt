@@ -1,0 +1,48 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-05-08T15:05:22-04:00
+
+====== Natural Logarithms ======
+Created Wednesday 08 May 2019
+
+e = lim x -> inf (1 + 1/x)^x
+
+prove, (1 + a)^b = e^ab if a is small
+
+Taylor Series
+
+When
+x is large, the above series converges slowly, although it does converge because
+n! grows faster than x^n
+for any constant x. However, when x is small, either
+positive or negative, the series converges rapidly, and only a few terms are
+necessary to get a good approximation.
+
+
+==== Power Laws ====
+one quantity varies as a power of another. For instance, considering the area of a square in terms of the length of its side, if the length is doubled, the area is multiplied by a factor of four.
+
+y = x^2
+
+log2(y) = 2log2(x)
+
+General form
+
+y = Cx^a
+y = e^b * x^a
+
+where b is some constant and C = e^b
+
+ln(y) = ln(e^b) + ln(x^a)
+ln(y) = b + ln(x^a)
+
+In the example below, instead of using natural logs, we use log base 10. so
+
+* C = 10^6
+* a = -2
+
+y = 10^6 * x**-2
+
+{{.\pasted_image.png?height=550}}
+
+

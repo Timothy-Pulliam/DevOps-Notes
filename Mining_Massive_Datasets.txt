@@ -5,6 +5,9 @@ Creation-Date: 2019-05-06T12:54:40-04:00
 ====== Mining Massive Datasets ======
 Created Monday 06 May 2019
 
+== Sample Datasets ==
+https://www.dataquest.io/blog/free-datasets-for-projects/
+
 “frequent itemsets” (hotdogs and ketchup)
 
 “collaborative filtering.” similar itemsets
@@ -37,3 +40,66 @@ documents before any attempt to classify them.
 
 
 https://en.wikipedia.org/wiki/Tf%E2%80%93idf
+
+
+== Hash Functions For Indexes ==
+ A hash table is one simple way to build an index. 
+
+Figure 1.2 suggests what a main-memory index of records with
+name, address, and phone fields might look like. Here, the index is on the phone
+field, and buckets are linked lists. We show the phone 800-555-1212 hashed to
+bucket number 17. There is an array of bucket headers, whose ith element is
+the head of a linked list for the bucket numbered i. We show expanded one of
+the elements of the linked list. It contains a record with name, address, and
+phone fields. This record is in fact one with the phone number 800-555-1212.
+Other records in that bucket may or may not have this phone number. We only
+know that whatever phone number they have is a phone that hashes to 17.
+
+{{.\pasted_image005.png?width=820}}
+
+==== Limitations of Mechanical Hard Drives ====
+Disks are organized into blocks, which are the minimum units that the operating system uses to move data between main memory and disk. For example,
+the Windows operating system uses blocks of 64K bytes (i.e., 216 = 65,536 bytes
+to be exact). It takes approximately ten milliseconds to access (move the disk
+head to the track of the block and wait for the block to rotate under the head)
+and read a disk block. That delay is at least five orders of magnitude (a factor
+of 105
+) slower than the time taken to read a word from main memory, so if all
+we want to do is access a few bytes, there is an overwhelming benefit to having
+data in main memory. 
+
+By organizing our data so that related data is on a single cylinder (the
+collection of blocks reachable at a fixed radius from the center of the disk, and
+therefore accessible without moving the disk head), we can read all the blocks
+on the cylinder into main memory in considerably less than 10 milliseconds
+per block. You can assume that a disk cannot transfer data to main memory
+at more than a hundred million bytes per second, no matter how that data is
+organized. That is not a problem when your dataset is a megabyte. But a
+dataset of a hundred gigabytes or a terabyte presents problems just accessing
+it, let alone doing anything useful with it.
+
+
+==== Physical Clusters and Distributed File Systems ====
+{{.\pasted_image006.png}}
+
+
+There are several implementations of DFS
+
+* Google File System (GFS)
+* Hadoop Distributed File System (HDFS)
+* [[CloudStore]] from Kosmix
+
+Files are TBs in size, and are rarely updated. Files are divided into chunks, which are typically 64 megabytes in size.
+Chunks are replicated, perhaps three times, at three different compute nodes. Moreover, the nodes holding copies of one chunk should be located on different
+racks, so we don’t lose all copies due to a rack failure. Normally, both the chunk
+size and the degree of replication can be decided by the user. To find the chunks of a file, there is another small file called the master node
+or name node for that file. The master node is itself replicated, and a directory
+for the file system as a whole knows where to find its copies. The directory itself
+can be replicated, and all participants using the DFS know where the directory
+copies are.
+
+==== Map Reduce ====
+
+
+
+
