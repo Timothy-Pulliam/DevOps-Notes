@@ -1,0 +1,437 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-08-19T14:12:38-04:00
+
+====== Articles ======
+Created Monday 19 August 2019
+
+==== Python __init__.py (dunder files) ====
+Files named __init__.py are used to mark directories on disk as Python package directories. If you have the files
+
+mydir/spam/__init__.py
+mydir/spam/module.py
+
+and mydir is on your path, you can import the code in module.py as
+
+import spam.module
+
+or
+
+from spam import module
+
+If you remove the __init__.py file, Python will no longer look for submodules inside that directory, so attempts to import the module will fail.
+
+The __init__.py file is usually empty, but can be used to export selected portions of the package under more convenient name, hold convenience functions, etc. Given the example above, the contents of the init module can be accessed as
+
+import spam
+
+==== Python Lambda Functions ====
+
+https://realpython.com/python-lambda/
+
+
+Lambda functions are also called Anonymous Functions, or Lambda Expressions
+
+identity function
+
+def identity(x):
+	return x
+
+lambda x: x
+
+You can apply the function above to an argument by surrounding the function and its argument with parentheses:
+
+>>> (lambda x: x + 1)(2)
+3
+
+Lambda functions can be named
+
+>>> add_one = lambda x: x + 1
+>>> add_one(2)
+3
+
+Which is equivalent to 
+
+def add_one(x):
+	return x + 1
+
+multi parameter lambda function
+
+>>> full_name = lambda first, last: f'Full name: {first.title()} {last.title()}'
+>>> full_name('guido', 'van rossum')
+'Full name: Guido Van Rossum'
+
+
+Lambda functions are regularly used with the built-in functions map() and filter(), as well as functools.reduce(), exposed in the module functools. The following three examples are respective illustrations of using those functions with lambda expressions as companions:
+
+>>> list(map(lambda x: x.upper(), ['cat', 'dog', 'cow']))
+['CAT', 'DOG', 'COW']
+>>> list(filter(lambda x: 'o' in x, ['cat', 'dog', 'cow']))
+['dog', 'cow']
+>>> from functools import reduce
+>>> reduce(lambda acc, x: f'{acc} | {x}', ['cat', 'dog', 'cow'])
+'cat | dog | cow'
+
+Are Lambdas Pythonic or Not?
+
+PEP 8, which is the style guide for Python code, reads:
+
+	Always use a def statement instead of an assignment statement that binds a lambda expression directly to an identifier. (Source)
+
+This strongly discourages using lambda bound to an identifier, mainly where functions should be used and have more benefits. PEP 8 does not mention other usages of lambda. As you have seen in the previous sections, lambda functions may certainly have good uses, although they are limited.
+
+A possible way to answer the question is that lambda functions are perfectly Pythonic if there is nothing more Pythonic available. 
+
+==== Dockerfile example ====
+
+plus how to build
+
+https://gist.github.com/ju2wheels/3d1a1dfa498977874d03
+
+You can build the docker image by placing the contents of this file in [[./Dockerfile]] and running
+
+docker build [[./]]
+
+run the container
+
+docker run -it <image ID>
+
+==== Installing GitLab ====
+https://hub.docker.com/r/gitlab/gitlab-ce/
+https://docs.gitlab.com/omnibus/docker/
+
+docker pull gitlab/gitlab-ce
+
+Run the image
+
+sudo docker run --detach \
+  --hostname gitlab.example.com \
+  --publish 443:443 --publish 80:80 --publish 22:22 \
+  --name gitlab \
+  --restart always \
+  --volume /srv/gitlab/config:/etc/gitlab \
+  --volume /srv/gitlab/logs:/var/log/gitlab \
+  --volume /srv/gitlab/data:/var/opt/gitlab \
+  gitlab/gitlab-ce:latest
+
+
+If you have SELinux enabled, use the following
+
+sudo docker run --detach \
+  --hostname gitlab.example.com \
+  --publish 443:443 --publish 80:80 --publish 22:22 \
+  --name gitlab \
+  --restart always \
+  --volume /srv/gitlab/config:/etc/gitlab:Z \
+  --volume /srv/gitlab/logs:/var/log/gitlab:Z \
+  --volume /srv/gitlab/data:/var/opt/gitlab:Z \
+  gitlab/gitlab-ce:latest
+
+
+Where is data stored?
+The GitLab container uses host mounted volumes to store persistent data:
+
+Local location 		Container location 	Usage
+/srv/gitlab/data 	/var/opt/gitlab 	For storing application data
+/srv/gitlab/logs 	/var/log/gitlab 	For storing logs
+/srv/gitlab/config 	/etc/gitlab 		For storing the GitLab configuration files
+
+
+start a shell session in the context of the running container and finish configuring GitLab,
+sudo docker exec -it gitlab /bin/bash
+
+Or you can edit [[/etc/gitlab/gitlab.rb]] of the running container
+
+sudo docker exec -it gitlab editor [[/etc/gitlab/gitlab.rb]]
+
+Alternatively, you can preconfigure the docker image by adding the environment variable GITLAB_OMNIBUS_CONFIG to the gitlab run command. This variable is read after gitlab.rb. You must run this command every time.
+
+sudo docker run --detach \
+  --hostname gitlab.example.com \
+  --env GITLAB_OMNIBUS_CONFIG="external_url 'http://my.domain.com/'; gitlab_rails['lfs_enabled'] = true;" \
+  --publish 443:443 --publish 80:80 --publish 22:22 \
+  --name gitlab \
+  --restart always \
+  --volume /srv/gitlab/config:/etc/gitlab \
+  --volume /srv/gitlab/logs:/var/log/gitlab \
+  --volume /srv/gitlab/data:/var/opt/gitlab \
+  gitlab/gitlab-ce:latest
+
+
+Updating the [[GitLab]] image
+
+stop the running container
+sudo docker stop gitlab
+
+remove the existing container
+sudo docker rm gitlab
+
+pull the new image
+sudo docker pull gitlab/gitlab-ce:latest
+
+rebuild the container
+sudo docker run --detach \
+--hostname gitlab.example.com \
+--publish 443:443 --publish 80:80 --publish 22:22 \
+--name gitlab \
+--restart always \
+--volume /srv/gitlab/config:/etc/gitlab \
+--volume /srv/gitlab/logs:/var/log/gitlab \
+--volume /srv/gitlab/data:/var/opt/gitlab \
+gitlab/gitlab-ce:latest
+
+==== GitFlow ====
+https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow
+
+https://wac-cdn.atlassian.com/dam/jcr:2bef0bef-22bc-4485-94b9-a9422f70f11c/02%20(2).svg?cdnVersion=521
+
+{{./pasted_image.png}}
+
+Develop and Master Branches
+
+Instead of a single master branch, this workflow uses two branches to record the history of the project. The master branch stores the official release history, and the develop branch serves as an integration branch for features. It's also convenient to tag all commits in the master branch with a version number.
+
+1) The first step is to complement the default master with a develop branch. A simple way to do this is for one developer to create an empty develop branch locally and push it to the server:
+
+git branch develop
+git push -u origin develop
+
+This branch will contain the complete history of the project, whereas master will contain an abridged version. Other developers should now clone the central repository and create a tracking branch for develop.
+
+2) Feature Branches
+
+Each new feature should reside in its own branch, which can be pushed to the central repository for backup/collaboration. But, instead of branching off of master, feature branches use develop as their parent branch. When a feature is complete, it gets merged back into develop. Features should never interact directly with master.
+
+{{./pasted_image001.png}}
+
+Note that feature branches combined with the develop branch is, for all intents and purposes, the Feature Branch Workflow. But, the Gitflow Workflow doesn’t stop there.
+
+Feature branches are generally created off to the latest develop branch.
+
+git checkout develop
+git checkout -b feature_branch
+
+When you’re done with the development work on the feature, the next step is to merge the feature_branch into develop.
+
+git checkout develop
+git merge feature_branch
+
+Release Branches
+
+{{./pasted_image002.png}}
+
+
+Once develop has acquired enough features for a release (or a predetermined release date is approaching), you fork a release branch off of develop. Creating this branch starts the next release cycle, so no new features can be added after this point—only bug fixes, documentation generation, and other release-oriented tasks should go in this branch. Once it's ready to ship, the release branch gets merged into master and tagged with a version number. In addition, it should be merged back into develop, which may have progressed since the release was initiated.
+
+
+
+==== Python Tricks ====
+
+_ in interpretor = last command executed
+
+view dissassembled code with dis.dis(function)
+
+==== Regular Expressions in Python ====
+
+==== Docker Compose ====
+https://stackoverflow.com/questions/42545431/when-to-use-docker-compose-and-when-to-use-docker-swarm
+
+It will probably help to start with a few definitions:
+
+	docker-compose: Command used to configure and manage a group of related containers. It is a frontend to the same api's used by the docker cli, so you can reproduce it's behavior with commands like docker run.
+	docker-compose.yml: Definition file for a group of containers, used by docker-compose and now also by swarm mode.
+	swarm mode: Used to manage a group of docker engines as a single entity and provide orchestration (constantly trying to correct any differences between the current state and the target state).
+	service: One or more containers for the same image and configuration within swarm, multiple containers provide scalability.
+	stack: One or more services within a swarm, these may be defined using a DAB or a docker-compose.yml file.
+	bridge network: Network managed by a single docker engine where multiple containers may communicate with each other. You may have multiple networks managed by an engine, and containers can be attached to zero or more networks.
+	overlay network: Similar to a bridge network but spanning multiple docker engines. These require a key/value store to maintain their state. Swarm mode provides this, but if swarm mode is disabled, you may also use etcd, consul, or zookeeper.
+	links: a method to connect containers together that predates the bridged network. Its usage is no longer recommended.
+	classic swarm: A predecessor to the integrated swarm mode that runs as a container, allows multiple engines to appear as one, but does not provide orchestration or include its own k/v store.
+
+To answer the questions:
+
+	has docker-swarm succeeded docker-compose and overlay networks is the new (recommended) way to connect containers?
+
+	Or is it that docker-compose is still an integral part of the entire docker family and it is expected and advisable to use it to connect containers to work in collaboration. If so does docker-compose work with containers across different nodes in the swarm??
+
+They provide different functionality and will continue to both serve a purpose. docker-compose cannot start containers inside swarm mode, but a newer version of the docker-compose.yml file (version 3) can be used to define a stack directly in swarm mode without using docker-compose itself. docker-compose is needed to manage containers outside of swarm mode, on a single docker engine or with classic swarm.
+
+	Or is it that overlay networks is for connecting containers across different hosts in the swarm and docker-compose is for creating internal links??
+
+	Besides I also see that it is mentioned in the docker documentation that --links not recommended anymore and will be obsolete soon.
+
+docker-compose starting with version 2 of the yml file connects multiple containers together by default with a new bridged network per project (the project defaults to the directory name). With classic swarm, that would default to an overlay network using an external k/v store. And with a swarm mode stack, this would be an overlay network.
+
+Using docker networks is the preferred way to have containers communicate with each other. You want a network per group of containers you wish to isolate from the rest of your docker environment. docker-compose automates this network creation, but you can also do it from the command line with docker networks create.
+
+Linking have been largely replaced by docker networks with built-in DNS discovery. When you remove links from your docker-compose.yml, you may need to replace them with a depends_on section to enforce container startup order. Otherwise, there are very few scenarios where linking makes sense and all the usage I've seen is from someone following outdated documentation.
+
+https://docs.docker.com/compose/gettingstarted/
+
+
+==== Python module of the week??? ====
+time
+os
+collections
+itertools
+
+
+==== OOP In Python ====
+class ThingOne(object):
+
+def __init__(self, ...):
+
+self.__
+
+==== Python Sphinx ====
+
+==== Tornado ====
+https://opensource.com/article/18/6/tornado-framework
+
+async example
+http://www.aosabook.org/en/500L/a-web-crawler-with-asyncio-coroutines.html
+
+==== Python CLI module (argparse) ====
+https://docs.python.org/3/howto/argparse.html#id1
+https://chase-seibert.github.io/blog/2014/03/21/python-multilevel-argparse.html
+
+trivial example
+
+	# prog.py
+	import argparse
+	parser = argparse.ArgumentParser()
+	parser.parse_args()
+
+$ python3 prog.py --help
+$ python prog.py --foo
+
+Positional Arguments
+
+	# echo.py
+	import argparse
+	parser = argparse.ArgumentParser()
+	
+	parser.add_argument("echo", help="echo the string you use here")
+	
+	args = parser.parse_args()
+	print(args.echo)
+
+For example, here is a program that simulates the classic echo command
+
+[[./echo.py]] "hello world"
+
+argparse treats new arguments as strings. If you wish to use other types, you must specify it like so
+
+parser.add_argument("square", help="display a square of a given number",
+					type=int)
+
+Optional Arguments
+
+	import argparse
+	parser = argparse.ArgumentParser()
+	parser.add_argument("--verbosity", help="increase output verbosity")
+	args = parser.parse_args()
+	if args.verbosity:
+		print("verbosity turned on")
+
+$ python3 prog.py --verbosity 1
+
+Make argument a boolean instead
+
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument("--verbose", help="increase output verbosity",
+					action="store_true")
+args = parser.parse_args()
+if args.verbose:
+	print("verbosity turned on")
+
+Short options
+
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument("-v", "--verbose", help="increase output verbosity",
+					action="store_true")
+args = parser.parse_args()
+if args.verbose:
+	print("verbosity turned on")
+
+$ python3 prog.py -v
+$ python3 prog.py --verbose
+
+Combining positional and optional arguments, order of the arguments does not matter on the command line
+
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument("square", type=int,
+					help="display a square of a given number")
+parser.add_argument("-v", "--verbosity", type=int, choices=[0, 1, 2],
+					help="increase output verbosity")
+args = parser.parse_args()
+answer = args.square**2
+if args.verbosity == 2:
+	print("the square of {} equals {}".format(args.square, answer))
+elif args.verbosity == 1:
+	print("{}^2 == {}".format(args.square, answer))
+else:
+	print(answer)
+
+
+Implement a Git like interface
+https://chase-seibert.github.io/blog/2014/03/21/python-multilevel-argparse.html
+
+#!/usr/bin/env python
+
+import argparse
+import sys
+
+
+class FakeGit(object):
+
+	def __init__(self):
+		parser = argparse.ArgumentParser(
+			description='Pretends to be git',
+			usage='''git <command> [<args>]
+
+The most commonly used git commands are:
+   commit     Record changes to the repository
+   fetch      Download objects and refs from another repository
+''')
+		parser.add_argument('command', help='Subcommand to run')
+		# parse_args defaults to [1:] for args, but you need to
+		# exclude the rest of the args too, or validation will fail
+		args = parser.parse_args(sys.argv[1:2])
+		if not hasattr(self, args.command):
+			print 'Unrecognized command'
+			parser.print_help()
+			exit(1)
+		# use dispatch pattern to invoke method with same name
+		getattr(self, args.command)()
+
+	def commit(self):
+		parser = argparse.ArgumentParser(
+			description='Record changes to the repository')
+		# prefixing the argument with -- means it's optional
+		parser.add_argument('--amend', action='store_true')
+		# now that we're inside a subcommand, ignore the first
+		# TWO argvs, ie the command (git) and the subcommand (commit)
+		args = parser.parse_args(sys.argv[2:])
+		print 'Running git commit, amend=%s' % args.amend
+
+	def fetch(self):
+		parser = argparse.ArgumentParser(
+			description='Download objects and refs from another repository')
+		# NOT prefixing the argument with -- means it's not optional
+		parser.add_argument('repository')
+		args = parser.parse_args(sys.argv[2:])
+		print 'Running git fetch, repository=%s' % args.repository
+
+
+if __name__ == '__main__':
+	FakeGit()
+
+auto complete
+https://github.com/kislyuk/argcomplete
+
+==== Text Encoding ====
+UTF-8, what is it? How to use it in python.

@@ -7,13 +7,12 @@ Created Friday 26 April 2019
 
 git checkout <sha>
 
-You will be in a detached head state. If you want to truly delete all commits after this point, you can simply delete the branch you were just on. Warning, you really shouldn't do this.
-
-git branch -D master
+You will be in a detached head state. If you want to truly delete all commits after this point, you can simply delete the branch, but don't do this, really don't!
 
 Now you can create a new branch from the detached head state
 
 git checkout -b new-master
+git branch -D master
 
 If you want to undo the changes to your remote as well, you can force a push using the command below. The "+" forces the push.
 

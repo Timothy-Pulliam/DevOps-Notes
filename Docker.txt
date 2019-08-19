@@ -26,3 +26,54 @@ INFO[0000] loading plugin "io.containerd.snapshotter.v1.btrfs"...  type=io.conta
 WARN[0000] failed to load plugin io.containerd.snapshotter.v1.btrfs  error="path /var/lib/docker/containerd/daemon/io.containerd.snapshotter.v1.btrfs must be a btrfs filesystem to be used with the btrfs snapshotter"
 '''
 
+
+==== Cheat Sheet ====
+
+https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes
+
+==== image operations ====
+
+== pull image ==
+docker pull
+
+== list images (all) ==
+docker images -a
+
+== delete images ==
+docker rmi <image 1> <image 2> ...
+docker images -a | grep "pattern" | awk '{print $3}' | xargs docker rmi
+
+== list and remove dangling (untagged) images ==
+docker images -f dangling=true
+docker image prune
+
+Note: If you build an image without tagging it, the image will appear on the list of dangling images because it has no association with a tagged image. You can avoid this situation by providing a tag when you build, and you can retroactively tag an images with the docker tag command.
+
+
+==== Container Operations ====
+
+list containers
+docker ps -a
+
+Removing Containers
+docker rm <container ID or name> <container ID or name>
+
+Remove stopped / exited containers
+docker ps -a -f status=exited
+docker container prune
+docker rm $(docker ps -a -f status=exited -q)
+
+connect to a running server
+docker attach <container name or id>
+
+==== Volume operations ====
+
+list volumes
+docker volume ls
+
+remove volume
+docker volume rm <volume 1> <volume 2> ...
+
+remove dangling volumes
+docker volume ls -f dangling=true
+docker volume prune
