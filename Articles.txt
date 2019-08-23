@@ -269,6 +269,174 @@ Linking have been largely replaced by docker networks with built-in DNS discover
 https://docs.docker.com/compose/gettingstarted/
 
 
+Example compose file. compose files are written in YAML.
+
+# docker-compose.yml
+# The compose file format version. Different compose file formats are compatible with
+# with different versions of the docker engine. For more information see https://docs.docker.com/compose/compose-file/
+version: "3"
+# Each service is a different docker image
+services:
+  # The web service pulls from the docker image specified below
+  web:
+	# replace username/repo:tag with your name and image details
+	image: username/repo:tag
+	# Run 5 instances of this image. Each container gets 50M of RAM, and 10% of CPU time allocated to it.
+	deploy:
+	  replicas: 5
+	  resources:
+		limits:
+		  cpus: "0.1"
+		  memory: 50M
+	  # Immediately restart the container if it fails
+	  restart_policy
+		condition: on-failure
+	# Instruct web’s containers to share port 80 via a load-balanced network called webnet. (Internally, the containers themselves publish to web’s port 80 at an ephemeral port.)
+	ports:
+	  - "4000:80"
+	networks:
+	  - webnet
+# Define the webnet network with the default settings (which is a load-balanced overlay network).
+networks:
+  webnet:
+
+
+https://docs.docker.com/compose/compose-file/
+
+# The compose file format version. Different compose file formats are compatible with
+# with different versions of the docker engine. For more information see https://docs.docker.com/compose/compose-file/
+version: "3.7"
+services:
+
+  # The first service is a redis docker image
+  redis:
+	# Location of the image
+	image: redis:alpine
+	ports:
+	  - "6379"
+	# 
+	networks:
+	  - frontend
+	deploy:
+	  replicas: 2
+	  update_config:
+		parallelism: 2
+		delay: 10s
+	  restart_policy:
+		condition: on-failure
+
+  db:
+	image: postgres:9.4
+	volumes:
+	  - db-data:/var/lib/postgresql/data
+	networks:
+	  - backend
+	deploy:
+	  placement:
+		constraints: [node.role == manager]
+
+  vote:
+	image: dockersamples/examplevotingapp_vote:before
+	ports:
+	  - "5000:80"
+	networks:
+	  - frontend
+	depends_on:
+	  - redis
+	deploy:
+	  replicas: 2
+	  update_config:
+		parallelism: 2
+	  restart_policy:
+		condition: on-failure
+
+  result:
+	image: dockersamples/examplevotingapp_result:before
+	ports:
+	  - "5001:80"
+	networks:
+	  - backend
+	depends_on:
+	  - db
+	deploy:
+	  replicas: 1
+	  update_config:
+		parallelism: 2
+		delay: 10s
+	  restart_policy:
+		condition: on-failure
+
+  worker:
+	image: dockersamples/examplevotingapp_worker
+	networks:
+	  - frontend
+	  - backend
+	deploy:
+	  mode: replicated
+	  replicas: 1
+	  labels: [APP=VOTING]
+	  restart_policy:
+		condition: on-failure
+		delay: 10s
+		max_attempts: 3
+		window: 120s
+	  placement:
+		constraints: [node.role == manager]
+
+  visualizer:
+	image: dockersamples/visualizer:stable
+	ports:
+	  - "8080:8080"
+	stop_grace_period: 1m30s
+	volumes:
+	  - "/var/run/docker.sock:/var/run/docker.sock"
+	deploy:
+	  placement:
+		constraints: [node.role == manager]
+
+networks:
+  frontend:
+  backend:
+
+volumes:
+  db-data:
+
+== Networking with docker compose ==
+
+https://docs.docker.com/compose/networking/
+By default Compose sets up a single network for your app. Each container for a service joins the default network and is both reachable by other containers on that network, and discoverable by them at a hostname identical to the container name.
+
+Suppose you have the following docker compose file
+
+version: "3"
+services:
+  web:
+	build: .
+	ports:
+	  - "8000:8000"
+  db:
+	image: postgres
+	ports:
+	  - "8001:5432"
+
+When you run docker-compose up, the following happens:
+
+	A network called myapp_default is created.
+	A container is created using web’s configuration. It joins the network myapp_default under the name web.
+	A container is created using db’s configuration. It joins the network myapp_default under the name db.
+
+Each container can now look up the hostname web or db and get back the appropriate container’s IP address. For example, web’s application code could connect to the URL postgres://db:5432 and start using the Postgres database.
+
+Use a pre-existing network
+
+If you want your containers to join a pre-existing network, use the external option:
+
+networks:
+  default:
+	external:
+	  name: my-pre-existing-network
+
+
 ==== Python module of the week??? ====
 time
 os
@@ -435,3 +603,34 @@ https://github.com/kislyuk/argcomplete
 
 ==== Text Encoding ====
 UTF-8, what is it? How to use it in python.
+
+
+==== Learn Python ====
+The basics
+Magic (Dunder Functions)
+setup.py
+OOP
+unittest
+__init__.py
+memory usage in python
+import
+constants
+class
+methods
+how to practice reading python code
+pipfile
+
+
+common python packages
+os
+time
+itertools
+
+==== Terraform ====
+Learn Terraform with Azure
+
+
+
+==== Good Git Commit Messages ====
+https://chris.beams.io/posts/git-commit/
+

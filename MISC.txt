@@ -11,3 +11,109 @@ vyprvpn - check out this vpn client
 ==== TODO ====
 Provide images for Route53 section
 
+==== mongo Dockerfile ====
+
+FROM ubuntu:latest
+
+WORKDIR /tmp
+
+RUN apt-get update
+RUN apt-get install -y wget gpg
+RUN wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | apt-key add -
+RUN echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.2 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.2.list
+RUN apt-get update
+RUN apt-get install -y mongodb-org wget
+RUN mkdir -p /data/db/log
+
+EXPOSE 27017
+
+CMD ["mongod"]
+~              
+
+==== LEarning Text Analysis with python ====
+#!/usr/bin/env python
+
+		import argparse
+		import sys
+		import re
+		from nltk.tokenize import sent_tokenize, word_tokenize
+		from nltk.probability import FreqDist
+		import matplotlib.pyplot as plt
+		from pymongo import MongoClient
+		import requests
+		import pprint
+		
+		parser = argparse.ArgumentParser()
+		parser.add_argument("--search", nargs=2, type=str, metavar=('filename', 'regex'), help="search a text file using a Python regular expression")
+		parser.add_argument("--tokenize", nargs=1, type=str, metavar=('filename'), help="break up a paragraph of text into its constituent sentences and words")
+		parser.add_argument("--dbinsert", nargs=1, type=str, metavar=('filename'), help="insert the following file into a mongodb database")
+		parser.add_argument("--scrape", nargs=1, type=str, metavar=('url'), help="scrape all HTML from the url given")
+		parser.add_argument("--outfile", nargs=1, type=str, metavar=('outfile'), help="output resulting text to file 'outfile'")
+		args = parser.parse_args()
+		
+		if len(sys.argv)==1:
+			parser.print_help(sys.stderr)
+			sys.exit(1)
+		
+		def read_file(file_name):
+			'''Reads a given text file an returns a str object containing the text'''
+			with open(file_name, 'r') as f:
+				text = f.read()
+				return text
+		
+		def write_file(file_name, text):
+			'''Writes to the given text file'''
+			with open(file_name, 'w+') as f:
+				f.write(text)
+		
+		def search_text(text, regex):
+			'''Searches a given text object for all instances of a given regular expression'''
+			prog = re.compile(regex)
+			matches = re.findall(prog, text)
+			return matches
+		
+		def tokenize_word(text):
+			'''Tokenzier breaks a paragraph up into smaller data chunks like sentences or words.
+			It is the first step in text analysis.'''
+			tokenized_words = word_tokenize(text)
+			return tokenized_words
+		
+		def frequency_distribution(tokenized_words):
+			fdist = FreqDist(tokenized_words)
+			return fdist
+		
+		if __name__ == '__main__':
+		
+			if args.search:
+				filename, regex = args.search
+				text = read_file(filename)
+				try:
+					matches = search_text(text, regex)
+				except re.error as e:
+					print("invalid regular expression. exiting...")
+					sys.exit(1)
+				print(matches)
+			if args.tokenize:
+				filename = args.tokenize[0]
+				text = read_file(filename)
+				tokenized_words = tokenize_word(text)
+				fdist = frequency_distribution(tokenized_words)
+				print(fdist)
+			if args.dbinsert:
+				filename = args.dbinsert[0]
+				text = read_file(filename)
+		
+				client = MongoClient('localhost', 27017)
+				db = client.test_db
+				collection = db.test_collections
+				data = {"text": text}
+				data_id = collection.insert_one(data).inserted_id
+				print(data_id)
+			if args.scrape:
+				url = args.scrape[0]
+				html = requests.get(url).text
+				pprint.pprint(html)
+				if args.outfile:
+					outfile = args.outfile[0]
+					write_file(outfile, html)
+		

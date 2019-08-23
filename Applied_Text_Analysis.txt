@@ -1,0 +1,39 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-08-23T16:57:43-04:00
+
+====== Applied Text Analysis ======
+Created Friday 23 August 2019
+
+==== Resources ====
+https://arxiv.org/
+
+==== Intro ====
+The main goal of Text Analytics is to use Supervised or Unsupervised machine learning to apply labels to a body of text to classify text (meaning, sentiment, etc.).
+
+NLP refers
+to a set of techniques involving the application of statistical methods, with or without
+insights from linguistics, to understand text for the sake of solving real-world tasks.
+
+This “understanding” of text is mainly derived by transforming texts to useable com‐
+putational representations, which are discrete or continuous combinatorial structures
+such as vectors or tensors, graphs, and trees.
+
+
+computational graph
+
+==== PyTorch ====
+computational graph framework to implement
+deep learning algorithms.
+
+==== Supervised Learning ====
+Supervision in machine learning, or supervised learning, refers to cases where the
+ground truth for the targets (what’s being predicted) is available for the observations.
+For example, in document classification, the target is a categorical label, 2 and the
+observation is a document. In machine translation, the observation is a sentence in
+one language and the target is a sentence in another language.
+
+{{./pasted_image.png}}
+
+==== Mathematical Representation ====
+{{./pasted_image001.png}}

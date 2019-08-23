@@ -1,0 +1,162 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-08-23T11:53:49-04:00
+
+====== mongodb ======
+Created Friday 23 August 2019
+
+==== Installation ====
+https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
+
+For mongodb version 4.2
+
+wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | sudo apt-key add -
+echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.2 multiverse" | sudo tee [[/etc/apt/sources.list.d/mongodb-org-4.2.list]]
+sudo apt-get update
+sudo apt-get install -y mongodb-org
+
+sudo service mongod start
+mongo
+>
+
+==== Dockerfile ====
+https://github.com/Microsoft/WSL/issues/1822#issuecomment-293615111
+
+# Run with
+# docker run -dit -p 27017:27017 <image id>
+FROM ubuntu:latest
+
+WORKDIR /tmp
+
+RUN apt-get update
+RUN apt-get install -y wget gpg
+RUN wget -qO - https://www.mongodb.org/static/pgp/server-4.2.asc | apt-key add -
+RUN echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.2 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.2.list
+RUN apt-get update
+RUN apt-get install -y mongodb-org
+RUN mkdir -p /data/db/log
+RUN service mongod start
+
+CMD ["bash"]
+
+
+==== Getting Help ====
+
+> help
+	db.help()                    help on db methods
+	db.mycoll.help()             help on collection methods
+	sh.help()                    sharding helpers
+	rs.help()                    replica set helpers
+	help admin                   administrative help
+	help connect                 connecting to a db help
+	help keys                    key shortcuts
+	help misc                    misc things to know
+	help mr                      mapreduce
+
+	show dbs                     show database names
+	show collections             show collections in current database
+	show users                   show users in current database
+	show profile                 show most recent system.profile entries with time >= 1ms
+	show logs                    show the accessible logger names
+	show log [name]              prints out the last segment of log in memory, 'global' is default
+	use <db_name>                set current database
+	db.foo.find()                list objects in collection foo
+	db.foo.find( { a : 1 } )     list objects in foo where a == 1
+	it                           result of the last line evaluated; use to further iterate
+	DBQuery.shellBatchSize = x   set default number of items to display on shell
+	exit                         quit the mongo shell
+
+==== MongoDB is NoSQL ====
+* Relational SQL Schemas can be complex and time consuming to construct, even for simple objects.
+* Mongo JSON representation is a plus
+* Mongodb uses Javascript interpreter, i.e. you can write straight [[JavaScript]] into the Mongodb shell
+	for (i=0; i<10000; i++) {
+	db.numbers.insert(
+	{"number": i}
+	)}
+
+
+==== Document Structure ====
+[[MongoDB]]  is a document database. A document is a JSON object. The data is actually stored in a format called BSON (Binary JSON) but we only work with the JSON version of the data.
+
+# Example flat document
+{
+	"_id" : <mongo adds this id>,
+	"first_name" : "Tim",
+	"last_name": "Pulliam",
+}
+
+==== Simple Commands ====
+
+# We connect to a test Database by default
+> db
+test
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+> use config
+switched to db config
+> show collections
+system.sessions
+
+
+== mongodump ==
+# We can query the config database. The config database is mainly for internal use, and during normal operations you should never manually insert or store data in it.
+# Modification of the config database on a functioning system may lead to instability or inconsistent data sets. If you must modify the config database, use mongodump to create a full backup of the config database.
+# https://docs.mongodb.com/manual/reference/config-database/
+
+root@afa424d101f9:/tmp# mongodump --help
+Usage:
+  mongodump <options>
+
+Export the content of a running server into .bson files.
+
+Specify a database with -d and a collection with -c to only dump that database or collection.
+
+
+
+==== Working with collections ====
+
+# mydb will be created once we insert something into it
+use mydb
+db.cars.insert({"make": "Subaru"})
+show collections
+mydb
+
+# Return everything in the database
+db.users.find({})
+
+# Find by first name
+db.users.find( {first_name: "Tim"} )
+
+# Find by last name, but only return first name
+db.users.find({ first_name: "Tim" }, {first_name: 1})
+
+# Remove
+db.users.remove({ first_name: "Tim" })
+
+# Update/Overwrite (no set)
+db.users.update({ first_name: "Tim"}, {first_name: "Timothy", last_name: "Pulliam"})
+
+# Update (with set)
+db.users.update({ first_name: "Tim" }, { $set: { first_name: "Timothy" }})
+
+==== Indexes ====
+
+Mongodb supports Indexing, which speeds up queries, but slows down inserts. Mongo supports up to 64 indexes per collection. 
+
+==== Sharding/Partitioning ====
+Sometimes referred to as partitioning, sharding splits the database across multiple machines, storing a subset of data on each of the systems. Using sharding means that you can scale your application across several smaller systems rather than investing in a larger, more expensive solution, allow the database to scale horizontally.
+
+
+==== Importing Data From A JSON File ====
+Make sure the data you are importing matches what you want to be in your database (since there is no schema enforced).
+
+$ mongoimport --db <database> --collections <collection> --file <jsonfile>
+
+If your data is in an array format, for example contained within square brackets, you must pass the --jsonArray argument.
+
+[...JSON....]
+$ mongoimport --db <database> --collections <collection> --jsonArray --file <jsonfile>
+
