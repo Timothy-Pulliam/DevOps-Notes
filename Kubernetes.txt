@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-08-27T12:49:51-04:00
+
+====== Kubernetes ======
+Created Tuesday 27 August 2019
+
+https://blog.sensu.io/how-kubernetes-works
+
+{{./pasted_image.png}}

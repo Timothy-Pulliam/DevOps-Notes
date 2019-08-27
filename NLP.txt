@@ -1,0 +1,66 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-08-27T13:13:28-04:00
+
+====== NLP ======
+Created Tuesday 27 August 2019
+
+==== Basic Terminology ====
+
+disciplines of their own, like phonology, morphology, syntax, semantics, and
+pragmatics.
+
+A corpus usually contains raw text (in ASCII or UTF-8) and
+any metadata associated with the text. he raw text is a sequence of characters
+(bytes), but most times it is useful to group those characters into contiguous units
+called tokens. In English, tokens correspond to words and numeric sequences separa‐
+ted by white-space characters or punctuation. The metadata could be any auxiliary piece of information associated with the text,
+like identifiers, labels, and timestamps. In machine learning parlance, the text along
+with its metadata is called an instance or data point. The corpus (Figure 2-1), a collec‐
+tion of instances, is also known as a dataset.
+
+
+
+
+{{./pasted_image.png}}
+
+
+The process of breaking a text down into tokens is called tokenization.
+
+it may be possible to entirely circumvent the issue of tokenization in some
+neural network models by representing text as a stream of bytes; this becomes very
+important for agglutinative languages.
+
+Types are unique tokens present in a corpus. The set of all types in a corpus is its
+vocabulary or lexicon.
+
+Words can be distinguished as content words and stopwords.
+Stopwords such as articles and prepositions serve mostly a grammatical purpose, like
+filler holding the content words.
+
+
+==== Unigrams, Bigrams, Trigrams, ..., N-grams ====
+N-grams are fixed-length (n) consecutive token sequences occurring in the text. A
+bigram has two tokens, a unigram one. Essentially, N-Grams are permutations on a sentence consisting of N tokens (sentence of N length).
+
+Often, we need to label a span of text; that is, a contiguous multitoken boundary.
+
+
+==== Resources ====
+References
+1. Manning, Christopher D., and Hinrich Schütze. (1999). Foundations of Statistical
+Natural Language Processing. MIT press.
+2. Bird, Steven, Ewan Klein, and Edward Loper. (2009). Natural Language Process‐
+ing with Python: Analyzing Text with the Natural Language Toolkit. O’Reilly.
+3. Smith, Noah A. (2011). Linguistic Structure prediction. Morgan and Claypool.
+4. Jurafsky, Dan, and James H. Martin. (2014). Speech and Language Processing,
+Vol. 3. Pearson.
+5. Russell, Stuart J., and Peter Norvig. (2016). Artificial Intelligence: A Modern
+Approach. Pearson.
+6. Zheng, Alice, and Casari, Amanda. (2018). Feature Engineering for Machine
+Learning: Principles and Techniques for Data Scientists. O’Reilly.
+
+
+Zheng and Casari (2016)
+Juraf‐
+sky and Martin (2014), Chapter 17, and Manning and Schütze (1999), Chapter 7

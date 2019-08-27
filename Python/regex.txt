@@ -1,0 +1,10 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-08-27T14:13:23-04:00
+
+====== regex ======
+Created Tuesday 27 August 2019
+
+https://www.debuggex.com/cheatsheet/regex/python
+
+{{./pasted_image.png}}
