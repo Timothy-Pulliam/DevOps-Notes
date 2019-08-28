@@ -1,0 +1,33 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-08-28T12:52:41-04:00
+
+====== todo ======
+Created Wednesday 28 August 2019
+
+- download sample corpora
+
+- represent text as list of words. count occurence of words. What are most common words in the text? How many words are in the text? How many tokens are in the text (words, letters), How large is the text in bytes? How many different words appear in the text (how many word types appear?)? What is reatio of tokens to types (average frequence with which each type is used, warning, this is not a reliable measurement as words are not evenly distributed in frequency)? 
+
+{{./pasted_image.png}}
+
+- Zipf's "Law"
+Plot rank vs frequency
+
+{{./pasted_image001.png}}
+
+{{./pasted_image002.png}}
+
+For example, this says that the 50fh most common word should occur
+with three times the frequency of the 150th most common word. Notice the deviation from the rule for words ranked 1-3, 90-200. This rule is not accurate enough to make granular predictions.
+
+To achieve a closer fit to the empirical distribution of words, Mandel-
+brot derives the following more general relationship between rank and
+frequency. Here P, B and p are parameters of a text, that collectively measure the
+richness of the text’s use of words..
+
+f = P(r + P)^-B
+or
+logf = logP - Blog(r + p)
+
+Mandelbrot's rule simplifies to Zipf's for P = 1, rho = 0.

@@ -5,6 +5,13 @@ Creation-Date: 2019-08-27T13:13:28-04:00
 ====== NLP ======
 Created Tuesday 27 August 2019
 
+==== The big questions ====
+n What kinds of things do people say? (structure, corpus linguistics)
+n What do these things say/ask/request about the world? (semantics, pragmatics, discourse)
+
+An NLP system needs to determine something of the structure of text -
+normally at least enough that it can answer “Who did what to whom?”
+
 ==== Basic Terminology ====
 
 disciplines of their own, like phonology, morphology, syntax, semantics, and
@@ -47,6 +54,8 @@ Often, we need to label a span of text; that is, a contiguous multitoken boundar
 
 
 ==== Resources ====
+http://www.nltk.org/book/ch01.html
+
 References
 1. Manning, Christopher D., and Hinrich Schütze. (1999). Foundations of Statistical
 Natural Language Processing. MIT press.

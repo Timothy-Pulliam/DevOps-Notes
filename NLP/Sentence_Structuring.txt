@@ -1,0 +1,23 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-08-28T12:37:30-04:00
+
+====== Sentence Structuring ======
+Created Wednesday 28 August 2019
+
+{{./pasted_image.png}}
+
+{{./pasted_image001.png}}
+
+There is (a), the one humans perceive, where is truining is the verb group,
+and two others with is as the main verb: in (b) the rest is a gerund (cf. Our
+problem is training workers), while in (c) training modifies workers (cf.
+Those are training wheels). The last two parses are semantically anoma-
+lous, but in most current systems semantic analysis is done only after
+syntactic analysis (if at all). This means that, as sentences get longer and
+grammars get more comprehensive, such ambiguities lead to a terrible
+multiplication of parses. For instance, Martin et al. (1987) report their
+system giving 455 parses for the sentence in (1.12):j
+
+(1.12) List the sales of the products produced in 1973 with the products pro-
+duced in 1972.
