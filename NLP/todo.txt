@@ -31,3 +31,6 @@ or
 logf = logP - Blog(r + p)
 
 Mandelbrot's rule simplifies to Zipf's for P = 1, rho = 0.
+
+- Try Baleen
+https://baleen-ingest.readthedocs.io/en/latest/about/

@@ -9,3 +9,14 @@ Susanne Corpus (word by word)
 https://www.grsampson.net/bufPageSue.html
 
 Penn Treebank Corpus (syntactic Structure of Sentences)
+
+== Gutenberg Corpus ==
+i>>> from nltk.corpus import gutenberg
+>>> gutenberg.fileids()
+['austen-emma.txt', 'austen-persuasion.txt', 'austen-sense.txt', ...]
+>>> emma = gutenberg.words('austen-emma.txt')
+len(emma)
+
+emma = nltk.Text(nltk.corpus.gutenberg.words('austen-emma.txt'))
+emma.concordance("surprize")
+

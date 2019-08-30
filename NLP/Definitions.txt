@@ -1,0 +1,144 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-08-29T11:41:45-04:00
+
+====== Definitions ======
+Created Thursday 29 August 2019
+
+==== The Linguistic "Stack" ====
+1. Phonetic/Phonological information. For every word we know, we
+have learned a pronunciation. Part of knowing the word tree is knowing
+certain sounds—more precisely, a certain sequence of sounds. Phonetics
+and phonology are the subfields of linguistics that study the structure and
+systematic patterning of sounds in human language (see chapters 3 and
+4).
+
+2. Lexical structure information. For every word we have learned, we
+intuitively know something about its internal structure. For example,
+our intuitions tell us that the word tree cannot be broken down into any
+meaningful parts. In contrast, the word trees seems to be made up of two
+parts: the word tree plus an additional element, -s (known as the ‘‘plural’’
+ending). Morphology is the subfield of linguistics that studies the internal
+structure of words and the relationships among words.
+
+3. Syntactic information. For every word we learn, we learn how it fits
+into the overall structure of sentences in which it can be used. For exam-
+14 Chapter 2
+ple, we know that the word reads can be used in a sentence like Mark
+reads the book, and the word readable (related to the word read ) can be
+used in a sentence like The book is readable. We may not know that read
+is called a verb or that readable is called an adjective; but we intuitively
+know, as native speakers, how to use those words in di¤erent kinds of
+sentences. Syntax is the subfield of linguistics that studies the internal
+structure of sentences and the relationships among their component parts
+(see chapter 5).
+
+4. Semantic information. For virtually every word we know, we have
+learned a meaning or several meanings. For example, to know the word
+brother is to know that it has a certain meaning (the equivalent of ‘‘male
+sibling’’). In addition, we may or may not know certain extended mean-
+ings of the word, as in John is so friendly and helpful, he’s a regular
+brother to me. Semantics is the subfield of linguistics that studies the
+nature of the meaning of individual words, and the meaning of words
+grouped into phrases and sentences (see chapter 6).
+
+5. Pragmatic information. For every word we learn, we know not only
+its meaning or meanings but also how to use it in the context of discourse
+or conversation. For instance, the word brother can be used not only to
+refer to a male sibling but also as a conversational exclamation, as in
+‘‘Oh brother! What a mess!’’ In some cases, words seem to have a use
+but no meaning as such. For example, the word hello is used to greet,
+but it seems to have no meaning beyond that particular use. Pragmatics
+is the subfield of linguistics that studies the use of words (and phrases
+and sentences) in the actual context of discourse (see chapter 9).
+
+==== Corpus / Corpora ====
+Corpora are collections of related documents that contain natural language.
+
+{{./pasted_image.png}}
+
+== Lexicon ==
+The list of words for any language (though not a complete list, as we will see) is referred to as its lexicon.
+
+== Morpheme ==
+https://www.ntid.rit.edu/sea/processes/wordknowledge/grammatical/whatare
+
+{{./pasted_image001.png}}
+
+
+
+Morphemes are categorized into two classes: free morphemes and bound morphemes.
+
+* A free morpheme can stand alone as an independent word in a phrase, such as the word tree in John sat in the tree.
+
+* A bound morpheme cannot stand alone but must be attached to another morpheme—
+like, for example, the plural morpheme -s, which can only occur attached
+to nouns, or cran-, which must be combined with berry (or, more recently,
+with apple, grape, or some other fruit)
+
+== Free Morpheme ==
+tree
+hello
+tim
+
+== prefixes ==
+re-
+pre-
+
+== suffixes ==
+-ize
+-s
+
+== Bound Bases ==
+cran-
+
+== Contracted ==
+will (they'll / 'll)
+is (Tim's / 's)
+have (should've \ 've)
+
+
+== Common Affixes ==
+http://www.uefap.com/vocab/build/building.htm
+
+== Third Person Singular ==
+When verbs use the -s suffix.
+
+verb + -s
+(bakes, walks, hits, etc.)
+
+{{./pasted_image003.png}}
+
+== Definite vs Indefinite Article ==
+English has a class of words known as articles, including the
+(the so-called definite article) and a (the so-called indefinite article), as in
+the book or a book.
+
+==== Open vs Closed Class Words (content vs function words) ====
+The open-class words
+are those belonging to the major part-of-speech classes (nouns, verbs,
+adjectives, and adverbs), which in any language tend to be quite large
+and ‘‘open-ended.’’ That is, an unlimited number of new words can be
+created and added to these classes (recall floowain/floowainer).
+
+In contrast, closed-class words are those belonging to grammatical, or
+function, classes (such as articles, demonstratives, quantifiers, conjunc-
+tions, and prepositions), which in any language tend to include a small
+number of fixed elements. Function words in English include conjunc-
+tions (and, or), articles (the, a), demonstratives (this, that), quantifiers (all,
+most, some, few), and prepositions (to, from, at, with).
+
+Example
+
+HAVING WONDERFUL
+TIME; HOTEL GREAT; RETURNING FLIGHT 256; SEND
+MONEY; STOP. Generally speaking, in telegraphic forms of language
+the open-class words are retained, whereas the closed-class words are
+omitted wherever possible.
+
+{{./pasted_image005.png}}
+
+==== Feature Analysis ====
+feature analysis—determining which features, properties, or dimensions about our
+text best encode its meaning and underlying structure.
+

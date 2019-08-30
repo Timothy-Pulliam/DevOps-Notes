@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-08-30T12:35:57-04:00
+
+====== Tensors ======
+Created Friday 30 August 2019
+
+def describe(x):

@@ -29,3 +29,20 @@ h. The boys read Mary’s stories about each other.
 CATEGORICAL
 PERCEPTION
 We find that most people disagree with more than one
+
+==== Regarding the Definitions of words ====
+We  could try to define a word as a "sound with meaning", however there are two problems.
+
+First, this does not distinguish words from sentences, which are also sounds with meaning.
+
+Second, a word such as it in a sentence such as It is snowing
+has no meaning. The word is simply a placeholder for the subject position
+of the sentence. Therefore, not all sound sequences are words, and not all
+sound sequences that native speakers would identify as words have a
+meaning. We have intuitions about what is and is not a word in our na-
+tive language, but as yet we do not have an adequate definition for the
+term word.
+
+==== Subject before Object ====
+The subject of an English sentence typically precedes the
+verb and the object typically follows it, as in John read the book.

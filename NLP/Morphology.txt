@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2019-08-29T12:17:07-04:00
+
+====== Morphology ======
+Created Thursday 29 August 2019
+
+What are words?
+If words are just sounds with meanings, how do we differentiate them from sentences?
+
+What are the basic building blocks in the formation of complex words?
+How are more complex words built up from simpler parts?
+How is the meaning of a complex word related to the meaning of its
+parts?
+How are individual words of a language related to other words of the
+language?
